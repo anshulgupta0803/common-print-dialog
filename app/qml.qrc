@@ -4,5 +4,9 @@
         <file>General.qml</file>
         <file>GeneralForm.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
+        <file>MoreOptions.qml</file>
+        <file>MoreOptionsForm.ui.qml</file>
+        <file>MoreOptionsGeneral.qml</file>
+        <file>MoreOptionsGeneralForm.ui.qml</file>
     </qresource>
 </RCC>

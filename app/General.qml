@@ -1,37 +1,24 @@
 import QtQuick 2.7
 
 GeneralForm {
-    width: 640
-    height: 530
+    anchors.fill: parent
+    moreOptionsButton.onClicked: {
+        general.visible = false
+        moreOptions.visible = true
+    }
 
-    cancelButton.onClicked: {
+    cancelGeneralButton.onClicked: {
         close()
     }
 
     pagesComboBox.onActivated: {
-        if (pagesComboBox.currentText == "Single") {
-            fromLabel.visible = false
-            fromSpinBox.visible = false
-            toLabel.visible = false
-            toSpinBox.visible = false
-            pageNumberLabel.visible = true
-            pageNumberSpinBox.visible = true
-        }
-        else if (pagesComboBox.currentText == "Range") {
-            pageNumberLabel.visible = false
-            pageNumberSpinBox.visible = false
-            fromLabel.visible = true
-            fromSpinBox.visible = true
-            toLabel.visible = true
-            toSpinBox.visible = true
+        if (pagesComboBox.currentText == "Custom") {
+            customLabel.visible = true
+            customTextField.visible = true
         }
         else {
-            pageNumberLabel.visible = false
-            pageNumberSpinBox.visible = false
-            fromLabel.visible = false
-            fromSpinBox.visible = false
-            toLabel.visible = false
-            toSpinBox.visible = false
+            customLabel.visible = false
+            customTextField.visible = false
         }
     }
 

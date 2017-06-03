@@ -5,32 +5,31 @@ import QtQuick.Layouts 1.0
 Item {
     property alias twoSidedSwitch: twoSidedSwitch
     property alias twoSidedSwitchValue: twoSidedSwitchValue
+
     property alias colorSwitch: colorSwitch
     property alias colorSwitchValue: colorSwitchValue
-    property alias pageNumberLabel: pageNumberLabel
-    property alias pageNumberSpinBox: pageNumberSpinBox
-    property alias fromLabel: fromLabel
-    property alias fromSpinBox: fromSpinBox
-    property alias toLabel: toLabel
-    property alias toSpinBox: toSpinBox
-    property alias copiesSpinBox: copiesSpinBox
+
+    property alias customLabel: customLabel
+    property alias customTextField: customTextField
+
     property alias pagesComboBox: pagesComboBox
-    height: 530
-    property alias cancelButton: cancelButton
+
+    property alias moreOptionsButton: moreOptionsButton
+
+    property alias cancelGeneralButton: cancelGeneralButton
 
     RowLayout {
         id: container
-        width: 640
-        height: 480
-        clip: false
+        //width: 640
+        //height: 480
+        //clip: false
         anchors.fill: parent
         spacing: 10
 
         GridLayout {
             id: gridLayout
-            x: 0
-            width: 320
-            height: 480
+            width: parent.width / 2
+            height: parent.height
             columnSpacing: 15
             rowSpacing: 5
             Layout.fillHeight: false
@@ -44,9 +43,9 @@ Item {
                 x: 0
                 y: 0
                 text: qsTr("Destination")
+                font.pixelSize: 12
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 transformOrigin: Item.Center
-                font.pixelSize: 12
             }
 
             ComboBox {
@@ -62,12 +61,13 @@ Item {
 
             ComboBox {
                 id: pagesComboBox
-                model: ["All", "Single", "Range"]
+                model: ["All", "Custom"]
+                font.pixelSize: 12
             }
 
             Label {
-                id: pageNumberLabel
-                text: qsTr("Page #")
+                id: customLabel
+                text: qsTr("Custom")
                 font.italic: true
                 color: "#ababab"
                 visible: false
@@ -75,48 +75,9 @@ Item {
                 font.pixelSize: 12
             }
 
-            SpinBox {
-                id: pageNumberSpinBox
+            TextField {
+                id: customTextField
                 visible: false
-                to: 999
-                from: 1
-                value: 1
-            }
-
-            Label {
-                id: fromLabel
-                text: qsTr("from")
-                font.italic: true
-                color: "#ababab"
-                visible: false
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            SpinBox {
-                id: fromSpinBox
-                visible: false
-                to: 999
-                from: 1
-                value: 1
-            }
-
-            Label {
-                id: toLabel
-                text: qsTr("to")
-                font.italic: true
-                color: "#ababab"
-                visible: false
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            SpinBox {
-                id: toSpinBox
-                visible: false
-                to: 999
-                from: 1
-                value: 1
             }
 
             Label {
@@ -142,26 +103,24 @@ Item {
 
             RowLayout {
                 id: layoutRowLayout
-                width: 100
-                height: 100
                 spacing: 5
 
                 RadioButton {
                     id: portraitRadioButton
                     text: qsTr("Portrait")
                     checked: true
+                    font.pixelSize: 12
                 }
 
                 RadioButton {
                     id: landscapeRadioButton
                     text: qsTr("Landscape")
+                    font.pixelSize: 12
                 }
             }
 
             Label {
                 id: paperLabel
-                x: 0
-                y: 0
                 text: qsTr("Paper")
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 transformOrigin: Item.Center
@@ -171,8 +130,6 @@ Item {
             ComboBox {
                 id: paperComboBox
                 x: 0
-                y: 220
-                width: 140
             }
 
             Label {
@@ -184,8 +141,6 @@ Item {
 
             RowLayout {
                 id: twoSidedRowLayout
-                width: 100
-                height: 100
                 Switch {
                     id: twoSidedSwitch
                 }
@@ -206,8 +161,6 @@ Item {
 
             RowLayout {
                 id: colorRowLayout
-                width: 100
-                height: 100
                 Switch {
                     id: colorSwitch
                 }
@@ -222,57 +175,47 @@ Item {
 
         RowLayout {
             id: preview
-            x: 320
-            y: 0
-            width: 320
-            height: 480
             Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
             spacing: 5
 
             Rectangle {
                 id: rectangle
                 width: 320
-                height: 480
+                height: 430
                 color: "#ffffff"
                 border.width: 2
 
                 BusyIndicator {
                     id: busyIndicator
-                    x: 115
-                    y: 200
+                    anchors.centerIn: parent
                 }
             }
         }
     }
 
     RowLayout {
-        id: buttonsLayout
-        width: 508
-        spacing: 190
-        anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 150
 
         Button {
             id: moreOptionsButton
-            height: 41
             text: qsTr("More Options")
+            height: 32
         }
 
         RowLayout {
-            id: cancelPrintRowLayout
-            width: 100
-            height: 100
-
             Button {
-                id: cancelButton
-                text: "Cancel"
+                id: cancelGeneralButton
+                text: qsTr("Cancel")
+                height: 32
             }
 
             Button {
-                id: printButton
-                height: 40
+                id: printGeneralButton
                 text: qsTr("Print")
                 highlighted: true
+                height: 32
             }
         }
     }
