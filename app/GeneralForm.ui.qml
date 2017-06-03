@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.0
 Item {
     property alias twoSidedSwitch: twoSidedSwitch
     property alias twoSidedSwitchValue: twoSidedSwitchValue
+    property alias twoSidedConfigLabel: twoSidedConfigLabel
+    property alias twoSidedConfigComboBox: twoSidedConfigComboBox
 
     property alias colorSwitch: colorSwitch
     property alias colorSwitchValue: colorSwitchValue
@@ -47,6 +49,17 @@ Item {
 
             ComboBox {
                 id: destinationComboBox
+                model: ListModel {
+
+                }
+
+                font.pixelSize: 12
+
+                delegate: ItemDelegate {
+                    width: destinationComboBox.width
+                    font.pixelSize: 12
+                    text: qsTr(destination)
+                }
             }
 
             Label {
@@ -58,7 +71,21 @@ Item {
 
             ComboBox {
                 id: pagesComboBox
-                model: ["All", "Custom"]
+                model: ListModel {
+                    ListElement {
+                        pages: "All"
+                    }
+                    ListElement {
+                        pages: "Custom"
+                    }
+                }
+
+                delegate: ItemDelegate {
+                    width: pagesComboBox.width
+                    text: qsTr(pages)
+                    font.pixelSize: 12
+                }
+
                 font.pixelSize: 12
             }
 
@@ -93,6 +120,8 @@ Item {
                 from: 1
                 value: 1
                 font.pixelSize: 12
+                editable: true
+                validator: IntValidator {}
             }
 
             Label {
@@ -129,13 +158,39 @@ Item {
             }
 
             ComboBox {
-                id: paperComboBox
-                x: 0
+                id: paperSizeComboBox
+                model: ListModel {
+                    ListElement {
+                        pageSize: "A4"
+                    }
+                    ListElement {
+                        pageSize: "A3"
+                    }
+                    ListElement {
+                        pageSize: "A5"
+                    }
+                    ListElement {
+                        pageSize: "Legal"
+                    }
+                    ListElement {
+                        pageSize: "Letter"
+                    }
+                    ListElement {
+                        pageSize: "Custom"
+                    }
+                }
+                delegate: ItemDelegate {
+                    width: paperSizeComboBox.width
+                    text: qsTr(pageSize)
+                    font.pixelSize: 12
+                }
+
+                font.pixelSize: 12
             }
 
             Label {
                 id: twoSidedLabel
-                text: qsTr("Two-Sided")
+                text: qsTr("Two Sided")
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 font.pixelSize: 12
             }
@@ -149,6 +204,32 @@ Item {
                     id: twoSidedSwitchValue
                     text: qsTr("OFF")
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                    font.pixelSize: 12
+                }
+            }
+
+            Label {
+                id: twoSidedConfigLabel
+                visible: false
+                font.pixelSize: 12
+            }
+
+            ComboBox {
+                id: twoSidedConfigComboBox
+                model: ListModel {
+                    ListElement {
+                        twoSidedConfig: "Long Edge (Standard)"
+                    }
+                    ListElement {
+                        twoSidedConfig: "Short Edge (Flip)"
+                    }
+                }
+                visible: false
+                font.pixelSize: 12
+
+                delegate: ItemDelegate {
+                    width: twoSidedConfigComboBox.width
+                    text: qsTr(twoSidedConfig)
                     font.pixelSize: 12
                 }
             }
@@ -182,7 +263,7 @@ Item {
             Rectangle {
                 id: rectangle
                 width: 320
-                height: 430
+                height: 450
                 color: "#ffffff"
                 border.width: 2
 

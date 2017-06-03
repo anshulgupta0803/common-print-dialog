@@ -4,10 +4,13 @@ import QtQuick.Layouts 1.0
 
 RowLayout {
     spacing: 5
+
+    property alias pagesComboBox: pagesComboBox
+    property alias customLabel: customLabel
+    property alias customTextField: customTextField
+
     GridLayout {
         id: gridLayout
-        //width: parent.width
-        //height: parent.height
         columnSpacing: 15
         Layout.fillHeight: true
         Layout.fillWidth: true
@@ -27,6 +30,17 @@ RowLayout {
 
         ComboBox {
             id: destinationComboBox
+            model: ListModel {
+
+            }
+
+            font.pixelSize: 12
+
+            delegate: ItemDelegate {
+                width: destinationComboBox.width
+                font.pixelSize: 12
+                text: qsTr(destination)
+            }
         }
 
         Label {
@@ -38,7 +52,21 @@ RowLayout {
 
         ComboBox {
             id: pagesComboBox
-            model: ["All", "Custom"]
+            model: ListModel {
+                ListElement {
+                    pages: "All"
+                }
+                ListElement {
+                    pages: "Custom"
+                }
+            }
+
+            delegate: ItemDelegate {
+                width: pagesComboBox.width
+                text: qsTr(pages)
+                font.pixelSize: 12
+            }
+
             font.pixelSize: 12
         }
 
@@ -54,7 +82,10 @@ RowLayout {
 
         TextField {
             id: customTextField
+            font.pixelSize: 12
             visible: false
+            placeholderText: "Eg. 2-4, 6, 8, 10-12"
+            validator: RegExpValidator { regExp: /((\s*[0-9]+|[0-9]+\s*-\s*[0-9]+)\s*,\s*)*/ }
         }
 
         Label {
@@ -69,46 +100,9 @@ RowLayout {
             to: 999
             from: 1
             value: 1
-        }
-
-        Label {
-            id: twoSidedLabel
-            text: qsTr("Two-Sided")
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
             font.pixelSize: 12
-        }
-
-        RowLayout {
-            id: twoSidedRowLayout
-            Switch {
-                id: twoSidedSwitch
-            }
-            Label {
-                id: twoSidedSwitchValue
-                text: qsTr("OFF")
-                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-        }
-
-        Label {
-            id: colorLabel
-            text: qsTr("Color")
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            font.pixelSize: 12
-        }
-
-        RowLayout {
-            id: colorRowLayout
-            Switch {
-                id: colorSwitch
-            }
-            Label {
-                id: colorSwitchValue
-                text: qsTr("OFF")
-                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
+            editable: true
+            validator: IntValidator{}
         }
     }
     RowLayout {
@@ -119,7 +113,7 @@ RowLayout {
         Rectangle {
             id: rectangle
             width: 320
-            height: 390
+            height: 420
             color: "#ffffff"
             border.width: 2
 

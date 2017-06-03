@@ -33,9 +33,13 @@ GeneralForm {
     twoSidedSwitch.onPressed: {
         if (twoSidedSwitch.checked) {
             twoSidedSwitchValue.text = "OFF"
+            twoSidedConfigLabel.visible = false
+            twoSidedConfigComboBox.visible = false
         }
         else {
             twoSidedSwitchValue.text = "ON"
+            twoSidedConfigLabel.visible = true
+            twoSidedConfigComboBox.visible = true
         }
     }
 

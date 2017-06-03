@@ -8,12 +8,12 @@ ApplicationWindow {
 
     id: applicationWindow
     visible: true
-    width: 640
-    height: 480
-    minimumWidth: 640
-    minimumHeight: 480
-    maximumWidth: 640
-    maximumHeight: 480
+    width: 650
+    height: 500
+    minimumWidth: 650
+    minimumHeight: 500
+    maximumWidth: 650
+    maximumHeight: 500
     title: qsTr("Print Document")
 
     General {
