@@ -3,6 +3,8 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 ColumnLayout {
+    property alias lessOptionsButton: lessOptionsButton
+
     property alias cancelMoreOptionsButton: cancelMoreOptionsButton
 
     anchors.fill: parent
@@ -17,11 +19,8 @@ ColumnLayout {
 
         }
 
-        Page {
-            Label {
-                text: qsTr("Page Setup")
-                anchors.centerIn: parent
-            }
+        MoreOptionsPageSetup {
+            y:35
         }
 
         Page {
@@ -81,8 +80,8 @@ ColumnLayout {
         spacing: 150
 
         Button {
-            id: printPreviewButton
-            text: qsTr("Preview")
+            id: lessOptionsButton
+            text: qsTr("Less Options")
             height: 32
         }
 

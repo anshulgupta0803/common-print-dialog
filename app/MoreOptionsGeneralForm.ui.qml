@@ -2,7 +2,8 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
-Item {
+RowLayout {
+    spacing: 5
     GridLayout {
         id: gridLayout
         //width: parent.width
@@ -107,6 +108,24 @@ Item {
                 text: qsTr("OFF")
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 font.pixelSize: 12
+            }
+        }
+    }
+    RowLayout {
+        id: preview
+        Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+        spacing: 5
+
+        Rectangle {
+            id: rectangle
+            width: 320
+            height: 390
+            color: "#ffffff"
+            border.width: 2
+
+            BusyIndicator {
+                id: busyIndicator
+                anchors.centerIn: parent
             }
         }
     }

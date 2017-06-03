@@ -5,7 +5,12 @@ import QtQuick.Layouts 1.0
 MoreOptionsForm {
     scale: 0.98
 
+    lessOptionsButton.onClicked: {
+        general.visible = true
+        moreOptions.visible = false
+    }
+
     cancelMoreOptionsButton.onClicked: {
-        close()
+        Qt.quit()
     }
 }

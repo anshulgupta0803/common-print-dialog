@@ -8,5 +8,7 @@
         <file>MoreOptionsForm.ui.qml</file>
         <file>MoreOptionsGeneral.qml</file>
         <file>MoreOptionsGeneralForm.ui.qml</file>
+        <file>MoreOptionsPageSetup.qml</file>
+        <file>MoreOptionsPageSetupForm.ui.qml</file>
     </qresource>
 </RCC>

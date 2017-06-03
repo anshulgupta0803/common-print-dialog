@@ -1,6 +1,12 @@
 import QtQuick 2.7
 
 GeneralForm {
+    customTextField.onFocusChanged:  {
+        if (customTextField.text != "") {
+            console.debug(customTextField.text)
+        }
+    }
+
     anchors.fill: parent
     moreOptionsButton.onClicked: {
         general.visible = false
@@ -8,7 +14,7 @@ GeneralForm {
     }
 
     cancelGeneralButton.onClicked: {
-        close()
+        Qt.quit()
     }
 
     pagesComboBox.onActivated: {

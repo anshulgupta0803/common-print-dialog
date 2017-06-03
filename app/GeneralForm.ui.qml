@@ -20,9 +20,6 @@ Item {
 
     RowLayout {
         id: container
-        //width: 640
-        //height: 480
-        //clip: false
         anchors.fill: parent
         spacing: 10
 
@@ -77,7 +74,10 @@ Item {
 
             TextField {
                 id: customTextField
+                font.pixelSize: 12
                 visible: false
+                placeholderText: "Eg. 2-4, 6, 8, 10-12"
+                validator: RegExpValidator { regExp: /((\s*[0-9]+|[0-9]+\s*-\s*[0-9]+)\s*,\s*)*/ }
             }
 
             Label {
@@ -92,6 +92,7 @@ Item {
                 to: 999
                 from: 1
                 value: 1
+                font.pixelSize: 12
             }
 
             Label {
