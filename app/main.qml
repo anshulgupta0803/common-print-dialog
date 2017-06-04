@@ -9,11 +9,11 @@ ApplicationWindow {
     id: applicationWindow
     visible: true
     width: 650
-    height: 500
+    height: 530
     minimumWidth: 650
-    minimumHeight: 500
+    minimumHeight: 530
     maximumWidth: 650
-    maximumHeight: 500
+    maximumHeight: 530
     title: qsTr("Print Document")
 
     General {

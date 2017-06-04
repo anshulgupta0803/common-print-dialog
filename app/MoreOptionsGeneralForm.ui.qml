@@ -105,22 +105,8 @@ RowLayout {
             validator: IntValidator{}
         }
     }
-    RowLayout {
-        id: preview
+    Preview {
+        height: 400
         Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-        spacing: 5
-
-        Rectangle {
-            id: rectangle
-            width: 320
-            height: 420
-            color: "#ffffff"
-            border.width: 2
-
-            BusyIndicator {
-                id: busyIndicator
-                anchors.centerIn: parent
-            }
-        }
     }
 }

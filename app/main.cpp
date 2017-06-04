@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "preview.h"
 
 int main(int argc, char *argv[])
 {
@@ -7,6 +8,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+    engine.addImageProvider(QLatin1String("preview"), new pdf_preview);
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 
     return app.exec();
