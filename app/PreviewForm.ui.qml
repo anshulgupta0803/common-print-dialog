@@ -1,5 +1,6 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
 
 ColumnLayout {
@@ -8,6 +9,9 @@ ColumnLayout {
     property alias flickable: flickable
     property real previousScaleValue: 1.0
     property alias imageMouseArea: imageMouseArea
+    property alias buttons: buttons
+    property alias preview_previous_page_button: preview_previous_page_button
+    property alias preview_next_page_button: preview_next_page_button
 
     width: 330
     height: 430
@@ -22,11 +26,12 @@ ColumnLayout {
         Image {
             id: image
             anchors.fill: parent
-            source: "image://preview/pdf"
+            source: "image://preview/tmp/test.pdf/0"
 
             MouseArea {
                 id: imageMouseArea
                 anchors.fill: parent
+                hoverEnabled: true
             }
         }
     }
@@ -39,15 +44,16 @@ ColumnLayout {
         width: 320
         height: 48
         border.color: "#000"
-        opacity: 0.5
+        opacity: 0.8
         anchors.bottom: flickable.bottom
 
         RowLayout {
-            scale: 0.90
             anchors.centerIn: parent
-            Button { // Displays the previous page in the doument
+            RoundButton { // Displays the previous page in the doument
                 id: preview_previous_page_button
                 text: qsTr("\u25C0")
+                highlighted: true
+                radius: 15
             }
 
             Slider{ // To set the zoom level of the preview image. I should add pan functionality.
@@ -58,9 +64,11 @@ ColumnLayout {
                 stepSize: 0.5
             }
 
-            Button {  // Displays the next page in the doument
+            RoundButton {  // Displays the next page in the doument
                 id: preview_next_page_button
                 text: qsTr('\u25B6')
+                highlighted: true
+                radius: 15
             }
         }
     }
