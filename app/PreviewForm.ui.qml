@@ -17,6 +17,7 @@ ColumnLayout {
         flickableDirection: Flickable.HorizontalAndVerticalFlick
         anchors.fill: parent
         interactive: true
+        clip: true
 
         Image {
             id: image

@@ -160,21 +160,6 @@ Item {
                     ListElement {
                         pageSize: "A4"
                     }
-                    ListElement {
-                        pageSize: "A3"
-                    }
-                    ListElement {
-                        pageSize: "A5"
-                    }
-                    ListElement {
-                        pageSize: "Legal"
-                    }
-                    ListElement {
-                        pageSize: "Letter"
-                    }
-                    ListElement {
-                        pageSize: "Custom"
-                    }
                 }
                 delegate: ItemDelegate {
                     width: paperSizeComboBox.width
