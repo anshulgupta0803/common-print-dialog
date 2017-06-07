@@ -33,5 +33,3 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     preview.h
-
-DISTFILES +=

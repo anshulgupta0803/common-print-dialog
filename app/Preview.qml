@@ -40,7 +40,7 @@ PreviewForm {
         var filename = source.substring(0, filenameLength)
         var pageNumber = source.substring(filenameLength + 1, source.length)
         var nextPageNumber = parseInt(pageNumber) + 1
-        if (nextPageNumber >= 0) {
+        if (nextPageNumber < preview_data.get_number_of_pages(source.substring(15, filenameLength))) {
             image.source = filename + "/" + String(nextPageNumber)
         }
     }

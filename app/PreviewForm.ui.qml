@@ -25,6 +25,7 @@ ColumnLayout {
 
         Image {
             id: image
+            objectName: "image"
             anchors.fill: parent
             source: "image://preview/tmp/test.pdf/0"
 
