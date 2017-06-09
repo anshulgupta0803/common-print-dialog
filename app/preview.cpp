@@ -1,6 +1,7 @@
 #include "preview.h"
 #include <poppler/qt5/poppler-qt5.h>
 #include <QMessageLogger>
+#include <QDebug>
 
 /* The preview works by using poppler to convert a page of pdf to QImage */
 
@@ -22,7 +23,11 @@ QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &re
         return image;
     }
 
-    image = page->renderToImage(72.0,72.0,0,0,page->pageSize().width(),page->pageSize().height());
+    int height = page->pageSize().height();
+    int width = page->pageSize().width();
+    image = page->renderToImage(72.0, 72.0, 0, 0, width, height);
+
+
     if (image.isNull())
         qCritical("Error!");
 

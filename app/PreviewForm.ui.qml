@@ -22,11 +22,12 @@ ColumnLayout {
         anchors.fill: parent
         interactive: true
         clip: true
+        contentWidth: image.width
+        contentHeight: image.height
 
         Image {
             id: image
             objectName: "image"
-            anchors.fill: parent
             source: "image://preview/tmp/test.pdf/0"
 
             MouseArea {
@@ -59,10 +60,10 @@ ColumnLayout {
 
             Slider{ // To set the zoom level of the preview image. I should add pan functionality.
                 id: preview_zoom_slider
-                to: 3
+                to: 5
                 from: 1
                 value: 1
-                stepSize: 0.5
+                //stepSize: 0.5
             }
 
             RoundButton {  // Displays the next page in the doument
@@ -73,4 +74,5 @@ ColumnLayout {
             }
         }
     }
+
 }

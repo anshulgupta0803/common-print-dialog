@@ -4,11 +4,16 @@ import QtQml 2.2
 PreviewForm {
     preview_zoom_slider.onValueChanged: {
         var scale = preview_zoom_slider.value
-        flickable.resizeContent((image.width / previousScaleValue) * scale , (image.height / previousScaleValue) * scale, 0)
+        console.log(image.width, image.height, flickable.contentWidth, flickable.contentHeight)
+        image.width = (image.width / previousScaleValue) * scale
+        image.height = (image.height / previousScaleValue) * scale
+        flickable.contentWidth = image.width
+        flickable.contentHeight = image.height
+        //flickable.resizeContent((image.width / previousScaleValue) * scale , (image.height / previousScaleValue) * scale, 0)
 
         previousScaleValue = scale
 
-        flickable.returnToBounds()
+    //    flickable.returnToBounds()
     }
 
     imageMouseArea.onDoubleClicked: {
