@@ -30,11 +30,9 @@ ColumnLayout {
             }
         }
 
-        Page {
-            Label {
-                text: qsTr("Jobs")
-                anchors.centerIn: parent
-            }
+        MoreOptionsJobs {
+            y: 35
+            scale: 0.98
         }
 
         Page {

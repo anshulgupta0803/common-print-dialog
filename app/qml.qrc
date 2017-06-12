@@ -12,5 +12,6 @@
         <file>MoreOptionsPageSetupForm.ui.qml</file>
         <file>Preview.qml</file>
         <file>PreviewForm.ui.qml</file>
+        <file>MoreOptionsJobs.qml</file>
     </qresource>
 </RCC>
