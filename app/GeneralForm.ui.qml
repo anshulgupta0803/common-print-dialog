@@ -101,7 +101,7 @@ Item {
                 font.pixelSize: 12
                 visible: false
                 placeholderText: "Eg. 2-4, 6, 8, 10-12"
-                validator: RegExpValidator { regExp: /((\s*[0-9]+|[0-9]+\s*-\s*[0-9]+)\s*,\s*)*/ }
+                validator: RegExpValidator { regExp: /^[0-9]+(?:(?:\s*,\s*|\s*-\s*)[0-9]+)*$/ }
             }
 
             Label {

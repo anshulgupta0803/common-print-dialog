@@ -35,11 +35,9 @@ ColumnLayout {
             scale: 0.98
         }
 
-        Page {
-            Label {
-                text: qsTr("Quality")
-                anchors.centerIn: parent
-            }
+        MoreOptionsAdvanced {
+            y: 35
+            scale: 0.90
         }
     }
     TabBar {

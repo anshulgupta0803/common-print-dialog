@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include "preview.h"
 #include <QQmlContext>
+//#include <QFont>
 
 int main(int argc, char *argv[]) {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -12,6 +13,8 @@ int main(int argc, char *argv[]) {
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     QPreviewData data;
     engine.rootContext()->setContextProperty("preview_data", &data);
+    //QFont fon("Helvetica", 40);
+    //app.setFont(fon);
 
     return app.exec();
 }

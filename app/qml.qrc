@@ -13,5 +13,6 @@
         <file>Preview.qml</file>
         <file>PreviewForm.ui.qml</file>
         <file>MoreOptionsJobs.qml</file>
+        <file>MoreOptionsAdvanced.qml</file>
     </qresource>
 </RCC>

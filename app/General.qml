@@ -2,8 +2,29 @@ import QtQuick 2.7
 
 GeneralForm {
     customTextField.onFocusChanged:  {
-        if (customTextField.text != "") {
-            console.debug(customTextField.text)
+        var input = customTextField.text.replace(/\s/g, '').split(',')
+        if (input !== "") {
+            //console.debug(customTextField.text)
+            var pages = [];
+            for (var i = 0; i < input.length; i++) {
+                var pageRange = input[i].split('-');
+                if (pageRange.length === 1) {
+                    pages.push(parseInt(pageRange[0]));
+                }
+                else {
+                    var low = parseInt(pageRange[0]);
+                    var high = parseInt(pageRange[1]);
+                    if (low <= high) {
+                        for (var j = low; j <= high; j++) {
+                            pages.push(j);
+                        }
+                    }
+                    else
+                        console.debug("Error in page range: " + input[i]);
+                }
+            }
+            pages = pages.sort(function(a, b){return a - b});
+            console.log(pages)
         }
     }
 
