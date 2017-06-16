@@ -2,17 +2,13 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>General.qml</file>
-        <file>GeneralForm.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>MoreOptions.qml</file>
-        <file>MoreOptionsForm.ui.qml</file>
         <file>MoreOptionsGeneral.qml</file>
-        <file>MoreOptionsGeneralForm.ui.qml</file>
         <file>MoreOptionsPageSetup.qml</file>
-        <file>MoreOptionsPageSetupForm.ui.qml</file>
         <file>Preview.qml</file>
-        <file>PreviewForm.ui.qml</file>
         <file>MoreOptionsJobs.qml</file>
         <file>MoreOptionsAdvanced.qml</file>
+        <file>test.pdf</file>
     </qresource>
 </RCC>

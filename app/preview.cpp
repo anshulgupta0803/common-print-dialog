@@ -2,12 +2,15 @@
 #include <poppler/qt5/poppler-qt5.h>
 #include <QMessageLogger>
 #include <QDebug>
+#include <QFile>
 
 /* The preview works by using poppler to convert a page of pdf to QImage */
 
 QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &requested_size) {
     int filenameLength = id.lastIndexOf("/");
     QString filename = "/" + id.mid(0, filenameLength);
+    // TODO: Remove this line
+    QFile::copy(":/test.pdf", filename);
     int pageNumber = id.mid(filenameLength + 1, id.size()).toInt();
     QImage image;
 

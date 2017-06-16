@@ -4,8 +4,6 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls.Styles 1.4
 
 Item {
-    //anchors.fill: parent
-
     ScrollBar { //Needs some fixing
         id: scroll_bar
         hoverEnabled: true

@@ -3,9 +3,6 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 ApplicationWindow {
-    property alias general: general
-    property alias moreOptions: moreOptions
-
     id: applicationWindow
     visible: true
     width: 650
@@ -19,10 +16,12 @@ ApplicationWindow {
     General {
         id: general
         visible: true
+        scale: 0.98
     }
 
     MoreOptions {
         id: moreOptions
         visible: false
+        scale: 0.98
     }
 }
