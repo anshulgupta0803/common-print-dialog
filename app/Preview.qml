@@ -6,8 +6,20 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
 
 ColumnLayout {
+    signal orientationChanged(string orientation)
+    property string orient: "Portrait"
+
     width: 330
     height: 430
+    onOrientationChanged: {
+        orient = orientation
+        var source = String(image.source).split("/")
+        var filename = "image://preview"
+        var i;
+        for (i = 3; i < source.length - 1; i++)
+            filename += "/" + source[i]
+        image.source = filename + "/" + orient
+    }
     Flickable {
         id: flickable
         boundsBehavior: Flickable.StopAtBounds
@@ -20,8 +32,9 @@ ColumnLayout {
 
         Image {
             id: image
+            property alias previewImage: image
             objectName: "image"
-            source: "image://preview/tmp/test.pdf/0"
+            source: "image://preview/tmp/test.pdf/0/Portrait"
 
             MouseArea {
                 id: imageMouseArea
@@ -53,13 +66,17 @@ ColumnLayout {
                 highlighted: true
                 radius: 15
                 onClicked: {
-                    var source = String(image.source)
-                    var filenameLength = source.lastIndexOf("/")
-                    var filename = source.substring(0, filenameLength)
-                    var pageNumber = source.substring(filenameLength + 1, source.length)
+                    var source = String(image.source).split("/")
+                    var filename = "image://preview"
+                    var i;
+                    for (i = 3; i < source.length - 2; i++)
+                        filename += "/" + source[i]
+                    var pageNumber = source[i]
+                    i++;
+                    //var orientation = source[i]
                     var previousPageNumber = parseInt(pageNumber) - 1
                     if (previousPageNumber >= 0)
-                        image.source = filename + "/" + String(previousPageNumber)
+                        image.source = filename + "/" + String(previousPageNumber) + "/" + orient
                 }
             }
 
@@ -88,13 +105,17 @@ ColumnLayout {
                 highlighted: true
                 radius: 15
                 onClicked: {
-                    var source = String(image.source)
-                    var filenameLength = source.lastIndexOf("/")
-                    var filename = source.substring(0, filenameLength)
-                    var pageNumber = source.substring(filenameLength + 1, source.length)
+                    var source = String(image.source).split("/")
+                    var filename = "image://preview"
+                    var i;
+                    for (i = 3; i < source.length - 2; i++)
+                        filename += "/" + source[i]
+                    var pageNumber = source[i]
+                    i++;
+                    //var orientation = source[i]
                     var nextPageNumber = parseInt(pageNumber) + 1
-                    if (nextPageNumber < preview_data.get_number_of_pages(source.substring(15, filenameLength)))
-                        image.source = filename + "/" + String(nextPageNumber)
+                    if (nextPageNumber < preview_data.get_number_of_pages(filename.substring(15)))
+                        image.source = filename + "/" + String(nextPageNumber) + "/" + orient
                 }
             }
         }

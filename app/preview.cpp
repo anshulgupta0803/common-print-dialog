@@ -7,11 +7,19 @@
 /* The preview works by using poppler to convert a page of pdf to QImage */
 
 QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &requested_size) {
-    int filenameLength = id.lastIndexOf("/");
-    QString filename = "/" + id.mid(0, filenameLength);
+    QString filename;
+    QStringList imagesource = id.split("/");
+    QStringList::iterator it;
+    for (it = imagesource.begin(); it != imagesource.end() - 2; it++)
+        filename += "/" + *it;
+
     // TODO: Remove this line
     QFile::copy(":/test.pdf", filename);
-    int pageNumber = id.mid(filenameLength + 1, id.size()).toInt();
+
+    int pageNumber = (*it).toInt();
+    it++;
+
+    QString orientation = *it;
     QImage image;
 
     Poppler::Document *document = Poppler::Document::load(filename);
@@ -28,7 +36,10 @@ QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &re
 
     int height = page->pageSize().height();
     int width = page->pageSize().width();
-    image = page->renderToImage(72.0, 72.0, 0, 0, width, height);
+    if (orientation.compare("Portrait") == 0)
+        image = page->renderToImage(72.0, 72.0, 0, 0, width, height, Poppler::Page::Rotate0);
+    else if (orientation.compare("Landscape") == 0)
+        image = page->renderToImage(72.0, 72.0, 0, 0, height, width, Poppler::Page::Rotate90);
 
 
     if (image.isNull())

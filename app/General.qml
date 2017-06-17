@@ -174,12 +174,14 @@ Item {
                     text: qsTr("Portrait")
                     checked: true
                     font.pixelSize: 12
+                    onClicked: generalPreview.orientationChanged("Portrait")
                 }
 
                 RadioButton {
                     id: landscapeRadioButton
                     text: qsTr("Landscape")
                     font.pixelSize: 12
+                    onClicked: generalPreview.orientationChanged("Landscape")
                 }
             }
 
@@ -295,6 +297,7 @@ Item {
         }
 
         Preview {
+            id: generalPreview
             Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
         }
     }
