@@ -3,11 +3,17 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    preview.cpp
+    preview.cpp \
+    ../backends/cups/*.c
 
 RESOURCES += qml.qrc
 
-LIBS += -lpoppler-qt5 -lcups
+LIBS += -lpoppler-qt5 -lcups -lgio-2.0 -lgobject-2.0 -lglib-2.0
+
+INCLUDEPATH += \
+    /usr/include/glib-2.0 \
+    /usr/lib/x86_64-linux-gnu/glib-2.0/include \
+    /usr/include/gio-unix-2.0
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -32,4 +38,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    preview.h
+    preview.h \
+    ../backends/cups/*.h
