@@ -10,7 +10,7 @@ QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &re
     QString filename;
     QStringList imagesource = id.split("/");
     QStringList::iterator it;
-    for (it = imagesource.begin(); it != imagesource.end() - 2; it++)
+    for (it = imagesource.begin(); it != imagesource.end() - 3; it++)
         filename += "/" + *it;
 
     // TODO: Remove this line
@@ -20,6 +20,10 @@ QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &re
     it++;
 
     QString orientation = *it;
+    it++;
+
+    QString paper = *it;
+
     QImage image;
 
     Poppler::Document *document = Poppler::Document::load(filename);
@@ -36,10 +40,17 @@ QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &re
 
     int height = page->pageSize().height();
     int width = page->pageSize().width();
+
+    QPreviewData data;
+    QSize pageSize;
+    pageSize = data.getPageSize(paper);
+    height = pageSize.height();
+    width = pageSize.width();
+    //qDebug() << height << "" << width;
     if (orientation.compare("Portrait") == 0)
         image = page->renderToImage(72.0, 72.0, 0, 0, width, height, Poppler::Page::Rotate0);
     else if (orientation.compare("Landscape") == 0)
-        image = page->renderToImage(72.0, 72.0, 0, 0, height, width, Poppler::Page::Rotate90);
+        image = page->renderToImage(72.0, 72.0, 0, 0, height, width, Poppler::Page::Rotate0);
 
 
     if (image.isNull())
@@ -56,4 +67,22 @@ int QPreviewData::get_number_of_pages(QString filename){
     }
 
     return document->numPages();
+}
+
+QSize QPreviewData::getPageSize(QString page) {
+    QSize pageSize;
+    if (page.compare("A4") == 0) {
+        pageSize.rheight() = 842;
+        pageSize.rwidth() = 595;
+    }
+
+    else if (page.compare("Letter") == 0) {
+        pageSize.rheight() = 792;
+        pageSize.rwidth() = 612;
+    }
+    else {
+        pageSize.rheight() = 100;
+        pageSize.rwidth() = 100;
+    }
+    return pageSize;
 }

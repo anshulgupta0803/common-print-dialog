@@ -46,17 +46,15 @@ Item {
 
             ComboBox {
                 id: destinationComboBox
-                model: ListModel {
-
-                }
+                model: destinationModel
 
                 font.pixelSize: 12
 
-                delegate: ItemDelegate {
-                    width: destinationComboBox.width
-                    font.pixelSize: 12
-                    text: qsTr(destination)
-                }
+//                delegate: ItemDelegate {
+//                    width: destinationComboBox.width
+//                    font.pixelSize: 12
+//                    text: qsTr(destination)
+//                }
             }
 
             Label {
@@ -199,6 +197,9 @@ Item {
                     ListElement {
                         pageSize: "A4"
                     }
+                    ListElement {
+                        pageSize: "Letter"
+                    }
                 }
                 delegate: ItemDelegate {
                     width: paperSizeComboBox.width
@@ -207,6 +208,7 @@ Item {
                 }
 
                 font.pixelSize: 12
+                onCurrentIndexChanged: generalPreview.pageSizeChanged(paperSizeComboBox.textAt(paperSizeComboBox.highlightedIndex))
             }
 
             Label {

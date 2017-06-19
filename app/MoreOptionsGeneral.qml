@@ -26,17 +26,15 @@ RowLayout {
 
         ComboBox {
             id: destinationComboBox
-            model: ListModel {
-
-            }
+            model: destinationModel
 
             font.pixelSize: 12
 
-            delegate: ItemDelegate {
-                width: destinationComboBox.width
-                font.pixelSize: 12
-                text: qsTr(destination)
-            }
+//            delegate: ItemDelegate {
+//                width: destinationComboBox.width
+//                font.pixelSize: 12
+//                text: qsTr(destination)
+//            }
         }
 
         Label {

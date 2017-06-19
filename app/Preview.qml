@@ -8,6 +8,8 @@ import QtQuick.Layouts 1.0
 ColumnLayout {
     signal orientationChanged(string orientation)
     property string orient: "Portrait"
+    signal pageSizeChanged(string pageSize)
+    property string pgSize: "A4"
 
     width: 330
     height: 430
@@ -16,10 +18,21 @@ ColumnLayout {
         var source = String(image.source).split("/")
         var filename = "image://preview"
         var i;
-        for (i = 3; i < source.length - 1; i++)
+        for (i = 3; i < source.length - 2; i++)
             filename += "/" + source[i]
-        image.source = filename + "/" + orient
+        image.source = filename + "/" + orient + "/" + pgSize
     }
+
+    onPageSizeChanged: {
+        pgSize = pageSize
+        var source = String(image.source).split("/")
+        var filename = "image://preview"
+        var i;
+        for (i = 3; i < source.length - 2; i++)
+            filename += "/" + source[i]
+        image.source = filename + "/" + orient + "/" + pgSize
+    }
+
     Flickable {
         id: flickable
         boundsBehavior: Flickable.StopAtBounds
@@ -34,7 +47,12 @@ ColumnLayout {
             id: image
             property alias previewImage: image
             objectName: "image"
-            source: "image://preview/tmp/test.pdf/0/Portrait"
+            source: "image://preview/tmp/test.pdf/0/" + orient + "/" + pgSize
+            Component.onCompleted: {
+                orient = "Portrait"
+                pgSize = "A4"
+                image.source = "image://preview/tmp/test.pdf/0/" + orient + "/" + pgSize
+            }
 
             MouseArea {
                 id: imageMouseArea
@@ -69,14 +87,13 @@ ColumnLayout {
                     var source = String(image.source).split("/")
                     var filename = "image://preview"
                     var i;
-                    for (i = 3; i < source.length - 2; i++)
+                    for (i = 3; i < source.length - 3; i++)
                         filename += "/" + source[i]
                     var pageNumber = source[i]
                     i++;
-                    //var orientation = source[i]
                     var previousPageNumber = parseInt(pageNumber) - 1
                     if (previousPageNumber >= 0)
-                        image.source = filename + "/" + String(previousPageNumber) + "/" + orient
+                        image.source = filename + "/" + String(previousPageNumber) + "/" + orient + "/" + pgSize
                 }
             }
 
@@ -108,14 +125,12 @@ ColumnLayout {
                     var source = String(image.source).split("/")
                     var filename = "image://preview"
                     var i;
-                    for (i = 3; i < source.length - 2; i++)
+                    for (i = 3; i < source.length - 3; i++)
                         filename += "/" + source[i]
                     var pageNumber = source[i]
-                    i++;
-                    //var orientation = source[i]
                     var nextPageNumber = parseInt(pageNumber) + 1
                     if (nextPageNumber < preview_data.get_number_of_pages(filename.substring(15)))
-                        image.source = filename + "/" + String(nextPageNumber) + "/" + orient
+                        image.source = filename + "/" + String(nextPageNumber) + "/" + orient + "/" + pgSize
                 }
             }
         }
