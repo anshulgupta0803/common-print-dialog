@@ -10,5 +10,21 @@
         <file>MoreOptionsJobs.qml</file>
         <file>MoreOptionsAdvanced.qml</file>
         <file>test.pdf</file>
+        <file>../backends/cups/backend_helper.c</file>
+        <file>../backends/cups/backend_helper.h</file>
+        <file>../backends/cups/backend_interface.c</file>
+        <file>../backends/cups/backend_interface.h</file>
+        <file>../backends/cups/common_helper.c</file>
+        <file>../backends/cups/common_helper.h</file>
+        <file>../backends/cups/frontend_helper.c</file>
+        <file>../backends/cups/frontend_helper.h</file>
+        <file>../backends/cups/frontend_interface.c</file>
+        <file>../backends/cups/frontend_interface.h</file>
+        <file>../backends/cups/LICENSE.md</file>
+        <file>../backends/cups/org.openprinting.Backend.xml</file>
+        <file>../backends/cups/org.openprinting.Frontend.xml</file>
+        <file>../backends/cups/print_backend_cups.c</file>
+        <file>../backends/cups/print_frontend.c</file>
+        <file>../backends/cups/README.md</file>
     </qresource>
 </RCC>
