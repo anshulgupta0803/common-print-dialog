@@ -88,7 +88,7 @@ ColumnLayout {
                 text: qsTr("Cancel")
                 height: 32
                 onClicked: {
-                    Qt.quit()
+                    close()
                 }
             }
 

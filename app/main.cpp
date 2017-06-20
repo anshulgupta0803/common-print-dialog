@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     label->show();
 
 
-    CommonPrintDialog cpd;// = new CommonPrintDialog();
+    CommonPrintDialog cpd;
     cpd.exec();
     return app.exec();
 }
