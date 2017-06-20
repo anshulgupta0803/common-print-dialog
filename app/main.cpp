@@ -1,25 +1,27 @@
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include "preview.h"
-#include <QQmlContext>
-#include <QStringList>
+#include <QtGui>
+#include <QApplication>
+#include <QWidget>
+#include <QLabel>
+#include <QDebug>
+#include <QObject>
+#include <QtQuickWidgets>
+#include "commonprintdialog.h"
 
-int main(int argc, char *argv[]) {
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication app(argc, argv);
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+    QWidget window;
+    window.resize(300, 300);
+    window.setWindowTitle("Application");
+    window.show();
 
-    QQmlApplicationEngine engine;
-    engine.addImageProvider(QLatin1String("preview"), new QPdfPreview);
-    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
-    QPreviewData data;
-    engine.rootContext()->setContextProperty("preview_data", &data);
+    QLabel *label = new QLabel("Hello World", &window);
+    label->move((window.width() / 2) - (label->width() / 2),
+                 (window.height() / 2) - (label->height() / 2));
+    label->show();
 
-    QStringList dataList;
-    dataList.append("Item 1");
-    dataList.append("Item 2");
-    dataList.append("Item 3");
-    dataList.append("Item 4");
-    engine.rootContext()->setContextProperty("destinationModel", QVariant::fromValue(dataList));
 
+    CommonPrintDialog cpd;// = new CommonPrintDialog();
+    cpd.exec();
     return app.exec();
 }
