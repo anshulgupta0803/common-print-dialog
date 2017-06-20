@@ -1,9 +1,10 @@
-QT += qml quick
+QT += qml quick widgets quickwidgets
 
 CONFIG += c++11
 
 SOURCES += main.cpp \
     preview.cpp \
+    commonprintdialog.cpp \
     ../backends/cups/*.c
 
 RESOURCES += qml.qrc
@@ -39,4 +40,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     preview.h \
+    commonprintdialog.h \
     ../backends/cups/*.h

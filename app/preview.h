@@ -2,7 +2,7 @@
 #define PREVIEW_H
 
 #include <QQuickImageProvider>
-#include <QSize>
+#include <QSizeF>
 
 class QPdfPreview : public QQuickImageProvider
 {
@@ -16,7 +16,7 @@ class QPreviewData : public QObject
     Q_OBJECT
 public:
     Q_INVOKABLE int get_number_of_pages(QString fileName);
-    QSize getPageSize(QString page);
+    QSizeF getPageSize(QString page);
 };
 
 #endif // PREVIEW_H

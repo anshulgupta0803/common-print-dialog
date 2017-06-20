@@ -3,6 +3,7 @@
 #include <QMessageLogger>
 #include <QDebug>
 #include <QFile>
+#include <QPageSize>
 
 /* The preview works by using poppler to convert a page of pdf to QImage */
 
@@ -38,12 +39,9 @@ QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &re
         return image;
     }
 
-    int height = page->pageSize().height();
-    int width = page->pageSize().width();
-
+    int height, width;
     QPreviewData data;
-    QSize pageSize;
-    pageSize = data.getPageSize(paper);
+    QSizeF pageSize = data.getPageSize(paper);
     height = pageSize.height();
     width = pageSize.width();
     //qDebug() << height << "" << width;
@@ -69,20 +67,9 @@ int QPreviewData::get_number_of_pages(QString filename){
     return document->numPages();
 }
 
-QSize QPreviewData::getPageSize(QString page) {
-    QSize pageSize;
-    if (page.compare("A4") == 0) {
-        pageSize.rheight() = 842;
-        pageSize.rwidth() = 595;
-    }
-
-    else if (page.compare("Letter") == 0) {
-        pageSize.rheight() = 792;
-        pageSize.rwidth() = 612;
-    }
-    else {
-        pageSize.rheight() = 100;
-        pageSize.rwidth() = 100;
-    }
-    return pageSize;
+QSizeF QPreviewData::getPageSize(QString page) {
+    if (page.compare("A4") == 0)
+        return QPageSize::size(QPageSize::PageSizeId::A4, QPageSize::Unit::Point);
+    else if (page.compare("Letter") == 0)
+        return QPageSize::size(QPageSize::PageSizeId::Letter, QPageSize::Unit::Point);
 }
