@@ -2,10 +2,16 @@ QT += qml quick widgets quickwidgets
 
 CONFIG += c++11
 
-SOURCES += main.cpp \
-    preview.cpp \
-    commonprintdialog.cpp \
-    ../backends/cups/*.c
+SOURCES += app/main.cpp \
+    app/preview.cpp \
+    app/commonprintdialog.cpp \
+    backends/cups/backend_helper.c \
+    backends/cups/backend_interface.c \
+    backends/cups/common_helper.c \
+    backends/cups/frontend_helper.c \
+    backends/cups/frontend_interface.c \
+    backends/cups/print_backend_cups.c \
+    backends/cups/print_frontend.c
 
 RESOURCES += qml.qrc
 
@@ -39,6 +45,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    preview.h \
-    commonprintdialog.h \
-    ../backends/cups/*.h
+    app/preview.h \
+    app/commonprintdialog.h \
+    backends/cups/backend_helper.h \
+    backends/cups/backend_interface.h \
+    backends/cups/common_helper.h \
+    backends/cups/frontend_helper.h \
+    backends/cups/frontend_interface.h \
+    backends/cups/print_backend_cups.h \
+    backends/cups/print_frontend.h
