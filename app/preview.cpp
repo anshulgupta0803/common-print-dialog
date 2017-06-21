@@ -15,7 +15,7 @@ QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &re
         filename += "/" + *it;
 
     // TODO: Remove this line
-    QFile::copy(":/test.pdf", filename);
+    QFile::copy(":/app/test.pdf", filename);
 
     int pageNumber = (*it).toInt();
     it++;

@@ -8,7 +8,7 @@
 CommonPrintDialog::CommonPrintDialog() {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     engine.addImageProvider(QLatin1String("preview"), new QPdfPreview);
-    engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+    engine.load(QUrl(QLatin1String("qrc:/app/main.qml")));
     QPreviewData data;
     engine.rootContext()->setContextProperty("preview_data", &data);
 
