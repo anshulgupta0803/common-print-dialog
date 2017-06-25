@@ -1,6 +1,10 @@
 QT += qml quick widgets quickwidgets
 
 CONFIG += c++11
+unix {
+    CONFIG += link_pkgconfig
+    PKGCONFIG += gio-unix-2.0 glib-2.0 gobject-2.0 poppler-qt5
+}
 
 SOURCES += app/main.cpp \
     app/preview.cpp \
@@ -15,12 +19,10 @@ SOURCES += app/main.cpp \
 
 RESOURCES += qml.qrc
 
-LIBS += -lpoppler-qt5 -lcups -lgio-2.0 -lgobject-2.0 -lglib-2.0
+LIBS += -lcups
 
-INCLUDEPATH += \
-    /usr/include/glib-2.0 \
-    /usr/lib/x86_64-linux-gnu/glib-2.0/include \
-    /usr/include/gio-unix-2.0
+DEPENDPATH += backends/cups
+INCLUDEPATH += $${DEPENDPATH}
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
