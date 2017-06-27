@@ -9,22 +9,34 @@ extern "C" {
     #include "../backends/cups/print_frontend.h"
 }
 
+_CommonPrintDialog *_cpd;
+
 CommonPrintDialog::CommonPrintDialog() {
+    _cpd = new _CommonPrintDialog;
+}
+
+void CommonPrintDialog::exec() {
+    QQuickWidget(&(_cpd->engine), Q_NULLPTR);
+    main_frontend();
+}
+
+_CommonPrintDialog::_CommonPrintDialog() {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     engine.addImageProvider(QLatin1String("preview"), new QPdfPreview);
     engine.load(QUrl(QLatin1String("qrc:/app/main.qml")));
     QPreviewData data;
     engine.rootContext()->setContextProperty("preview_data", &data);
-
-    QStringList dataList;
-    dataList.append("Item 1");
-    dataList.append("Item 2");
-    dataList.append("Item 3");
-    dataList.append("Item 4");
-    engine.rootContext()->setContextProperty("destinationModel", QVariant::fromValue(dataList));
 }
 
-void CommonPrintDialog::exec() {
-    QQuickWidget(&engine, Q_NULLPTR);
-    main_frontend();
+void _CommonPrintDialog::add(char *printer) {
+    QVariant returnedValue;
+    QVariant arg = printer;
+    QMetaObject::invokeMethod((_cpd->engine).rootObjects().at(0),
+                              "updateDestinationModel",
+                              Q_RETURN_ARG(QVariant, returnedValue),
+                              Q_ARG(QVariant, arg));
+}
+
+void ui_add_printer(char* printer) {
+    _cpd->add(printer);
 }

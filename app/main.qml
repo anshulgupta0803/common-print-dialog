@@ -13,6 +13,14 @@ ApplicationWindow {
     maximumHeight: 530
     title: qsTr("Print Document")
 
+    property alias generalDestinationModel: general.destinationModel
+    property alias moreOptionsGeneralDestinationModel: moreOptions.generalDestinationModel
+
+    function updateDestinationModel(printer) {
+        generalDestinationModel.append({destination: printer})
+        moreOptionsGeneralDestinationModel.append({destination: printer})
+    }
+
     General {
         id: general
         visible: true

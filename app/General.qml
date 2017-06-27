@@ -3,22 +3,7 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 Item {
-    property alias twoSidedSwitch: twoSidedSwitch
-    property alias twoSidedSwitchValue: twoSidedSwitchValue
-    property alias twoSidedConfigLabel: twoSidedConfigLabel
-    property alias twoSidedConfigComboBox: twoSidedConfigComboBox
-
-    property alias colorSwitch: colorSwitch
-    property alias colorSwitchValue: colorSwitchValue
-
-    property alias customLabel: customLabel
-    property alias customTextField: customTextField
-
-    property alias pagesComboBox: pagesComboBox
-
-    property alias moreOptionsButton: moreOptionsButton
-
-    property alias cancelGeneralButton: cancelGeneralButton
+    property alias destinationModel: destinationModel
 
     anchors.fill: parent
     RowLayout {
@@ -44,17 +29,21 @@ Item {
                 transformOrigin: Item.Center
             }
 
+            ListModel {
+                id: destinationModel
+            }
+
             ComboBox {
                 id: destinationComboBox
                 model: destinationModel
 
                 font.pixelSize: 12
 
-//                delegate: ItemDelegate {
-//                    width: destinationComboBox.width
-//                    font.pixelSize: 12
-//                    text: qsTr(destination)
-//                }
+                delegate: ItemDelegate {
+                    width: destinationComboBox.width
+                    font.pixelSize: 12
+                    text: destination
+                }
             }
 
             Label {

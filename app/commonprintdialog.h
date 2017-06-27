@@ -1,13 +1,18 @@
 #ifndef COMMONPRINTDIALOG_H
 #define COMMONPRINTDIALOG_H
 
-#include <QWidget>
 #include <QQmlApplicationEngine>
 
-class CommonPrintDialog : public QWidget
+class _CommonPrintDialog
 {
 public:
     QQmlApplicationEngine engine;
+    _CommonPrintDialog();
+    void add(char* printer);
+};
+
+class CommonPrintDialog {
+public:
     CommonPrintDialog();
     void exec();
 };
