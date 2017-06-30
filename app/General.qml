@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.0
 
 Item {
     property alias destinationModel: destinationModel
+    property alias destinationComboBox: destinationComboBox
 
     anchors.fill: parent
     RowLayout {

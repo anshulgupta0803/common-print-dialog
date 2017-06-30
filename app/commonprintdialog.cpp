@@ -17,7 +17,7 @@ CommonPrintDialog::CommonPrintDialog() {
 
 void CommonPrintDialog::exec() {
     QQuickWidget(&(_cpd->engine), Q_NULLPTR);
-    main_frontend();
+    main_frontend(0, NULL);
 }
 
 _CommonPrintDialog::_CommonPrintDialog() {

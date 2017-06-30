@@ -4,7 +4,8 @@ import QtQuick.Layouts 1.0
 
 ColumnLayout {
     anchors.fill: parent
-    property alias generalDestinationModel: general.destinationModel
+    property alias generalDestinationModel: moreOptionsGeneral.destinationModel
+    property alias generalDestinationComboBox: moreOptionsGeneral.destinationComboBox
 
     SwipeView {
         id: swipeView
@@ -12,7 +13,7 @@ ColumnLayout {
         currentIndex: tabBar.currentIndex
 
         MoreOptionsGeneral {
-            id: general
+            id: moreOptionsGeneral
             y: 35
             scale: 0.98
         }

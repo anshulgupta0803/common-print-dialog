@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.0
 
 RowLayout {
     property alias destinationModel: destinationModel
+    property alias destinationComboBox: destinationComboBox
     spacing: 5
 
     GridLayout {

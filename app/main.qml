@@ -14,11 +14,17 @@ ApplicationWindow {
     title: qsTr("Print Document")
 
     property alias generalDestinationModel: general.destinationModel
+    property alias generalDestinationComboBox: general.destinationComboBox
     property alias moreOptionsGeneralDestinationModel: moreOptions.generalDestinationModel
+    property alias moreOptionsGeneralDestinationComboBox: moreOptions.generalDestinationComboBox
 
     function updateDestinationModel(printer) {
         generalDestinationModel.append({destination: printer})
         moreOptionsGeneralDestinationModel.append({destination: printer})
+        if (generalDestinationComboBox.count > 0 && generalDestinationComboBox.currentIndex == -1)
+            generalDestinationComboBox.currentIndex = 0
+        if (moreOptionsGeneralDestinationComboBox.count > 0 && moreOptionsGeneralDestinationComboBox.currentIndex == -1)
+            moreOptionsGeneralDestinationComboBox.currentIndex = 0
     }
 
     General {
