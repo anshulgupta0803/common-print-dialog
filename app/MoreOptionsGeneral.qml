@@ -3,6 +3,8 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 RowLayout {
+    property alias destinationModel: destinationModel
+    property alias destinationComboBox: destinationComboBox
     spacing: 5
 
     GridLayout {
@@ -24,17 +26,21 @@ RowLayout {
             transformOrigin: Item.Center
         }
 
+        ListModel {
+            id: destinationModel
+        }
+
         ComboBox {
             id: destinationComboBox
             model: destinationModel
 
             font.pixelSize: 12
 
-//            delegate: ItemDelegate {
-//                width: destinationComboBox.width
-//                font.pixelSize: 12
-//                text: qsTr(destination)
-//            }
+            delegate: ItemDelegate {
+                width: destinationComboBox.width
+                font.pixelSize: 12
+                text: destination
+            }
         }
 
         Label {
