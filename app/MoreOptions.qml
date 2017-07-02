@@ -1,105 +1,166 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
+import "."
 
-ColumnLayout {
+Item {
+    id: moreOptionsView
+    //property alias generalDestinationModel: moreOptionsGeneral.destinationModel
+    //property alias generalDestinationComboBox: moreOptionsGeneral.destinationComboBox
+
     anchors.fill: parent
-    property alias generalDestinationModel: moreOptionsGeneral.destinationModel
-    property alias generalDestinationComboBox: moreOptionsGeneral.destinationComboBox
 
-    SwipeView {
-        id: swipeView
+    ColumnLayout {
+        spacing: 0
         anchors.fill: parent
-        currentIndex: tabBar.currentIndex
 
-        MoreOptionsGeneral {
-            id: moreOptionsGeneral
-            y: 35
-            scale: 0.98
-        }
+        RowLayout {
+            id: tabs
+            spacing: 0
 
-        MoreOptionsPageSetup {
-            y:35
-            scale: 0.98
-        }
+            width: parent.width
+            Layout.preferredWidth: parent.width
+            Layout.minimumWidth: parent.width
 
-        Page {
-            Label {
-                text: qsTr("Options")
-                anchors.centerIn: parent
-            }
-        }
+            height: parent.height * 0.07
+            Layout.preferredHeight: parent.height * 0.07
+            Layout.minimumHeight: parent.height * 0.07
 
-        MoreOptionsJobs {
-            y: 35
-            scale: 0.98
-        }
+            TabBar {
+                id: tabBar
+                anchors.fill: parent
+                currentIndex: swipeView.currentIndex
 
-        MoreOptionsAdvanced {
-            y: 35
-            scale: 0.98
-        }
-    }
-    TabBar {
-        id: tabBar
-        currentIndex: swipeView.currentIndex
-        anchors.horizontalCenter: parent.Center
-        anchors.verticalCenter: swipeView.top
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-
-        TabButton {
-            text: qsTr("General")
-            height: 32
-        }
-        TabButton {
-            text: qsTr("Page Setup")
-            height: 32
-        }
-        TabButton {
-            text: qsTr("Options")
-            height: 32
-        }
-        TabButton {
-            text: qsTr("Jobs")
-            height: 32
-        }
-        TabButton {
-            text: qsTr("Quality")
-            height: 32
-        }
-    }
-
-    RowLayout {
-        anchors.bottom: swipeView.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 150
-
-        Button {
-            id: lessOptionsButton
-            text: qsTr("Less Options")
-            height: 32
-            onClicked: {
-                general.visible = true
-                moreOptions.visible = false
+                TabButton {
+                    text: qsTr("General")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
+                TabButton {
+                    text: qsTr("Page Setup")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
+                TabButton {
+                    text: qsTr("Options")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
+                TabButton {
+                    text: qsTr("Jobs")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
+                TabButton {
+                    text: qsTr("Quality")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
             }
         }
 
         RowLayout {
-            Button {
-                id: cancelMoreOptionsButton
-                text: qsTr("Cancel")
-                height: 32
-                onClicked: {
-                    close()
+            id: container
+            spacing: 0
+
+            width: parent.width
+            Layout.preferredWidth: parent.width
+            Layout.minimumWidth: parent.width
+
+            height: parent.height * 0.85
+            Layout.preferredHeight: parent.height * 0.85
+            Layout.minimumHeight: parent.height * 0.85
+
+            SwipeView {
+                id: swipeView
+                anchors.fill: parent
+                currentIndex: tabBar.currentIndex
+
+                MoreOptionsGeneral {
+                    id: moreOptionsGeneral
+                    scale: 0.98
+                }
+
+                MoreOptionsPageSetup {
+                    scale: 0.98
+                }
+
+                Page {
+                    Label {
+                        text: qsTr("Options")
+                        anchors.centerIn: parent
+                    }
+                }
+
+                MoreOptionsJobs {
+                    scale: 0.98
+                }
+
+                MoreOptionsAdvanced {
+                    scale: 0.98
+                }
+            }
+        }
+
+        RowLayout {
+            id: buttonsLayout
+            spacing: 0
+
+            width: parent.width
+            Layout.preferredWidth: parent.width
+            Layout.minimumWidth: parent.width
+
+            height: parent.height * 0.08
+            Layout.preferredHeight: parent.height * 0.08
+            Layout.minimumHeight: parent.height * 0.08
+
+            Rectangle {
+                width: parent.width * 0.5
+                Layout.preferredWidth: parent.width * 0.5
+                Layout.minimumWidth: parent.width * 0.5
+
+                height: parent.height
+                Layout.preferredHeight: parent.height
+                Layout.minimumHeight: parent.height
+                color: "#00000000"
+
+                Button {
+                    id: moreOptionsButton
+                    text: qsTr("Less Options")
+                    anchors.centerIn: parent
+                    onClicked: {
+                        general.visible = true
+                        moreOptions.visible = false
+                    }
                 }
             }
 
-            Button {
-                id: printMoreOptionsButton
-                text: qsTr("Print")
-                highlighted: true
-                height: 32
+            Rectangle {
+                width: parent.width * 0.5
+                Layout.preferredWidth: parent.width * 0.5
+                Layout.minimumWidth: parent.width * 0.5
+
+                height: parent.height
+                Layout.preferredHeight: parent.height
+                Layout.minimumHeight: parent.height
+                color: "#00000000"
+
+                RowLayout {
+                    anchors.centerIn: parent
+                    Button {
+                        id: cancelGeneralButton
+                        text: qsTr("Cancel")
+                        onClicked: {
+                            close()
+                        }
+                    }
+
+                    Button {
+                        id: printGeneralButton
+                        text: qsTr("Print")
+                        highlighted: true
+                    }
+                }
             }
         }
     }

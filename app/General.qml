@@ -4,13 +4,16 @@ import QtQuick.Layouts 1.0
 import "."
 
 Item {
+    id: generalView
     property alias destinationModel: destinationModel
     property alias destinationComboBox: destinationComboBox
 
     anchors.fill: parent
+
     ColumnLayout {
         spacing: 0
         anchors.fill: parent
+
         RowLayout {
             id: container
             spacing: 0
@@ -19,9 +22,9 @@ Item {
             Layout.preferredWidth: parent.width
             Layout.minimumWidth: parent.width
 
-            height: parent.height * 0.9
-            Layout.preferredHeight: parent.height * 0.9
-            Layout.minimumHeight: parent.height * 0.9
+            height: parent.height * 0.92
+            Layout.preferredHeight: parent.height * 0.92
+            Layout.minimumHeight: parent.height * 0.92
 
             GridLayout {
                 id: gridLayout
@@ -58,6 +61,9 @@ Item {
                 ComboBox {
                     id: destinationComboBox
                     model: destinationModel
+                    width: parent.width * 0.7
+                    Layout.preferredWidth: parent.width * 0.7
+                    Layout.minimumWidth: parent.width * 0.7
 
                     font.pixelSize: Style.textSize
 
@@ -335,9 +341,9 @@ Item {
             Layout.preferredWidth: parent.width
             Layout.minimumWidth: parent.width
 
-            height: parent.height * 0.1
-            Layout.preferredHeight: parent.height * 0.1
-            Layout.minimumHeight: parent.height * 0.1
+            height: parent.height * 0.08
+            Layout.preferredHeight: parent.height * 0.08
+            Layout.minimumHeight: parent.height * 0.08
 
             Rectangle {
                 width: parent.width * 0.5

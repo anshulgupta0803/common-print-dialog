@@ -1,122 +1,142 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
+import "."
 
 RowLayout {
+    spacing: 0
     property alias destinationModel: destinationModel
     property alias destinationComboBox: destinationComboBox
-    spacing: 5
 
-    GridLayout {
+    Rectangle {
         id: gridLayout
-        columnSpacing: 15
-        Layout.fillHeight: true
-        Layout.fillWidth: true
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-        rows: 11
-        columns: 2
+        width: parent.width * 0.5
+        Layout.preferredWidth: parent.width * 0.5
+        Layout.minimumWidth: parent.width * 0.5
 
-        Label {
-            id: destinationLabel
-            x: 0
-            y: 0
-            text: qsTr("Destination")
-            font.pixelSize: 12
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            transformOrigin: Item.Center
-        }
+        height: parent.height
+        Layout.preferredHeight: parent.height
+        Layout.minimumHeight: parent.height
 
-        ListModel {
-            id: destinationModel
-        }
+        color: "#00000000"
 
-        ComboBox {
-            id: destinationComboBox
-            model: destinationModel
+        GridLayout {
+            rows: 6
+            columns: 2
 
-            font.pixelSize: 12
-
-            delegate: ItemDelegate {
-                width: destinationComboBox.width
-                font.pixelSize: 12
-                text: destination
+            Label {
+                id: destinationLabel
+                text: qsTr("Destination")
+                font.pixelSize: Style.textSize
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                transformOrigin: Item.Center
             }
-        }
 
-        Label {
-            id: pagesLabel
-            text: qsTr("Pages")
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            font.pixelSize: 12
-        }
+            ListModel {
+                id: destinationModel
+            }
 
-        ComboBox {
-            id: pagesComboBox
-            model: ListModel {
-                ListElement {
-                    pages: "All"
-                }
-                ListElement {
-                    pages: "Custom"
+            ComboBox {
+                id: destinationComboBox
+                model: destinationModel
+
+                font.pixelSize: Style.textSize
+
+                delegate: ItemDelegate {
+                    width: destinationComboBox.width
+                    font.pixelSize: Style.textSize
+                    text: destination
                 }
             }
 
-            delegate: ItemDelegate {
-                width: pagesComboBox.width
-                text: qsTr(pages)
-                font.pixelSize: 12
+            Label {
+                id: pagesLabel
+                text: qsTr("Pages")
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                font.pixelSize: Style.textSize
             }
 
-            font.pixelSize: 12
-            onActivated: {
-                if (pagesComboBox.currentText == "Custom") {
-                    customLabel.visible = true
-                    customTextField.visible = true
+            ComboBox {
+                id: pagesComboBox
+                model: ListModel {
+                    ListElement {
+                        pages: "All"
+                    }
+                    ListElement {
+                        pages: "Custom"
+                    }
                 }
-                else {
-                    customLabel.visible = false
-                    customTextField.visible = false
+
+                delegate: ItemDelegate {
+                    width: pagesComboBox.width
+                    text: qsTr(pages)
+                    font.pixelSize: Style.textSize
+                }
+
+                font.pixelSize: Style.textSize
+                onActivated: {
+                    if (pagesComboBox.currentText == "Custom") {
+                        customLabel.visible = true
+                        customTextField.visible = true
+                    }
+                    else {
+                        customLabel.visible = false
+                        customTextField.visible = false
+                    }
                 }
             }
-        }
 
-        Label {
-            id: customLabel
-            text: qsTr("Custom")
-            font.italic: true
-            color: "#ababab"
-            visible: false
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            font.pixelSize: 12
-        }
+            Label {
+                id: customLabel
+                text: qsTr("Custom")
+                font.italic: true
+                color: "#ababab"
+                visible: false
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                font.pixelSize: Style.textSize
+            }
 
-        TextField {
-            id: customTextField
-            font.pixelSize: 12
-            visible: false
-            placeholderText: "Eg. 2-4, 6, 8, 10-12"
-            validator: RegExpValidator { regExp: /((\s*[0-9]+|[0-9]+\s*-\s*[0-9]+)\s*,\s*)*/ }
-        }
+            TextField {
+                id: customTextField
+                font.pixelSize: Style.textSize
+                visible: false
+                placeholderText: "Eg. 2-4, 6, 8, 10-12"
+                validator: RegExpValidator { regExp: /((\s*[0-9]+|[0-9]+\s*-\s*[0-9]+)\s*,\s*)*/ }
+            }
 
-        Label {
-            id: copiesLabel
-            text: qsTr("Copies")
-            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-            font.pixelSize: 12
-        }
+            Label {
+                id: copiesLabel
+                text: qsTr("Copies")
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                font.pixelSize: Style.textSize
+            }
 
-        SpinBox {
-            id: copiesSpinBox
-            to: 999
-            from: 1
-            value: 1
-            font.pixelSize: 12
-            editable: true
-            validator: IntValidator{}
+            SpinBox {
+                id: copiesSpinBox
+                to: 999
+                from: 1
+                value: 1
+                font.pixelSize: Style.textSize
+                editable: true
+                validator: IntValidator{}
+            }
         }
     }
-    Preview {
-        height: 400
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+
+    Rectangle {
+        width: parent.width * 0.5
+        Layout.preferredWidth: parent.width * 0.5
+        Layout.minimumWidth: parent.width * 0.5
+
+        height: parent.height
+        Layout.preferredHeight: parent.height
+        Layout.minimumHeight: parent.height
+        color: "black"
+
+        Preview {
+            id: moreOptionsGeneralPreview
+            anchors.fill: parent
+            anchors.centerIn: parent
+        }
     }
 }
