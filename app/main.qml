@@ -5,10 +5,10 @@ import QtQuick.Layouts 1.0
 ApplicationWindow {
     id: applicationWindow
     visible: true
-    width: 650
-    height: 530
-    minimumWidth: 650
-    minimumHeight: 530
+    width: 640
+    height: 480
+    minimumWidth: 640
+    minimumHeight: 480
 //    maximumWidth: 650
 //    maximumHeight: 530
     title: qsTr("Print Document")

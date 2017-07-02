@@ -15,7 +15,53 @@ Item {
         anchors.fill: parent
 
         RowLayout {
-            id: container
+            id: tabs
+            spacing: 0
+            visible: false
+
+            width: parent.width
+            Layout.preferredWidth: parent.width
+            Layout.minimumWidth: parent.width
+
+            height: parent.height * 0.07
+            Layout.preferredHeight: parent.height * 0.07
+            Layout.minimumHeight: parent.height * 0.07
+
+            TabBar {
+                id: tabBar
+                anchors.fill: parent
+                currentIndex: swipeView.currentIndex
+
+                TabButton {
+                    text: qsTr("General")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
+                TabButton {
+                    text: qsTr("Page Setup")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
+                TabButton {
+                    text: qsTr("Options")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
+                TabButton {
+                    text: qsTr("Jobs")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
+                TabButton {
+                    text: qsTr("Quality")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
+                }
+            }
+        }
+
+        RowLayout {
+            id: generalContainer
             spacing: 0
 
             width: parent.width
@@ -358,10 +404,12 @@ Item {
                 Button {
                     id: moreOptionsButton
                     text: qsTr("More Options")
+                    font.pixelSize: Style.textSize
                     anchors.centerIn: parent
                     onClicked: {
-                        general.visible = false
-                        moreOptions.visible = true
+                        //general.visible = false
+                        //moreOptions.visible = true
+                        generalView.state == "" ? generalView.state = "moreOptions" : generalView.state = ""
                     }
                 }
             }
@@ -381,6 +429,7 @@ Item {
                     Button {
                         id: cancelGeneralButton
                         text: qsTr("Cancel")
+                        font.pixelSize: Style.textSize
                         onClicked: {
                             close()
                         }
@@ -389,10 +438,73 @@ Item {
                     Button {
                         id: printGeneralButton
                         text: qsTr("Print")
+                        font.pixelSize: Style.textSize
                         highlighted: true
                     }
                 }
             }
         }
     }
+    states: [
+        State {
+            name: "moreOptions"
+
+            PropertyChanges {
+                target: colorLabel
+                visible: false
+            }
+
+            PropertyChanges {
+                target: colorRowLayout
+                visible: false
+            }
+
+            PropertyChanges {
+                target: twoSidedRowLayout
+                visible: false
+            }
+
+            PropertyChanges {
+                target: twoSidedLabel
+                visible: false
+            }
+
+            PropertyChanges {
+                target: paperSizeComboBox
+                visible: false
+            }
+
+            PropertyChanges {
+                target: paperLabel
+                visible: false
+            }
+
+            PropertyChanges {
+                target: layoutRowLayout
+                visible: false
+            }
+
+            PropertyChanges {
+                target: layoutLabel
+                visible: false
+            }
+
+            PropertyChanges {
+                target: moreOptionsButton
+                text: qsTr("Less Options")
+            }
+
+            PropertyChanges {
+                target: tabs
+                visible: true
+            }
+
+            PropertyChanges {
+                target: generalContainer
+                height: parent.height * 0.85
+                Layout.preferredHeight: parent.height * 0.85
+                Layout.minimumHeight: parent.height * 0.85
+            }
+        }
+    ]
 }
