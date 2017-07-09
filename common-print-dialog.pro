@@ -9,11 +9,11 @@ unix {
 SOURCES += app/main.cpp \
     app/preview.cpp \
     app/commonprintdialog.cpp \
-    backends/cups/backend_interface.c \
-    backends/cups/common_helper.c \
-    backends/cups/frontend_helper.c \
-    backends/cups/frontend_interface.c \
-    backends/cups/print_frontend.c
+    backends/cups/src/print_frontend.c \
+    backends/cups/src/frontend_interface.c \
+    backends/cups/src/frontend_helper.c \
+    backends/cups/src/common_helper.c \
+    backends/cups/src/backend_interface.c
 
 RESOURCES += qml.qrc
 
@@ -47,8 +47,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     app/preview.h \
     app/commonprintdialog.h \
-    backends/cups/backend_interface.h \
-    backends/cups/common_helper.h \
-    backends/cups/frontend_helper.h \
-    backends/cups/frontend_interface.h \
-    backends/cups/print_frontend.h
+    backends/cups/src/print_frontend.h \
+    backends/cups/src/frontend_interface.h \
+    backends/cups/src/frontend_helper.h \
+    backends/cups/src/common_helper.h \
+    backends/cups/src/backend_interface.h \
+    backends/cups/src/backend_helper.h

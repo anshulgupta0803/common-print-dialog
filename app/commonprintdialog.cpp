@@ -5,8 +5,7 @@
 #include <QStringList>
 #include <QQuickWidget>
 extern "C" {
-    #include "../backends/cups/print_backend_cups.h"
-    #include "../backends/cups/print_frontend.h"
+    #include "../backends/cups/src/print_frontend.h"
 }
 
 _CommonPrintDialog *_cpd;
