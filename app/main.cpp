@@ -1,8 +1,8 @@
+#include "commonprintdialog.h"
 #include <QtGui>
 #include <QApplication>
 #include <QWidget>
 #include <QLabel>
-#include "commonprintdialog.h"
 
 int main(int argc, char *argv[])
 {
