@@ -2,18 +2,22 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
-ColumnLayout {
-    property alias twoSidedSwitch: twoSidedSwitch
-    property alias twoSidedSwitchValue: twoSidedSwitchValue
-    property alias twoSidedConfigLabel: twoSidedConfigLabel
-    property alias twoSidedConfigComboBox: twoSidedConfigComboBox
-    spacing: 5
-
+Item {
+    property alias portraitRadioButton: portraitRadioButton
+    property alias landscapeRadioButton: landscapeRadioButton
     RowLayout {
-        id: rowLayout
-        spacing: 35
-        anchors.top: parent.top
+        anchors.fill: parent
+        spacing: 0
+
         GridLayout {
+            width: parent.width * 0.5
+            Layout.preferredWidth: parent.width * 0.5
+            Layout.minimumWidth: parent.width * 0.5
+
+            height: parent.height
+            Layout.preferredHeight: parent.height
+            Layout.minimumHeight: parent.height
+
             rows: 6
             columns: 2
 
@@ -87,6 +91,7 @@ ColumnLayout {
             }
 
             Label {
+                id: pagesPerSideLabel
                 text: qsTr("Pages per Side")
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 font.pixelSize: 12
@@ -170,12 +175,20 @@ ColumnLayout {
                     font.pixelSize: 12
                 }
             }
+
         }
 
         GridLayout {
+            width: parent.width * 0.5
+            Layout.preferredWidth: parent.width * 0.5
+            Layout.minimumWidth: parent.width * 0.5
+
+            height: parent.height
+            Layout.preferredHeight: parent.height
+            Layout.minimumHeight: parent.height
+
             rows: 6
             columns: 2
-            anchors.top: parent.top
 
             Label {
                 id: mainPaperLabel
@@ -191,6 +204,7 @@ ColumnLayout {
             Label {
                 id: paperSourceLabel
                 text: qsTr("Paper Source")
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 font.pixelSize: 12
             }
 
@@ -231,6 +245,7 @@ ColumnLayout {
             Label {
                 id: paperSizeLabel
                 text: qsTr("Paper Size")
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 font.pixelSize: 12
             }
 

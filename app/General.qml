@@ -18,7 +18,6 @@ Item {
         RowLayout {
             id: tabs
             spacing: 0
-            visible: false
 
             width: parent.width
             Layout.preferredWidth: parent.width
@@ -69,9 +68,9 @@ Item {
             Layout.preferredWidth: parent.width
             Layout.minimumWidth: parent.width
 
-            height: parent.height * 0.92
-            Layout.preferredHeight: parent.height * 0.92
-            Layout.minimumHeight: parent.height * 0.92
+            height: parent.height * 0.85
+            Layout.preferredHeight: parent.height * 0.85
+            Layout.minimumHeight: parent.height * 0.85
 
             SwipeView {
                 id: swipeView
@@ -84,6 +83,7 @@ Item {
                 }
 
                 MoreOptionsPageSetup {
+                    id: moreOptionsPageSetup
                     scale: 0.98
                 }
 
@@ -127,15 +127,11 @@ Item {
                 color: "#00000000"
 
                 Button {
-                    id: moreOptionsButton
-                    text: qsTr("More Options")
+                    id: advancedPreviewButton
+                    text: qsTr("Advanced Preview")
                     font.pixelSize: Style.textSize
                     anchors.centerIn: parent
-                    onClicked: {
-                        //general.visible = false
-                        //moreOptions.visible = true
-                        generalView.state == "" ? generalView.state = "moreOptions" : generalView.state = ""
-                    }
+                    onClicked: {}
                 }
             }
 
@@ -170,66 +166,4 @@ Item {
             }
         }
     }
-    states: [
-        State {
-            name: "moreOptions"
-
-            PropertyChanges {
-                target: moreOptionsGeneral.layoutLabel
-                visible: false
-            }
-
-            PropertyChanges {
-                target: moreOptionsGeneral.layoutRowLayout
-                visible: false
-            }
-
-            PropertyChanges {
-                target: moreOptionsGeneral.paperLabel
-                visible: false
-            }
-
-            PropertyChanges {
-                target: moreOptionsGeneral.paperSizeComboBox
-                visible: false
-            }
-
-            PropertyChanges {
-                target: moreOptionsGeneral.twoSidedRowLayout
-                visible: false
-            }
-
-            PropertyChanges {
-                target: moreOptionsGeneral.twoSidedLabel
-                visible: false
-            }
-
-            PropertyChanges {
-                target: moreOptionsGeneral.colorLabel
-                visible: false
-            }
-
-            PropertyChanges {
-                target: moreOptionsGeneral.colorRowLayout
-                visible: false
-            }
-
-            PropertyChanges {
-                target: moreOptionsButton
-                text: qsTr("Less Options")
-            }
-
-            PropertyChanges {
-                target: tabs
-                visible: true
-            }
-
-            PropertyChanges {
-                target: generalContainer
-                height: parent.height * 0.85
-                Layout.preferredHeight: parent.height * 0.85
-                Layout.minimumHeight: parent.height * 0.85
-            }
-        }
-    ]
 }
