@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.0
 Item {
     property alias destinationModel: destinationModel
     property alias destinationComboBox: destinationComboBox
+    property alias paperSizeModel: paperSizeModel
+    property alias paperSizeComboBox: paperSizeComboBox
 
     anchors.fill: parent
     RowLayout {
@@ -181,16 +183,13 @@ Item {
                 font.pixelSize: 12
             }
 
+            ListModel {
+                id: paperSizeModel
+            }
+
             ComboBox {
                 id: paperSizeComboBox
-                model: ListModel {
-                    ListElement {
-                        pageSize: "A4"
-                    }
-                    ListElement {
-                        pageSize: "Letter"
-                    }
-                }
+                model: paperSizeModel
                 delegate: ItemDelegate {
                     width: paperSizeComboBox.width
                     text: qsTr(pageSize)

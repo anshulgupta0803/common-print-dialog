@@ -17,14 +17,22 @@ ApplicationWindow {
     property alias generalDestinationComboBox: general.destinationComboBox
     property alias moreOptionsGeneralDestinationModel: moreOptions.generalDestinationModel
     property alias moreOptionsGeneralDestinationComboBox: moreOptions.generalDestinationComboBox
+    property alias generalPaperSizeModel: general.paperSizeModel
+    property alias generalPaperSizeComboBox: general.paperSizeComboBox
 
     function updateDestinationModel(printer) {
         generalDestinationModel.append({destination: printer})
         moreOptionsGeneralDestinationModel.append({destination: printer})
-        if (generalDestinationComboBox.count > 0 && generalDestinationComboBox.currentIndex == -1)
+        if (generalDestinationComboBox.currentIndex == -1 && generalDestinationComboBox.count > 0)
             generalDestinationComboBox.currentIndex = 0
-        if (moreOptionsGeneralDestinationComboBox.count > 0 && moreOptionsGeneralDestinationComboBox.currentIndex == -1)
+        if (moreOptionsGeneralDestinationComboBox.currentIndex == -1 && moreOptionsGeneralDestinationComboBox.count > 0)
             moreOptionsGeneralDestinationComboBox.currentIndex = 0
+    }
+
+    function updatePaperSizeModel(media) {
+        generalPaperSizeModel.append({pageSize: media})
+        if (generalPaperSizeComboBox.currentIndex == -1 && generalPaperSizeComboBox.count > 0)
+            generalPaperSizeComboBox.currentIndex = 0
     }
 
     General {

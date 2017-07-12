@@ -31,6 +31,7 @@ ColumnLayout {
         for (i = 3; i < source.length - 2; i++)
             filename += "/" + source[i]
         image.source = filename + "/" + orient + "/" + pgSize
+        console.log(image.source)
     }
 
     Flickable {

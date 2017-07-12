@@ -7,6 +7,7 @@ extern "C" {
 }
 #include <QQmlApplicationEngine>
 
+gpointer parse_commands(gpointer user_data);
 
 class _CommonPrintDialog
 {
@@ -16,8 +17,8 @@ public:
 
     _CommonPrintDialog();
     void init_backend();
-    void add(char* printer);
-    static gpointer parse_commands(gpointer user_data);
+    void addPrinter(char* printer);
+    void addPrinterSupportedMedia(char* media);
 };
 
 class CommonPrintDialog {

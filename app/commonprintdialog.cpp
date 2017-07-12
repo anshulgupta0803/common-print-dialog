@@ -4,6 +4,7 @@
 #include <QQmlContext>
 #include <QStringList>
 #include <QQuickWidget>
+#include <QDebug>
 extern "C" {
     #include "../backends/cups/src/print_frontend.h"
 }
@@ -29,24 +30,33 @@ _CommonPrintDialog::_CommonPrintDialog() {
 
 void _CommonPrintDialog::init_backend() {
     _cpd->f = get_new_FrontendObj(NULL);
-    //g_thread_new("parse_commands_thread", parse_commands, NULL);
+    g_thread_new("parse_commands_thread", parse_commands, NULL);
     connect_to_dbus(_cpd->f);
 }
 
-gpointer _CommonPrintDialog::parse_commands(gpointer user_data) {
+gpointer parse_commands(gpointer user_data) {
     for (int i = 0; i < 100000000; i++);
-    get_all_printer_options(_cpd->f, "X950");
+    get_all_printer_options(_cpd->f, "4510DX");
 }
 
-void _CommonPrintDialog::add(char *printer) {
-    QVariant returnedValue;
+void _CommonPrintDialog::addPrinter(char *printer) {
     QVariant arg = printer;
     QMetaObject::invokeMethod((_cpd->engine).rootObjects().at(0),
                               "updateDestinationModel",
-                              Q_RETURN_ARG(QVariant, returnedValue),
                               Q_ARG(QVariant, arg));
 }
 
 void ui_add_printer(char* printer) {
-    _cpd->add(printer);
+    _cpd->addPrinter(printer);
+}
+
+void _CommonPrintDialog::addPrinterSupportedMedia(char *media) {
+    QVariant arg = media;
+    QMetaObject::invokeMethod((_cpd->engine).rootObjects().at(0),
+                              "updatePaperSizeModel",
+                              Q_ARG(QVariant, arg));
+}
+
+void ui_add_supported_media(char *media) {
+    _cpd->addPrinterSupportedMedia(media);
 }
