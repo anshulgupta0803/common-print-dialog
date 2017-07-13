@@ -14,6 +14,7 @@ class _CommonPrintDialog
 public:
     QQmlApplicationEngine engine;
     FrontendObj *f;
+    GMainLoop *loop;
 
     _CommonPrintDialog();
     void init_backend();

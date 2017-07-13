@@ -32,11 +32,14 @@ void _CommonPrintDialog::init_backend() {
     _cpd->f = get_new_FrontendObj(NULL);
     g_thread_new("parse_commands_thread", parse_commands, NULL);
     connect_to_dbus(_cpd->f);
+    _cpd->loop = g_main_loop_new(NULL, FALSE);
+    g_main_loop_run(_cpd->loop);
 }
 
 gpointer parse_commands(gpointer user_data) {
-    for (int i = 0; i < 100000000; i++);
+    for (int i = 0; i < 10000000; i++);
     get_all_printer_options(_cpd->f, "4510DX");
+    g_main_loop_quit(_cpd->loop);
 }
 
 void _CommonPrintDialog::addPrinter(char *printer) {
