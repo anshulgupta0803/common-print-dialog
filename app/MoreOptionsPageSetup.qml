@@ -5,6 +5,13 @@ import QtQuick.Layouts 1.0
 Item {
     property alias portraitRadioButton: portraitRadioButton
     property alias landscapeRadioButton: landscapeRadioButton
+
+    function updatePagesPerSideModel(pages) {
+        pagesPerSideModel.append({pages: pages})
+        if (pagesPerSideComboBox.count > 0 && pagesPerSideComboBox.currentIndex == -1)
+            pagesPerSideComboBox.currentIndex = 0
+    }
+
     RowLayout {
         anchors.fill: parent
         spacing: 0
@@ -97,28 +104,13 @@ Item {
                 font.pixelSize: 12
             }
 
+            ListModel {
+                id: pagesPerSideModel
+            }
+
             ComboBox {
                 id: pagesPerSideComboBox
-                model: ListModel {
-                    ListElement {
-                        pages: "1"
-                    }
-                    ListElement {
-                        pages: "2"
-                    }
-                    ListElement {
-                        pages: "4"
-                    }
-                    ListElement {
-                        pages: "6"
-                    }
-                    ListElement {
-                        pages: "9"
-                    }
-                    ListElement {
-                        pages: "16"
-                    }
-                }
+                model: pagesPerSideModel
                 font.pixelSize: 12
                 delegate: ItemDelegate {
                     width: pagesPerSideComboBox.width

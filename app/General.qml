@@ -87,6 +87,7 @@ Item {
 
                 MoreOptionsPageSetup {
                     id: moreOptionsPageSetup
+                    objectName: "moreOptionsPageSetupObjectName"
                     scale: 0.98
                 }
                 Page {
@@ -97,6 +98,8 @@ Item {
                 }
 
                 MoreOptionsJobs {
+                    id: moreOptionsJobs
+                    objectName: "moreOptionsJobsObjectName"
                     scale: 0.98
                 }
 

@@ -6,6 +6,8 @@
 #include <QQuickWidget>
 #include <QDebug>
 #include <QQmlComponent>
+#include <QSpinBox>
+#include <string>
 extern "C" {
     #include "../backends/cups/src/print_frontend.h"
 }
@@ -71,4 +73,50 @@ void _CommonPrintDialog::addPrinterSupportedMedia(char *media) {
 
 void ui_add_supported_media(char *media) {
     _cpd->addPrinterSupportedMedia(media);
+}
+
+void _CommonPrintDialog::addMaximumPrintCopies(int copies) {
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
+    if (obj)
+        obj->setProperty("maximumCopies", copies);
+    else
+        qDebug() << "MoreOptionsGeneral Not Found";
+}
+
+void ui_add_maximum_print_copies(char* _copies) {
+    std::string copies(_copies);
+    int delimiter = copies.find('-');
+    int min = std::stoi(copies.substr(0, delimiter));
+    int max = std::stoi(copies.substr(delimiter + 1));
+    _cpd->addMaximumPrintCopies(max);
+}
+
+void _CommonPrintDialog::addJobHoldUntil(char *startJobOption) {
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsJobsObjectName");
+    if (obj) {
+        QMetaObject::invokeMethod(obj,
+                                  "updateStartJobsModel",
+                                  Q_ARG(QVariant, startJobOption));
+    }
+    else
+        qDebug() << "MoreOptionsJobs Not Found";
+}
+
+void ui_add_job_hold_until(char *startJobOption) {
+    _cpd->addJobHoldUntil(startJobOption);
+}
+
+void _CommonPrintDialog::addPagesPerSize(char *pages) {
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsPageSetupObjectName");
+    if (obj) {
+        QMetaObject::invokeMethod(obj,
+                                  "updatePagesPerSideModel",
+                                  Q_ARG(QVariant, pages));
+    }
+    else
+        qDebug() << "MoreOptionsPageSetup Not Found";
+}
+
+void ui_add_pages_per_side(char *pages) {
+    _cpd->addPagesPerSize(pages);
 }

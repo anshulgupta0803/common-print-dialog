@@ -5,11 +5,13 @@ import "."
 
 RowLayout {
     spacing: 0
+    objectName: "moreOptionsGeneralObjectName"
     property alias destinationModel: destinationModel
     property alias destinationComboBox: destinationComboBox
     property alias paperSizeModel: paperSizeModel
     property alias paperSizeComboBox: paperSizeComboBox
     property alias generalPreview: generalPreview
+    property int maximumCopies: 2
 
     Item {
         id: leftGridLayoutContainer
@@ -156,7 +158,8 @@ RowLayout {
 
             SpinBox {
                 id: copiesSpinBox
-                to: 999
+                objectName: "copiesSpinBoxObjectName"
+                to: maximumCopies
                 from: 1
                 value: 1
                 font.pixelSize: Style.textSize

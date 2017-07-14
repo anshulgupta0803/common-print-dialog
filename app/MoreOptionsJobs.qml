@@ -4,9 +4,15 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Dialogs 1.2
-
+import "."
 
 ColumnLayout{
+    function updateStartJobsModel(startJobOption) {
+        startJobModel.append({startJobOption: startJobOption})
+        if (startJobComboBox.count > 0 && startJobComboBox.currentIndex == -1)
+            startJobComboBox.currentIndex = 0
+    }
+
     Layout.fillWidth: true
 
     ListModel{
@@ -125,15 +131,16 @@ ColumnLayout{
         id: menu
         width: 108
 
-        MenuItem{ text: qsTr("Pause"); font.pixelSize: 12; height: 24; }
-        MenuItem{ text: qsTr("Stop"); font.pixelSize: 12; height: 24; }
-        MenuItem{ text: qsTr("Cancel"); font.pixelSize: 12; height: 24 }
-        MenuItem{ text: qsTr("Repeat"); font.pixelSize: 12; height: 24; }
+        MenuItem{ text: qsTr("Pause"); font.pixelSize: Style.textSize; height: 24; }
+        MenuItem{ text: qsTr("Stop"); font.pixelSize: Style.textSize; height: 24; }
+        MenuItem{ text: qsTr("Cancel"); font.pixelSize: Style.textSize; height: 24 }
+        MenuItem{ text: qsTr("Repeat"); font.pixelSize: Style.textSize; height: 24; }
     }
 
 
     TableView {
         id: jobs_view
+        currentRow: 1
         highlightOnFocus: true
         Layout.minimumHeight: parent.height / 2
         sortIndicatorVisible: true
@@ -175,36 +182,24 @@ ColumnLayout{
 
         Label {
             text: qsTr("Start Job: ")
-            font.pixelSize: 12
+            font.pixelSize: Style.textSize
+        }
+
+        ListModel {
+            id: startJobModel
         }
 
         ComboBox {
-            id: start_job_combobox
-            font.pixelSize: 12
-            model: ListModel {
-                ListElement { startJobOption: qsTr("Immediately") }
-                ListElement { startJobOption: qsTr("After a delay of") }
-                ListElement { startJobOption: qsTr("Never") }
-            }
+            id: startJobComboBox
+            font.pixelSize: Style.textSize
+            model: startJobModel
 
             delegate: ItemDelegate {
-                width: start_job_combobox.width
+                width: startJobComboBox.width
                 text: qsTr(startJobOption)
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
         }
-
-        TextField {
-            font.pixelSize: 12
-            visible: (start_job_combobox.currentIndex==1) ? true : false
-        }
-
-        Label {
-            text: qsTr("Minutes")
-            font.pixelSize: 12
-            visible: (start_job_combobox.currentIndex==1) ? true : false
-        }
-
     }
 
     RowLayout {
@@ -212,7 +207,7 @@ ColumnLayout{
         anchors.top: startJobRowLayout.bottom
         Label {
             text: qsTr("Save Job: ")
-            font.pixelSize: 12
+            font.pixelSize: Style.textSize
         }
 
         Switch {
@@ -221,7 +216,7 @@ ColumnLayout{
 
         Button {
             text: qsTr("Browse")
-            font.pixelSize: 12
+            font.pixelSize: Style.textSize
             visible: (save_job_switch.checked) ? true : false
             onClicked: { file_dialog.open() }
         }
@@ -231,14 +226,14 @@ ColumnLayout{
         anchors.top: saveJobRowLayout.bottom
         Label {
             text: qsTr("Location: ")
-            font.pixelSize: 12
+            font.pixelSize: Style.textSize
             visible: (save_job_switch.checked) ? true : false
         }
 
         Text {
             id: save_job_location
             text: qsTr("None")
-            font.pixelSize: 12
+            font.pixelSize: Style.textSize
             visible: (save_job_switch.checked) ? true : false
         }
     }

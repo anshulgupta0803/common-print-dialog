@@ -20,6 +20,9 @@ public:
     void init_backend();
     void addPrinter(char* printer);
     void addPrinterSupportedMedia(char* media);
+    void addMaximumPrintCopies(int copies);
+    void addJobHoldUntil(char* startJobOption);
+    void addPagesPerSize(char* pages);
 };
 
 class CommonPrintDialog {
