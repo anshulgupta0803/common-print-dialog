@@ -1,328 +1,170 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
+import "."
 
 Item {
-    property alias destinationModel: destinationModel
-    property alias destinationComboBox: destinationComboBox
-    property alias paperSizeModel: paperSizeModel
-    property alias paperSizeComboBox: paperSizeComboBox
+    id: generalView
+    property alias moreOptionsGeneral: moreOptionsGeneral
+    property alias destinationModel: moreOptionsGeneral.destinationModel
+    property alias destinationComboBox: moreOptionsGeneral.destinationComboBox
+    property alias paperSizeModel: moreOptionsGeneral.paperSizeModel
+    property alias paperSizeComboBox: moreOptionsGeneral.paperSizeComboBox
+    property alias generalPreview: moreOptionsGeneral.generalPreview
 
     anchors.fill: parent
-    RowLayout {
-        id: container
+
+    ColumnLayout {
+        spacing: 0
         anchors.fill: parent
 
-        GridLayout {
-            id: gridLayout
-            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-            anchors.left: parent.left
-            width: parent.width / 2
-            height: parent.height
-            columnSpacing: 15
-            rowSpacing: 5
-            rows: 11
-            columns: 2
+        RowLayout {
+            id: tabs
+            spacing: 0
 
-            Label {
-                id: destinationLabel
-                text: qsTr("Destination")
-                font.pixelSize: 12
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                transformOrigin: Item.Center
-            }
+            width: parent.width
+            Layout.preferredWidth: parent.width
+            Layout.minimumWidth: parent.width
 
-            ListModel {
-                id: destinationModel
-            }
+            height: parent.height * 0.07
+            Layout.preferredHeight: parent.height * 0.07
+            Layout.minimumHeight: parent.height * 0.07
 
-            ComboBox {
-                id: destinationComboBox
-                model: destinationModel
+            TabBar {
+                id: tabBar
+                anchors.fill: parent
+                currentIndex: swipeView.currentIndex
 
-                font.pixelSize: 12
-
-                delegate: ItemDelegate {
-                    width: destinationComboBox.width
-                    font.pixelSize: 12
-                    text: destination
+                TabButton {
+                    text: qsTr("General")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
                 }
-            }
-
-            Label {
-                id: pagesLabel
-                text: qsTr("Pages")
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            ComboBox {
-                id: pagesComboBox
-                model: ListModel {
-                    ListElement {
-                        pages: "All"
-                    }
-                    ListElement {
-                        pages: "Custom"
-                    }
+                TabButton {
+                    text: qsTr("Page Setup")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
                 }
-
-                delegate: ItemDelegate {
-                    width: pagesComboBox.width
-                    text: qsTr(pages)
-                    font.pixelSize: 12
+                TabButton {
+                    text: qsTr("Options")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
                 }
-
-                font.pixelSize: 12
-
-                onActivated: {
-                    if (pagesComboBox.currentText == "Custom") {
-                        customLabel.visible = true
-                        customTextField.visible = true
-                    }
-                    else {
-                        customLabel.visible = false
-                        customTextField.visible = false
-                    }
+                TabButton {
+                    text: qsTr("Jobs")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
                 }
-            }
-
-            Label {
-                id: customLabel
-                text: qsTr("Custom")
-                font.italic: true
-                color: "#ababab"
-                visible: false
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            TextField {
-                id: customTextField
-                font.pixelSize: 12
-                visible: false
-                placeholderText: "Eg. 2-4, 6, 8, 10-12"
-                validator: RegExpValidator { regExp: /^[0-9]+(?:(?:\s*,\s*|\s*-\s*)[0-9]+)*$/ }
-                onFocusChanged:  {
-                    var input = customTextField.text.replace(/\s/g, '').split(',')
-                    if (input !== "") {
-                        //console.debug(customTextField.text)
-                        var pages = [];
-                        for (var i = 0; i < input.length; i++) {
-                            var pageRange = input[i].split('-');
-                            if (pageRange.length === 1) {
-                                pages.push(parseInt(pageRange[0]));
-                            }
-                            else {
-                                var low = parseInt(pageRange[0]);
-                                var high = parseInt(pageRange[1]);
-                                if (low <= high) {
-                                    for (var j = low; j <= high; j++) {
-                                        pages.push(j);
-                                    }
-                                }
-                                else
-                                    console.debug("Error in page range: " + input[i]);
-                            }
-                        }
-                        pages = pages.sort(function(a, b){return a - b});
-                        console.log(pages)
-                    }
+                TabButton {
+                    text: qsTr("Quality")
+                    height: Style.tabBarHeight
+                    font.pixelSize: Style.textSize
                 }
-            }
-
-            Label {
-                id: copiesLabel
-                text: qsTr("Copies")
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            SpinBox {
-                id: copiesSpinBox
-                to: 999
-                from: 1
-                value: 1
-                font.pixelSize: 12
-                editable: true
-                validator: IntValidator {}
-            }
-
-            Label {
-                id: layoutLabel
-                text: qsTr("Layout")
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            RowLayout {
-                id: layoutRowLayout
-                spacing: 5
-
-                RadioButton {
-                    id: portraitRadioButton
-                    text: qsTr("Portrait")
-                    checked: true
-                    font.pixelSize: 12
-                    onClicked: generalPreview.orientationChanged("Portrait")
-                }
-
-                RadioButton {
-                    id: landscapeRadioButton
-                    text: qsTr("Landscape")
-                    font.pixelSize: 12
-                    onClicked: generalPreview.orientationChanged("Landscape")
-                }
-            }
-
-            Label {
-                id: paperLabel
-                text: qsTr("Paper")
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                transformOrigin: Item.Center
-                font.pixelSize: 12
-            }
-
-            ListModel {
-                id: paperSizeModel
-            }
-
-            ComboBox {
-                id: paperSizeComboBox
-                model: paperSizeModel
-                delegate: ItemDelegate {
-                    width: paperSizeComboBox.width
-                    text: qsTr(pageSize)
-                    font.pixelSize: 12
-                }
-
-                font.pixelSize: 12
-                onCurrentIndexChanged: generalPreview.pageSizeChanged(paperSizeComboBox.textAt(paperSizeComboBox.highlightedIndex))
-            }
-
-            Label {
-                id: twoSidedLabel
-                text: qsTr("Two Sided")
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            RowLayout {
-                id: twoSidedRowLayout
-                Switch {
-                    id: twoSidedSwitch
-                    onPressed: {
-                        if (twoSidedSwitch.checked) {
-                            twoSidedSwitchValue.text = "OFF"
-                            twoSidedConfigLabel.visible = false
-                            twoSidedConfigComboBox.visible = false
-                        }
-                        else {
-                            twoSidedSwitchValue.text = "ON"
-                            twoSidedConfigLabel.visible = true
-                            twoSidedConfigComboBox.visible = true
-                        }
-                    }
-                }
-                Label {
-                    id: twoSidedSwitchValue
-                    text: qsTr("OFF")
-                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                    font.pixelSize: 12
-                }
-            }
-
-            Label {
-                id: twoSidedConfigLabel
-                visible: false
-                font.pixelSize: 12
-            }
-
-            ComboBox {
-                id: twoSidedConfigComboBox
-                model: ListModel {
-                    ListElement {
-                        twoSidedConfig: "Long Edge (Standard)"
-                    }
-                    ListElement {
-                        twoSidedConfig: "Short Edge (Flip)"
-                    }
-                }
-                visible: false
-                font.pixelSize: 12
-
-                delegate: ItemDelegate {
-                    width: twoSidedConfigComboBox.width
-                    text: qsTr(twoSidedConfig)
-                    font.pixelSize: 12
-                }
-            }
-
-            Label {
-                id: colorLabel
-                text: qsTr("Color")
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            RowLayout {
-                id: colorRowLayout
-                Switch {
-                    id: colorSwitch
-                    onPressed: {
-                        if (colorSwitch.checked) {
-                            colorSwitchValue.text = "OFF"
-                        }
-                        else {
-                            colorSwitchValue.text = "ON"
-                        }
-                    }
-                }
-                Label {
-                    id: colorSwitchValue
-                    text: qsTr("OFF")
-                    Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                    font.pixelSize: 12
-                }
-            }
-        }
-
-        Preview {
-            id: generalPreview
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-        }
-    }
-    RowLayout {
-        id: buttonsLayout
-        anchors.bottom: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 150
-
-        Button {
-            id: moreOptionsButton
-            text: qsTr("More Options")
-            height: 32
-            onClicked: {
-                general.visible = false
-                moreOptions.visible = true
             }
         }
 
         RowLayout {
-            Button {
-                id: cancelGeneralButton
-                text: qsTr("Cancel")
-                height: 32
-                onClicked: {
-                    close()
+            id: generalContainer
+            spacing: 0
+
+            width: parent.width
+            Layout.preferredWidth: parent.width
+            Layout.minimumWidth: parent.width
+
+            height: parent.height * 0.85
+            Layout.preferredHeight: parent.height * 0.85
+            Layout.minimumHeight: parent.height * 0.85
+
+            SwipeView {
+                id: swipeView
+                anchors.fill: parent
+                currentIndex: tabBar.currentIndex
+
+                MoreOptionsGeneral {
+                    id: moreOptionsGeneral
+                    scale: 0.98
+                }
+
+                MoreOptionsPageSetup {
+                    id: moreOptionsPageSetup
+                    scale: 0.98
+                }
+                Page {
+                    Label {
+                        text: qsTr("Options")
+                        anchors.centerIn: parent
+                    }
+                }
+
+                MoreOptionsJobs {
+                    scale: 0.98
+                }
+
+                MoreOptionsAdvanced {
+                    scale: 0.98
+                }
+            }
+        }
+
+        RowLayout {
+            id: buttonsLayout
+            spacing: 0
+
+            width: parent.width
+            Layout.preferredWidth: parent.width
+            Layout.minimumWidth: parent.width
+
+            height: parent.height * 0.08
+            Layout.preferredHeight: parent.height * 0.08
+            Layout.minimumHeight: parent.height * 0.08
+
+            Rectangle {
+                width: parent.width * 0.5
+                Layout.preferredWidth: parent.width * 0.5
+                Layout.minimumWidth: parent.width * 0.5
+
+                height: parent.height
+                Layout.preferredHeight: parent.height
+                Layout.minimumHeight: parent.height
+                color: "#00000000"
+
+                Button {
+                    id: advancedPreviewButton
+                    text: qsTr("Advanced Preview")
+                    font.pixelSize: Style.textSize
+                    anchors.centerIn: parent
+                    onClicked: {}
                 }
             }
 
-            Button {
-                id: printGeneralButton
-                text: qsTr("Print")
-                highlighted: true
-                height: 32
+            Rectangle {
+                width: parent.width * 0.5
+                Layout.preferredWidth: parent.width * 0.5
+                Layout.minimumWidth: parent.width * 0.5
+
+                height: parent.height
+                Layout.preferredHeight: parent.height
+                Layout.minimumHeight: parent.height
+                color: "#00000000"
+
+                RowLayout {
+                    anchors.centerIn: parent
+                    Button {
+                        id: cancelGeneralButton
+                        text: qsTr("Cancel")
+                        font.pixelSize: Style.textSize
+                        onClicked: {
+                            close()
+                        }
+                    }
+
+                    Button {
+                        id: printGeneralButton
+                        text: qsTr("Print")
+                        font.pixelSize: Style.textSize
+                        highlighted: true
+                    }
+                }
             }
         }
     }

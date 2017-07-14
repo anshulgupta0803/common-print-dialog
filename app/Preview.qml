@@ -10,10 +10,10 @@ ColumnLayout {
     property string orient: "Portrait"
     signal pageSizeChanged(string pageSize)
     property string pgSize: "A4"
+    property real previousScaleValue: 1.0
 
-    width: 330
-    height: 430
     onOrientationChanged: {
+        previousScaleValue = 1.0
         orient = orientation
         var source = String(image.source).split("/")
         var filename = "image://preview"
@@ -31,20 +31,22 @@ ColumnLayout {
         for (i = 3; i < source.length - 2; i++)
             filename += "/" + source[i]
         image.source = filename + "/" + orient + "/" + pgSize
-        console.log(image.source)
     }
 
     Flickable {
         id: flickable
+        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
         boundsBehavior: Flickable.StopAtBounds
         flickableDirection: Flickable.HorizontalAndVerticalFlick
         anchors.fill: parent
+        anchors.centerIn: parent
         interactive: true
         clip: true
         contentWidth: image.width
         contentHeight: image.height
 
         Image {
+            Layout.alignment: Qt.AlignHCenter
             id: image
             property alias previewImage: image
             objectName: "image"
@@ -98,8 +100,7 @@ ColumnLayout {
                 }
             }
 
-            Slider{ // To set the zoom level of the preview image. I should add pan functionality.
-                property real previousScaleValue: 1.0
+            Slider{
                 id: preview_zoom_slider
                 to: 5
                 from: 1

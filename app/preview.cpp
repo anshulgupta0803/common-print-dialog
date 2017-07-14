@@ -68,7 +68,6 @@ int QPreviewData::get_number_of_pages(QString filename){
 }
 
 QSizeF QPreviewData::getPageSize(QString page) {
-    qDebug() << "Changing Paper Size" << page;
     /*
      * Need to come up with a different logic
      * This will return page size of A1 for A10 or

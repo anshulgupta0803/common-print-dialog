@@ -10,7 +10,7 @@ To build the master branch
 
 ```
 mkdir build; cd build
-qmake .. CONFIG += debug
+qmake .. CONFIG+=debug
 make all
 ```
 

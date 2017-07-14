@@ -10,5 +10,7 @@
         <file>app/MoreOptionsJobs.qml</file>
         <file>app/MoreOptionsAdvanced.qml</file>
         <file>app/test.pdf</file>
+        <file>app/Style.qml</file>
+        <file>app/qmldir</file>
     </qresource>
 </RCC>

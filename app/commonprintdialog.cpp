@@ -5,6 +5,7 @@
 #include <QStringList>
 #include <QQuickWidget>
 #include <QDebug>
+#include <QQmlComponent>
 extern "C" {
     #include "../backends/cups/src/print_frontend.h"
 }
@@ -16,7 +17,7 @@ CommonPrintDialog::CommonPrintDialog() {
 }
 
 void CommonPrintDialog::exec() {
-    QQuickWidget(&(_cpd->engine), Q_NULLPTR);
+    //QQuickWidget(&(_cpd->engine), Q_NULLPTR);
     _cpd->init_backend();
 }
 
@@ -25,7 +26,15 @@ _CommonPrintDialog::_CommonPrintDialog() {
     engine.addImageProvider(QLatin1String("preview"), new QPdfPreview);
     engine.load(QUrl(QLatin1String("qrc:/app/main.qml")));
     QPreviewData data;
-    engine.rootContext()->setContextProperty("preview_data", &data);
+    //engine.rootContext()->setContextProperty("preview_data", &data);
+
+    QObject* preview = engine.rootObjects().at(0)->findChild<QObject*>("generalPreview");
+
+    if (preview)
+        preview->setProperty("preview_data", QVariant::fromValue(&data));
+    else
+        qDebug() << "Error: Preview not found!!!!";
+
 }
 
 void _CommonPrintDialog::init_backend() {
@@ -37,7 +46,7 @@ void _CommonPrintDialog::init_backend() {
 }
 
 gpointer parse_commands(gpointer user_data) {
-    for (int i = 0; i < 10000000; i++);
+    for (int i = 0; i < 100000000; i++);
     get_all_printer_options(_cpd->f, "4510DX");
     g_main_loop_quit(_cpd->loop);
 }
