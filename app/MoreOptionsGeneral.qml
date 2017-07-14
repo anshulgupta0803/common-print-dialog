@@ -6,12 +6,22 @@ import "."
 RowLayout {
     spacing: 0
     objectName: "moreOptionsGeneralObjectName"
-    property alias destinationModel: destinationModel
-    property alias destinationComboBox: destinationComboBox
     property alias paperSizeModel: paperSizeModel
     property alias paperSizeComboBox: paperSizeComboBox
     property alias generalPreview: generalPreview
     property int maximumCopies: 2
+
+    signal newPrinterSelected(string printer)
+
+    function clearDestinationModel() {
+        destinationModel.clear()
+    }
+
+    function updateDestinationModel(printer) {
+        destinationModel.append({destination: printer})
+        if (destinationComboBox.count > 0 && destinationComboBox.currentIndex == -1)
+            destinationComboBox.currentIndex = 0
+    }
 
     Item {
         id: leftGridLayoutContainer
@@ -54,9 +64,9 @@ RowLayout {
             ComboBox {
                 id: destinationComboBox
                 model: destinationModel
-                width: parent.width * 0.7
-                Layout.minimumWidth: parent.width * 0.7
-                Layout.preferredWidth: parent.width * 0.7
+                width: parent.width * 0.65
+                Layout.minimumWidth: parent.width * 0.65
+                Layout.preferredWidth: parent.width * 0.65
 
                 font.pixelSize: Style.textSize
 
@@ -65,6 +75,19 @@ RowLayout {
                     font.pixelSize: Style.textSize
                     text: destination
                 }
+
+                onCurrentIndexChanged: newPrinterSelected(destinationComboBox.textAt(destinationComboBox.currentIndex))
+            }
+
+            Label {
+                id: remotePrintersLabel
+                text: qsTr("Remote Printers")
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                font.pixelSize: Style.textSize
+            }
+
+            Switch {
+                checked: true
             }
 
             Label {

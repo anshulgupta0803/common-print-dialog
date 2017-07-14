@@ -6,8 +6,6 @@ import "."
 Item {
     id: generalView
     property alias moreOptionsGeneral: moreOptionsGeneral
-    property alias destinationModel: moreOptionsGeneral.destinationModel
-    property alias destinationComboBox: moreOptionsGeneral.destinationComboBox
     property alias paperSizeModel: moreOptionsGeneral.paperSizeModel
     property alias paperSizeComboBox: moreOptionsGeneral.paperSizeComboBox
     property alias generalPreview: moreOptionsGeneral.generalPreview

@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     id: applicationWindow
+    objectName: "applicationWindowObjectName"
     visible: true
     width: 640
     height: 480
@@ -11,17 +12,10 @@ ApplicationWindow {
     minimumHeight: 480
     title: qsTr("Print Document")
 
-    property alias generalDestinationModel: general.destinationModel
-    property alias generalDestinationComboBox: general.destinationComboBox
     property alias generalPaperSizeModel: general.paperSizeModel
     property alias generalPaperSizeComboBox: general.paperSizeComboBox
     property alias generalPreview: general.generalPreview
 
-    function updateDestinationModel(printer) {
-        generalDestinationModel.append({destination: printer})
-        if (generalDestinationComboBox.count > 0 && generalDestinationComboBox.currentIndex == -1)
-            generalDestinationComboBox.currentIndex = 0
-    }
 
     function updatePaperSizeModel(media) {
         generalPaperSizeModel.append({pageSize: media})

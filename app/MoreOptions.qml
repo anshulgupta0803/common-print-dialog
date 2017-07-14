@@ -5,12 +5,7 @@ import "."
 
 Item {
     id: moreOptionsView
-    //property alias generalDestinationModel: moreOptionsGeneral.destinationModel
-    //property alias generalDestinationComboBox: moreOptionsGeneral.destinationComboBox
-
     anchors.fill: parent
-    property alias generalDestinationModel: moreOptionsGeneral.destinationModel
-    property alias generalDestinationComboBox: moreOptionsGeneral.destinationComboBox
 
     ColumnLayout {
         spacing: 0

@@ -6,6 +6,7 @@ extern "C" {
     #include "../backends/cups/src/CPD.h"
 }
 #include <QQmlApplicationEngine>
+#include <QObject>
 
 gpointer parse_commands(gpointer user_data);
 
@@ -18,17 +19,25 @@ public:
 
     _CommonPrintDialog();
     void init_backend();
-    void addPrinter(char* printer);
+    void addPrinter(const char* printer);
+    void clearPrinters();
     void addPrinterSupportedMedia(char* media);
     void addMaximumPrintCopies(int copies);
     void addJobHoldUntil(char* startJobOption);
     void addPagesPerSize(char* pages);
+    void test(const QString &msg);
 };
 
 class CommonPrintDialog {
 public:
     CommonPrintDialog();
     void exec();
+};
+
+class BackendObject: public QObject {
+    Q_OBJECT
+public slots:
+    void updatePrinterSupportedMedia(const QString &msg);
 };
 
 #endif // COMMONPRINTDIALOG_H
