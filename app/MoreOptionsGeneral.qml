@@ -12,6 +12,7 @@ RowLayout {
     property int maximumCopies: 2
 
     signal newPrinterSelected(string printer)
+    signal remotePrintersToggled(string enabled)
 
     function clearDestinationModel() {
         destinationModel.clear()
@@ -87,7 +88,9 @@ RowLayout {
             }
 
             Switch {
+                id: remotePrintersSwitch
                 checked: true
+                onCheckedChanged: remotePrintersToggled(remotePrintersSwitch.checked)
             }
 
             Label {

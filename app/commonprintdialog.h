@@ -38,6 +38,7 @@ class BackendObject: public QObject {
     Q_OBJECT
 public slots:
     void updatePrinterSupportedMedia(const QString &msg);
+    void remotePrintersToggled(const QString enabled);
 };
 
 #endif // COMMONPRINTDIALOG_H
