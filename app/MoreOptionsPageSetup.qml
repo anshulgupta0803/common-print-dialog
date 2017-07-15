@@ -25,7 +25,7 @@ Item {
             Layout.preferredHeight: parent.height
             Layout.minimumHeight: parent.height
 
-            rows: 6
+            rows: 12
             columns: 2
 
             Label {
@@ -167,20 +167,6 @@ Item {
                     font.pixelSize: 12
                 }
             }
-
-        }
-
-        GridLayout {
-            width: parent.width * 0.5
-            Layout.preferredWidth: parent.width * 0.5
-            Layout.minimumWidth: parent.width * 0.5
-
-            height: parent.height
-            Layout.preferredHeight: parent.height
-            Layout.minimumHeight: parent.height
-
-            rows: 6
-            columns: 2
 
             Label {
                 id: mainPaperLabel

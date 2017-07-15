@@ -42,7 +42,7 @@ _CommonPrintDialog::_CommonPrintDialog() {
     QObject::connect(moreOptionsGeneral,
                      SIGNAL(newPrinterSelected(QString)),
                      bObj,
-                     SLOT(updatePrinterSupportedMedia(QString)));
+                     SLOT(newPrinterSelected(QString)));
 
     QObject::connect(moreOptionsGeneral,
                      SIGNAL(remotePrintersToggled(QString)),
@@ -194,11 +194,14 @@ void ui_add_pages_per_side(char *pages) {
 
 void _CommonPrintDialog::test(const QString &msg) {
     qDebug() << msg;
-    //TODO: Create a thread which will update printer specfic options
+    Command cmd;
+    cmd.command = "get-all-options";
+    cmd.arg1 = msg.toStdString();
+    parse_commands(&cmd);
 }
 
-void BackendObject::updatePrinterSupportedMedia(const QString &msg) {
-    _cpd->test(msg);
+void BackendObject::newPrinterSelected(const QString &printer) {
+    _cpd->test(printer);
 }
 
 void BackendObject::remotePrintersToggled(const QString _enabled) {

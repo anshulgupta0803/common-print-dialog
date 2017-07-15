@@ -6,15 +6,15 @@ ApplicationWindow {
     id: applicationWindow
     objectName: "applicationWindowObjectName"
     visible: true
-    width: 640
-    height: 480
-    minimumWidth: 640
-    minimumHeight: 480
+    width: 720
+    height: 540
+    minimumWidth: 720
+    minimumHeight: 540
     title: qsTr("Print Document")
 
     property alias generalPaperSizeModel: general.paperSizeModel
     property alias generalPaperSizeComboBox: general.paperSizeComboBox
-    property alias generalPreview: general.generalPreview
+    //property alias generalPreview: general.generalPreview
 
 
     function updatePaperSizeModel(media) {

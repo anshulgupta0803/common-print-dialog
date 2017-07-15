@@ -12,5 +12,6 @@
         <file>app/test.pdf</file>
         <file>app/Style.qml</file>
         <file>app/qmldir</file>
+        <file>app/MoreOptionsOptions.qml</file>
     </qresource>
 </RCC>

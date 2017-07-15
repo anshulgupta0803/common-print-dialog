@@ -73,6 +73,14 @@ Item {
                 anchors.fill: parent
                 currentIndex: tabBar.currentIndex
 
+                width: parent.width * 0.5
+                Layout.preferredWidth: parent.width * 0.5
+                Layout.minimumWidth: parent.width * 0.5
+
+                height: parent.height
+                Layout.preferredHeight: parent.height
+                Layout.minimumHeight: parent.height
+
                 MoreOptionsGeneral {
                     id: moreOptionsGeneral
                     scale: 0.98
@@ -82,11 +90,8 @@ Item {
                     scale: 0.98
                 }
 
-                Page {
-                    Label {
-                        text: qsTr("Options")
-                        anchors.centerIn: parent
-                    }
+                MoreOptionsOptions {
+                    scale: 0.98
                 }
 
                 MoreOptionsJobs {

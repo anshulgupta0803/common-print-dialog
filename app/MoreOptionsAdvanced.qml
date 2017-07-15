@@ -1,41 +1,24 @@
 import QtQuick 2.7
+import QtQuick.Controls 1.4
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Styles 1.4
 
 Item {
-    ScrollBar { //Needs some fixing
-        id: scroll_bar
-        hoverEnabled: true
-        active: hovered || pressed
-        orientation: Qt.Vertical
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-    }
 
-    MouseArea {
-        height: parent.height
-        width: parent.width - scroll_bar.width
-        onWheel: {
-            scroll_bar.position -= (wheel.angleDelta.y/500)
-            if (scroll_bar.position < 0)
-                scroll_bar.position = 0
-            if (scroll_bar.position > 1)
-                scroll_bar.position = 1
-        }
-    }
+    ScrollView {
+        anchors.fill: parent
+        verticalScrollBarPolicy: Qt.ScrollBarAlwaysOn
 
-    Item {
-        x: 20
-        y: -scroll_bar.position * height
-        width: parent.width - 40
-        height: parent.height - 20
 
         GridLayout {
             id: grid_layout
+            Layout.fillHeight: true
+
             width: parent.width
-            height: parent.height
+            Layout.preferredWidth: parent.width// * 0.5
+            Layout.minimumWidth: parent.width// * 0.5
+
             rowSpacing: 0
             columns: 2
 

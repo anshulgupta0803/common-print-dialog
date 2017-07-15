@@ -8,7 +8,7 @@ Item {
     property alias moreOptionsGeneral: moreOptionsGeneral
     property alias paperSizeModel: moreOptionsGeneral.paperSizeModel
     property alias paperSizeComboBox: moreOptionsGeneral.paperSizeComboBox
-    property alias generalPreview: moreOptionsGeneral.generalPreview
+    //property alias generalPreview: moreOptionsGeneral.generalPreview
 
     anchors.fill: parent
 
@@ -75,8 +75,15 @@ Item {
 
             SwipeView {
                 id: swipeView
-                anchors.fill: parent
                 currentIndex: tabBar.currentIndex
+
+                width: parent.width * 0.5
+                Layout.preferredWidth: parent.width * 0.5
+                Layout.minimumWidth: parent.width * 0.5
+
+                height: parent.height
+                Layout.preferredHeight: parent.height
+                Layout.minimumHeight: parent.height
 
                 MoreOptionsGeneral {
                     id: moreOptionsGeneral
@@ -88,11 +95,9 @@ Item {
                     objectName: "moreOptionsPageSetupObjectName"
                     scale: 0.98
                 }
-                Page {
-                    Label {
-                        text: qsTr("Options")
-                        anchors.centerIn: parent
-                    }
+
+                MoreOptionsOptions {
+                    scale: 0.98
                 }
 
                 MoreOptionsJobs {
@@ -103,6 +108,25 @@ Item {
 
                 MoreOptionsAdvanced {
                     scale: 0.98
+                }
+            }
+
+            Rectangle {
+                id: previewContainer
+                width: parent.width * 0.5
+                Layout.preferredWidth: parent.width * 0.5
+                Layout.minimumWidth: parent.width * 0.5
+
+                height: parent.height
+                Layout.preferredHeight: parent.height
+                Layout.minimumHeight: parent.height
+                color: "black"
+
+                Preview {
+                    id: generalPreview
+                    objectName: "generalPreview"
+                    anchors.fill: parent
+                    anchors.centerIn: parent
                 }
             }
         }

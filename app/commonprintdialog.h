@@ -37,7 +37,7 @@ public:
 class BackendObject: public QObject {
     Q_OBJECT
 public slots:
-    void updatePrinterSupportedMedia(const QString &msg);
+    void newPrinterSelected(const QString &printer);
     void remotePrintersToggled(const QString enabled);
 };
 

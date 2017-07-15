@@ -8,7 +8,7 @@ RowLayout {
     objectName: "moreOptionsGeneralObjectName"
     property alias paperSizeModel: paperSizeModel
     property alias paperSizeComboBox: paperSizeComboBox
-    property alias generalPreview: generalPreview
+    //property alias generalPreview: generalPreview
     property int maximumCopies: 2
 
     signal newPrinterSelected(string printer)
@@ -26,9 +26,9 @@ RowLayout {
 
     Item {
         id: leftGridLayoutContainer
-        width: parent.width * 0.5
-        Layout.preferredWidth: parent.width * 0.5
-        Layout.minimumWidth: parent.width * 0.5
+        width: parent.width// * 0.5
+        Layout.preferredWidth: parent.width// * 0.5
+        Layout.minimumWidth: parent.width// * 0.5
 
         height: parent.height
         Layout.preferredHeight: parent.height
@@ -247,26 +247,6 @@ RowLayout {
                 font.pixelSize: Style.textSize
                 onCurrentIndexChanged: generalPreview.pageSizeChanged(paperSizeComboBox.textAt(paperSizeComboBox.highlightedIndex))
             }
-        }
-    }
-
-
-    Rectangle {
-        id: previewContainer
-        width: parent.width * 0.5
-        Layout.preferredWidth: parent.width * 0.5
-        Layout.minimumWidth: parent.width * 0.5
-
-        height: parent.height
-        Layout.preferredHeight: parent.height
-        Layout.minimumHeight: parent.height
-        color: "black"
-
-        Preview {
-            id: generalPreview
-            objectName: "generalPreview"
-            anchors.fill: parent
-            anchors.centerIn: parent
         }
     }
 }
