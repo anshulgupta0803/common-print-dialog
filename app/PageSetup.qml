@@ -214,48 +214,10 @@ Item {
                 font.pixelSize: 12
 
                 delegate: ItemDelegate {
-                    width: paperSizeComboBox.width
+                    width: paperSourceComboBox.width
                     text: qsTr(paperSource)
                     font.pixelSize: 12
                 }
-            }
-
-            Label {
-                id: paperSizeLabel
-                text: qsTr("Paper Size")
-                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
-            }
-
-            ComboBox {
-                id: paperSizeComboBox
-                model: ListModel {
-                    ListElement {
-                        pageSize: "A4"
-                    }
-                    ListElement {
-                        pageSize: "A3"
-                    }
-                    ListElement {
-                        pageSize: "A5"
-                    }
-                    ListElement {
-                        pageSize: "Legal"
-                    }
-                    ListElement {
-                        pageSize: "Letter"
-                    }
-                    ListElement {
-                        pageSize: "Custom"
-                    }
-                }
-                delegate: ItemDelegate {
-                    width: paperSizeComboBox.width
-                    text: qsTr(pageSize)
-                    font.pixelSize: 12
-                }
-
-                font.pixelSize: 12
             }
 
             Label {

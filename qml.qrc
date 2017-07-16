@@ -1,17 +1,17 @@
 <RCC>
     <qresource prefix="/">
         <file>app/main.qml</file>
-        <file>app/General.qml</file>
+        <file>app/Root.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>app/MoreOptions.qml</file>
-        <file>app/MoreOptionsGeneral.qml</file>
-        <file>app/MoreOptionsPageSetup.qml</file>
+        <file>app/General.qml</file>
+        <file>app/PageSetup.qml</file>
         <file>app/Preview.qml</file>
-        <file>app/MoreOptionsJobs.qml</file>
-        <file>app/MoreOptionsAdvanced.qml</file>
+        <file>app/Jobs.qml</file>
+        <file>app/Advanced.qml</file>
         <file>app/test.pdf</file>
         <file>app/Style.qml</file>
         <file>app/qmldir</file>
-        <file>app/MoreOptionsOptions.qml</file>
+        <file>app/Options.qml</file>
     </qresource>
 </RCC>

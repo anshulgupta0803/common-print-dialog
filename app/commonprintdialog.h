@@ -40,6 +40,7 @@ class BackendObject: public QObject {
 public slots:
     void newPrinterSelected(const QString &printer);
     void remotePrintersToggled(const QString enabled);
+    void cancelButtonClicked();
 };
 
 #endif // COMMONPRINTDIALOG_H

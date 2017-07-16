@@ -4,7 +4,6 @@ import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     id: applicationWindow
-    objectName: "applicationWindowObjectName"
     visible: true
     width: 720
     height: 540
@@ -12,8 +11,9 @@ ApplicationWindow {
     minimumHeight: 540
     title: qsTr("Print Document")
 
-    General {
-        id: general
+    Root {
+        id: root
+        objectName: "rootObject"
         visible: true
         scale: 0.98
     }

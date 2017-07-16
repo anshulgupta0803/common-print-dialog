@@ -38,24 +38,31 @@ _CommonPrintDialog::_CommonPrintDialog() {
     QPreviewData data;
 
     BackendObject *bObj = new BackendObject();
-    QObject* moreOptionsGeneral = engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
-    QObject::connect(moreOptionsGeneral,
-                     SIGNAL(newPrinterSelected(QString)),
-                     bObj,
-                     SLOT(newPrinterSelected(QString)));
+    QObject* generalObject = engine.rootObjects().first()->findChild<QObject*>("generalObject");
+    if (generalObject) {
+        QObject::connect(generalObject,
+                         SIGNAL(newPrinterSelected(QString)),
+                         bObj,
+                         SLOT(newPrinterSelected(QString)));
 
-    QObject::connect(moreOptionsGeneral,
-                     SIGNAL(remotePrintersToggled(QString)),
-                     bObj,
-                     SLOT(remotePrintersToggled(QString)));
-
-    QObject* preview = engine.rootObjects().at(0)->findChild<QObject*>("generalPreview");
-
-    if (preview)
-        preview->setProperty("preview_data", QVariant::fromValue(&data));
+        QObject::connect(generalObject,
+                         SIGNAL(remotePrintersToggled(QString)),
+                         bObj,
+                         SLOT(remotePrintersToggled(QString)));
+    }
     else
-        qDebug() << "generalPreview Not Found";
+        qDebug() << "generalObject Not Found";
 
+    QObject* rootObject = engine.rootObjects().first()->findChild<QObject*>("rootObject");
+
+    if (rootObject) {
+        QObject::connect(rootObject,
+                         SIGNAL(cancelButtonClicked()),
+                         bObj,
+                         SLOT(cancelButtonClicked()));
+    }
+    else
+        qDebug() << "rootObject Not Found";
 }
 static int add_printer_callback(PrinterObj *p)
 {
@@ -98,7 +105,7 @@ gpointer parse_commands(gpointer user_data) {
 }
 
 void _CommonPrintDialog::addPrinter(const char *printer) {
-    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("generalObject");
     if (obj) {
         QMetaObject::invokeMethod(obj,
                                   "updateDestinationModel",
@@ -109,7 +116,7 @@ void _CommonPrintDialog::addPrinter(const char *printer) {
 }
 
 void _CommonPrintDialog::clearPrinters() {
-    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("generalObject");
     if (obj) {
         QMetaObject::invokeMethod(obj,
                                   "clearDestinationModel");
@@ -124,7 +131,7 @@ gpointer ui_add_printer(gpointer user_data) {
      * initialization completes
     */
     bool* enabled = (bool*)user_data;
-    for(int i = 0; i < 100000000; i++);
+    for (int i = 0; i < 100000000; i++);
     Command cmd;
     if (*enabled) {
         cmd.command = "unhide-remote-cups";
@@ -143,7 +150,7 @@ static void ui_add_printer_aux(const char* key, const char* value) {
 }
 
 void _CommonPrintDialog::addPrinterSupportedMedia(char *media) {
-    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("generalObject");
     if (obj) {
         QMetaObject::invokeMethod(obj,
                                   "updatePaperSizeModel",
@@ -154,7 +161,7 @@ void _CommonPrintDialog::addPrinterSupportedMedia(char *media) {
 }
 
 void _CommonPrintDialog::clearPrintersSupportedMedia() {
-    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("generalObject");
     if (obj) {
         QMetaObject::invokeMethod(obj,
                                   "clearPaperSizeModel");
@@ -172,7 +179,7 @@ void ui_add_supported_media(char *media) {
 }
 
 void _CommonPrintDialog::addMaximumPrintCopies(int copies) {
-    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("generalObject");
     if (obj)
         obj->setProperty("maximumCopies", copies);
     else
@@ -188,14 +195,14 @@ void ui_add_maximum_print_copies(char* _copies) {
 }
 
 void _CommonPrintDialog::addJobHoldUntil(char *startJobOption) {
-    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsJobsObjectName");
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("jobsObject");
     if (obj) {
         QMetaObject::invokeMethod(obj,
                                   "updateStartJobsModel",
                                   Q_ARG(QVariant, startJobOption));
     }
     else
-        qDebug() << "MoreOptionsJobs Not Found";
+        qDebug() << "jobsObject Not Found";
 }
 
 void ui_add_job_hold_until(char *startJobOption) {
@@ -203,14 +210,14 @@ void ui_add_job_hold_until(char *startJobOption) {
 }
 
 void _CommonPrintDialog::addPagesPerSize(char *pages) {
-    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsPageSetupObjectName");
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("pageSetupObject");
     if (obj) {
         QMetaObject::invokeMethod(obj,
                                   "updatePagesPerSideModel",
                                   Q_ARG(QVariant, pages));
     }
     else
-        qDebug() << "MoreOptionsPageSetup Not Found";
+        qDebug() << "pageSetupObject Not Found";
 }
 
 void ui_add_pages_per_side(char *pages) {
@@ -222,7 +229,6 @@ void _CommonPrintDialog::updateAllOptions(const QString &printer) {
     cmd.command = "get-all-options";
     cmd.arg1 = printer.toStdString();
     if (cmd.arg1.compare("") != 0) {
-        qDebug() << "Here:" << (char*)cmd.arg1.c_str();
         parse_commands(&cmd);
     }
 }
@@ -239,4 +245,10 @@ void BackendObject::remotePrintersToggled(const QString _enabled) {
     else
         enabled = true;
     ui_add_printer(&enabled);
+}
+
+void BackendObject::cancelButtonClicked() {
+    disconnect_from_dbus(_cpd->f);
+    g_main_loop_quit(_cpd->loop);
+    exit(0);
 }
