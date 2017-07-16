@@ -8,7 +8,6 @@ Item {
     property alias moreOptionsGeneral: moreOptionsGeneral
     property alias paperSizeModel: moreOptionsGeneral.paperSizeModel
     property alias paperSizeComboBox: moreOptionsGeneral.paperSizeComboBox
-    //property alias generalPreview: moreOptionsGeneral.generalPreview
 
     anchors.fill: parent
 
@@ -120,7 +119,8 @@ Item {
                 height: parent.height
                 Layout.preferredHeight: parent.height
                 Layout.minimumHeight: parent.height
-                color: "black"
+
+                color: "#000000"
 
                 Preview {
                     id: generalPreview

@@ -49,7 +49,7 @@ _CommonPrintDialog::_CommonPrintDialog() {
                      bObj,
                      SLOT(remotePrintersToggled(QString)));
 
-            QObject* preview = engine.rootObjects().at(0)->findChild<QObject*>("generalPreview");
+    QObject* preview = engine.rootObjects().at(0)->findChild<QObject*>("generalPreview");
 
     if (preview)
         preview->setProperty("preview_data", QVariant::fromValue(&data));
@@ -57,15 +57,22 @@ _CommonPrintDialog::_CommonPrintDialog() {
         qDebug() << "generalPreview Not Found";
 
 }
+static int add_printer_callback(PrinterObj *p)
+{
+    printf("print_frontend.c : Printer %s added!\n", p->name);
+}
+
+static int remove_printer_callback(char *printer_name)
+{
+    printf("print_frontend.c : Printer %s removed!\n", printer_name);
+}
 
 void _CommonPrintDialog::init_backend() {
-    _cpd->f = get_new_FrontendObj(NULL);
+    event_callback add_cb = (event_callback)add_printer_callback;
+    event_callback rem_cb = (event_callback)remove_printer_callback;
 
-    Command cmd;
-    cmd.command = "get-all-options";
-    cmd.arg1 = "4510DX";//(char*)g_hash_table_get_keys(_cpd->f->printer)->data;
-    //GThread* get_all_option_thread = g_thread_new("get-all-options", parse_commands, &cmd);
-    //g_thread_join(get_all_option_thread);
+    _cpd->f = get_new_FrontendObj(NULL, add_cb, rem_cb);
+
     bool enabled = true;
     g_thread_new("add_printer_thread", ui_add_printer, &enabled);
 
@@ -83,17 +90,19 @@ gpointer parse_commands(gpointer user_data) {
         hide_remote_cups_printers(_cpd->f);
     else if (cmd->command.compare("unhide-remote-cups") == 0)
         unhide_remote_cups_printers(_cpd->f);
-    else if (cmd->command.compare("get-all-options") == 0)
-        get_all_printer_options(_cpd->f, "X950");
+    else if (cmd->command.compare("get-all-options") == 0) {
+        char printerName[300];
+        strcpy(printerName, cmd->arg1.c_str());
+        get_all_printer_options(_cpd->f, printerName);
+    }
 }
 
 void _CommonPrintDialog::addPrinter(const char *printer) {
-    QVariant arg = printer;
     QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
     if (obj) {
         QMetaObject::invokeMethod(obj,
                                   "updateDestinationModel",
-                                  Q_ARG(QVariant, arg));
+                                  Q_ARG(QVariant, printer));
     }
     else
         qDebug() << "moreOptionsGeneral Not Found";
@@ -119,12 +128,10 @@ gpointer ui_add_printer(gpointer user_data) {
     Command cmd;
     if (*enabled) {
         cmd.command = "unhide-remote-cups";
-        //g_thread_new("unhide-remote-cups", parse_commands, &cmd);
         parse_commands(&cmd);
     }
     else {
         cmd.command = "hide-remote-cups";
-        //g_thread_new("hide-remote-cups", parse_commands, &cmd);
         parse_commands(&cmd);
     }
     _cpd->clearPrinters();
@@ -136,10 +143,28 @@ static void ui_add_printer_aux(const char* key, const char* value) {
 }
 
 void _CommonPrintDialog::addPrinterSupportedMedia(char *media) {
-    QVariant arg = media;
-    QMetaObject::invokeMethod((_cpd->engine).rootObjects().at(0),
-                              "updatePaperSizeModel",
-                              Q_ARG(QVariant, arg));
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
+    if (obj) {
+        QMetaObject::invokeMethod(obj,
+                                  "updatePaperSizeModel",
+                                  Q_ARG(QVariant, media));
+    }
+    else
+        qDebug() << "moreOptionsGeneral Not Found";
+}
+
+void _CommonPrintDialog::clearPrintersSupportedMedia() {
+    QObject* obj = _cpd->engine.rootObjects().first()->findChild<QObject*>("moreOptionsGeneralObjectName");
+    if (obj) {
+        QMetaObject::invokeMethod(obj,
+                                  "clearPaperSizeModel");
+    }
+    else
+        qDebug() << "moreOptionsGeneral Not Found";
+}
+
+void ui_clear_supported_media() {
+    _cpd->clearPrintersSupportedMedia();
 }
 
 void ui_add_supported_media(char *media) {
@@ -192,20 +217,23 @@ void ui_add_pages_per_side(char *pages) {
     _cpd->addPagesPerSize(pages);
 }
 
-void _CommonPrintDialog::test(const QString &msg) {
-    qDebug() << msg;
+void _CommonPrintDialog::updateAllOptions(const QString &printer) {
     Command cmd;
     cmd.command = "get-all-options";
-    cmd.arg1 = msg.toStdString();
-    parse_commands(&cmd);
+    cmd.arg1 = printer.toStdString();
+    if (cmd.arg1.compare("") != 0) {
+        qDebug() << "Here:" << (char*)cmd.arg1.c_str();
+        parse_commands(&cmd);
+    }
 }
 
 void BackendObject::newPrinterSelected(const QString &printer) {
-    _cpd->test(printer);
+    _cpd->updateAllOptions(printer);
 }
 
 void BackendObject::remotePrintersToggled(const QString _enabled) {
     bool enabled;
+    /* Weird bug */
     if (_enabled.compare("true") == 0)
         enabled = false;
     else

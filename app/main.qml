@@ -12,17 +12,6 @@ ApplicationWindow {
     minimumHeight: 540
     title: qsTr("Print Document")
 
-    property alias generalPaperSizeModel: general.paperSizeModel
-    property alias generalPaperSizeComboBox: general.paperSizeComboBox
-    //property alias generalPreview: general.generalPreview
-
-
-    function updatePaperSizeModel(media) {
-        generalPaperSizeModel.append({pageSize: media})
-        if (generalPaperSizeComboBox.count > 0 && generalPaperSizeComboBox.currentIndex == -1)
-            generalPaperSizeComboBox.currentIndex = 0
-    }
-
     General {
         id: general
         visible: true

@@ -22,10 +22,11 @@ public:
     void addPrinter(const char* printer);
     void clearPrinters();
     void addPrinterSupportedMedia(char* media);
+    void clearPrintersSupportedMedia();
     void addMaximumPrintCopies(int copies);
     void addJobHoldUntil(char* startJobOption);
     void addPagesPerSize(char* pages);
-    void test(const QString &msg);
+    void updateAllOptions(const QString &printer);
 };
 
 class CommonPrintDialog {

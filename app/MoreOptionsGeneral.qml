@@ -8,7 +8,6 @@ RowLayout {
     objectName: "moreOptionsGeneralObjectName"
     property alias paperSizeModel: paperSizeModel
     property alias paperSizeComboBox: paperSizeComboBox
-    //property alias generalPreview: generalPreview
     property int maximumCopies: 2
 
     signal newPrinterSelected(string printer)
@@ -22,6 +21,16 @@ RowLayout {
         destinationModel.append({destination: printer})
         if (destinationComboBox.count > 0 && destinationComboBox.currentIndex == -1)
             destinationComboBox.currentIndex = 0
+    }
+
+    function clearPaperSizeModel() {
+        paperSizeModel.clear()
+    }
+
+    function updatePaperSizeModel(media) {
+        paperSizeModel.append({pageSize: media})
+        if (paperSizeComboBox.count > 0 && paperSizeComboBox.currentIndex == -1)
+            paperSizeComboBox.currentIndex = 0
     }
 
     Item {
@@ -245,7 +254,6 @@ RowLayout {
                 }
 
                 font.pixelSize: Style.textSize
-                onCurrentIndexChanged: generalPreview.pageSizeChanged(paperSizeComboBox.textAt(paperSizeComboBox.highlightedIndex))
             }
         }
     }
