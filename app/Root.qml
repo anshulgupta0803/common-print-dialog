@@ -3,188 +3,40 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import "."
 
-Item {
-    signal cancelButtonClicked()
-    anchors.fill: parent
+SwipeView {
+    id: swipeView
 
-    ColumnLayout {
-        spacing: 0
-        anchors.fill: parent
+    width: 320 * 1
+    Layout.preferredWidth: 320 * 1
+    Layout.minimumWidth: 320 * 1
 
-        RowLayout {
-            id: tabs
-            spacing: 0
+    height: 408
+    Layout.preferredHeight: 408
+    Layout.minimumHeight: 408
 
-            width: parent.width
-            Layout.preferredWidth: parent.width
-            Layout.minimumWidth: parent.width
+    General {
+        id: general
+        objectName: "generalObject"
+        scale: 0.98
+    }
 
-            height: parent.height * 0.07
-            Layout.preferredHeight: parent.height * 0.07
-            Layout.minimumHeight: parent.height * 0.07
+    PageSetup {
+        id: pageSetup
+        objectName: "pageSetupObject"
+        scale: 0.98
+    }
 
-            TabBar {
-                id: tabBar
-                anchors.fill: parent
-                currentIndex: swipeView.currentIndex
+    Options {
+        scale: 0.98
+    }
 
-                TabButton {
-                    text: qsTr("General")
-                    height: Style.tabBarHeight
-                    font.pixelSize: Style.textSize
-                }
-                TabButton {
-                    text: qsTr("Page Setup")
-                    height: Style.tabBarHeight
-                    font.pixelSize: Style.textSize
-                }
-                TabButton {
-                    text: qsTr("Options")
-                    height: Style.tabBarHeight
-                    font.pixelSize: Style.textSize
-                }
-                TabButton {
-                    text: qsTr("Jobs")
-                    height: Style.tabBarHeight
-                    font.pixelSize: Style.textSize
-                }
-                TabButton {
-                    text: qsTr("Quality")
-                    height: Style.tabBarHeight
-                    font.pixelSize: Style.textSize
-                }
-            }
-        }
+    Jobs {
+        id: jobs
+        objectName: "jobsObject"
+        scale: 0.98
+    }
 
-        RowLayout {
-            id: generalContainer
-            spacing: 0
-
-            width: parent.width
-            Layout.preferredWidth: parent.width
-            Layout.minimumWidth: parent.width
-
-            height: parent.height * 0.85
-            Layout.preferredHeight: parent.height * 0.85
-            Layout.minimumHeight: parent.height * 0.85
-
-            SwipeView {
-                id: swipeView
-                currentIndex: tabBar.currentIndex
-
-                width: parent.width * 0.5
-                Layout.preferredWidth: parent.width * 0.5
-                Layout.minimumWidth: parent.width * 0.5
-
-                height: parent.height
-                Layout.preferredHeight: parent.height
-                Layout.minimumHeight: parent.height
-
-                General {
-                    id: general
-                    scale: 0.98
-                }
-
-                PageSetup {
-                    id: pageSetup
-                    objectName: "pageSetupObject"
-                    scale: 0.98
-                }
-
-                Options {
-                    scale: 0.98
-                }
-
-                Jobs {
-                    id: jobs
-                    objectName: "jobsObject"
-                    scale: 0.98
-                }
-
-                Advanced {
-                    scale: 0.98
-                }
-            }
-
-            Rectangle {
-                id: previewContainer
-                width: parent.width * 0.5
-                Layout.preferredWidth: parent.width * 0.5
-                Layout.minimumWidth: parent.width * 0.5
-
-                height: parent.height
-                Layout.preferredHeight: parent.height
-                Layout.minimumHeight: parent.height
-
-                color: "#000000"
-
-                Preview {
-                    id: generalPreview
-                    objectName: "generalPreview"
-                    anchors.fill: parent
-                    anchors.centerIn: parent
-                }
-            }
-        }
-
-        RowLayout {
-            id: buttonsLayout
-            spacing: 0
-
-            width: parent.width
-            Layout.preferredWidth: parent.width
-            Layout.minimumWidth: parent.width
-
-            height: parent.height * 0.08
-            Layout.preferredHeight: parent.height * 0.08
-            Layout.minimumHeight: parent.height * 0.08
-
-            Rectangle {
-                width: parent.width * 0.5
-                Layout.preferredWidth: parent.width * 0.5
-                Layout.minimumWidth: parent.width * 0.5
-
-                height: parent.height
-                Layout.preferredHeight: parent.height
-                Layout.minimumHeight: parent.height
-                color: "#00000000"
-
-                Button {
-                    id: advancedPreviewButton
-                    text: qsTr("Advanced Preview")
-                    font.pixelSize: Style.textSize
-                    anchors.centerIn: parent
-                    onClicked: {}
-                }
-            }
-
-            Rectangle {
-                width: parent.width * 0.5
-                Layout.preferredWidth: parent.width * 0.5
-                Layout.minimumWidth: parent.width * 0.5
-
-                height: parent.height
-                Layout.preferredHeight: parent.height
-                Layout.minimumHeight: parent.height
-                color: "#00000000"
-
-                RowLayout {
-                    anchors.centerIn: parent
-                    Button {
-                        id: cancelGeneralButton
-                        text: qsTr("Cancel")
-                        font.pixelSize: Style.textSize
-                        onClicked: cancelButtonClicked()
-                    }
-
-                    Button {
-                        id: printGeneralButton
-                        text: qsTr("Print")
-                        font.pixelSize: Style.textSize
-                        highlighted: true
-                    }
-                }
-            }
-        }
+    Advanced {
+        scale: 0.98
     }
 }

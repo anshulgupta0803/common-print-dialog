@@ -13,5 +13,7 @@
         <file>app/Style.qml</file>
         <file>app/qmldir</file>
         <file>app/Options.qml</file>
+        <file>app/Controls.qml</file>
+        <file>app/Tabs.qml</file>
     </qresource>
 </RCC>

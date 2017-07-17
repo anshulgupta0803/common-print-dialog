@@ -1,4 +1,5 @@
 #include "commonprintdialog.h"
+#include "window.h"
 #include <QtGui>
 #include <QApplication>
 #include <QWidget>
@@ -17,8 +18,11 @@ int main(int argc, char *argv[])
 //                 (window.height() / 2) - (label->height() / 2));
 //    label->show();
 
-    CommonPrintDialog cpd;
-    cpd.exec();
+    //CommonPrintDialog cpd;
+    //cpd.exec();
+
+    Window *w = new Window();
+    w->show();
 
     return app.exec();
 }

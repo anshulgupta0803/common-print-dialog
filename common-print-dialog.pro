@@ -12,7 +12,8 @@ SOURCES += app/main.cpp \
     backends/cups/src/frontend_interface.c \
     backends/cups/src/frontend_helper.c \
     backends/cups/src/common_helper.c \
-    backends/cups/src/backend_interface.c
+    backends/cups/src/backend_interface.c \
+    app/window.cpp
 
 RESOURCES += qml.qrc
 
@@ -51,4 +52,5 @@ HEADERS += \
     backends/cups/src/frontend_helper.h \
     backends/cups/src/CPD.h \
     backends/cups/src/common_helper.h \
-    backends/cups/src/backend_interface.h
+    backends/cups/src/backend_interface.h \
+    app/window.h

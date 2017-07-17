@@ -5,7 +5,6 @@ import "."
 
 RowLayout {
     spacing: 0
-    objectName: "generalObject"
     property alias paperSizeModel: paperSizeModel
     property alias paperSizeComboBox: paperSizeComboBox
     property int maximumCopies: 2
@@ -231,7 +230,7 @@ RowLayout {
                     id: landscapeRadioButton
                     text: qsTr("Landscape")
                     font.pixelSize: Style.textSize
-                    onClicked: generalPreview.orientationChanged("Landscape")
+                    //onClicked: generalPreview.orientationChanged("Landscape")
                 }
             }
 
