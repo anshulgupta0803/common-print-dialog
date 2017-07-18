@@ -5,6 +5,8 @@ import "."
 
 SwipeView {
     id: swipeView
+    property int index: 0
+    currentIndex: index
 
     width: 320 * 1
     Layout.preferredWidth: 320 * 1

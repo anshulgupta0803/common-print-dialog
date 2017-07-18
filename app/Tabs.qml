@@ -5,7 +5,7 @@ import "."
 
 TabBar {
     id: tabBar
-    signal tabIndexChanged(int index)
+    signal tabBarIndexChanged(int index)
     // TODO: Link this signal to swipeView
 
     width: 640
@@ -35,5 +35,5 @@ TabBar {
         height: Style.tabBarHeight
         font.pixelSize: Style.textSize
     }
-    onCurrentIndexChanged: tabIndexChanged(tabBar.currentIndex)
+    onCurrentIndexChanged: tabBarIndexChanged(tabBar.currentIndex)
 }

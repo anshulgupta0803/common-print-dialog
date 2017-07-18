@@ -1,4 +1,4 @@
-QT += qml quick widgets quickwidgets
+QT += qml quick widgets quickwidgets printsupport
 
 CONFIG += c++11
 unix {
