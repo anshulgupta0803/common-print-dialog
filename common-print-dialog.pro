@@ -1,19 +1,27 @@
-QT += qml quick widgets quickwidgets printsupport
+QT += qml quick widgets quickwidgets
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
+
+TARGET = cpd
+TEMPLATE = lib
 
 CONFIG += c++11
 unix {
+    target.path = /usr/lib
+    INSTALLS += target
     CONFIG += link_pkgconfig
     PKGCONFIG += gio-unix-2.0 glib-2.0 gobject-2.0 poppler-qt5
 }
 
-SOURCES += app/main.cpp \
+SOURCES += \#app/main.cpp \
     app/preview.cpp \
     app/commonprintdialog.cpp \
     backends/cups/src/frontend_interface.c \
     backends/cups/src/frontend_helper.c \
     backends/cups/src/common_helper.c \
     backends/cups/src/backend_interface.c \
-    app/window.cpp
+    app/window.cpp \
+    cpd.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,7 +40,7 @@ QML_DESIGNER_IMPORT_PATH =
 # any feature of Qt which as been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS
+DEFINES += QT_DEPRECATED_WARNINGS COMMONPRINTDIALOGLIBRARY_LIBRARY
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -53,4 +61,6 @@ HEADERS += \
     backends/cups/src/CPD.h \
     backends/cups/src/common_helper.h \
     backends/cups/src/backend_interface.h \
-    app/window.h
+    app/window.h \
+    cpd.h \
+    cpd_global.h

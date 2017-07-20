@@ -5,8 +5,10 @@ import "."
 
 SwipeView {
     id: swipeView
+    signal swipeViewIndexChanged(int index)
     property int index: 0
     currentIndex: index
+    onCurrentIndexChanged: swipeViewIndexChanged(swipeView.currentIndex)
 
     width: 320 * 1
     Layout.preferredWidth: 320 * 1
