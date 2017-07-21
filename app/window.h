@@ -2,15 +2,16 @@
 #define WINDOW_H
 
 #include <QMainWindow>
-#include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QQuickItem>
 #include <QQuickWidget>
 #include <QPrintPreviewWidget>
-#include <QPrinter>
 #include <QPainter>
 #include <memory>
 #include <poppler/qt5/poppler-qt5.h>
+
+class QPrinter;
+class QVBoxLayout;
 
 class Tabs : public QWidget {
     Q_OBJECT

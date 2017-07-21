@@ -5,12 +5,12 @@
 #include <QPrinter>
 #include <QWidget>
 
-class CPDSHARED_EXPORT CommonPrintDialogLibrary : public QWidget
+class CPDSHARED_EXPORT CPD : public QWidget
 {
 
 public:
-    CommonPrintDialogLibrary(QPrinter *printer, QWidget *parent = Q_NULLPTR);
-    CommonPrintDialogLibrary(QWidget *parent = Q_NULLPTR);
+    CPD(QPrinter *printer, QWidget *parent = Q_NULLPTR);
+    CPD(QWidget *parent = Q_NULLPTR);
     QString information();
 };
 
