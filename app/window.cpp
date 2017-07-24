@@ -1,24 +1,22 @@
 #include "window.h"
+#include <QDebug>
 
-Window::Window() :
+_Window *_window;
+
+_Window::_Window(QWidget *parent) :
+    QWidget(parent),
+    masterLayout(new QGridLayout(this)),
     tabs(new Tabs(this)),
-    content(new QHBoxLayout()),
     root(new Root(this)),
     preview(new Preview(this)),
-    controls(new Controls(this)),
-    container(new QVBoxLayout())
+    controls(new Controls(this))
 {
     /*
-     * container
+     * masterLayout
      * |-tabs
-     * |-content
-     *   |-root
-     *   |-preview
+     * |-root -- preview
      * |-controls
      */
-    setCentralWidget(new QWidget(this));
-
-    tabs->setMinimumSize(700, 32);
     QObject::connect(tabs->rootObject,
                      SIGNAL(tabBarIndexChanged(qint32)),
                      this,
@@ -49,49 +47,142 @@ Window::Window() :
                      preview,
                      SLOT(showPrevPage()));
 
-    content->setSpacing(0);
-    content->setMargin(0);
+    tabs->setMinimumSize(700, 32);
 
     root->setMinimumSize(320, 408);
 
     preview->setMinimumSize(380, 408);
 
-    content->addWidget(root);
-    content->addWidget(preview);
-
     controls->setMinimumSize(700, 40);
 
-    container->setSpacing(0);
-    container->setMargin(0);
-    container->addWidget(tabs);
-    container->addLayout(content);
-    container->addWidget(controls);
+    masterLayout->setColumnMinimumWidth(0, 320);
+    masterLayout->setColumnMinimumWidth(1, 380);
+    masterLayout->setRowMinimumHeight(0, 32);
+    masterLayout->setRowMinimumHeight(1, 408);
+    masterLayout->setRowMinimumHeight(2, 40);
+    masterLayout->setSpacing(0);
+    masterLayout->setMargin(0);
 
-    preview->widgetHeight = content->itemAt(1)->geometry().height();
+    masterLayout->addWidget(tabs,     0, 0, 1, 2);
+    masterLayout->addWidget(root,     1, 0, 1, 1);
+    masterLayout->addWidget(preview,  1, 1, 1, 1);
+    masterLayout->addWidget(controls, 2, 0, 1, 2);
 
-    centralWidget()->setLayout(container);
+    preview->widgetHeight = masterLayout->itemAt(2)->geometry().height();
+
     adjustSize();
+
+    setMaximumSize(700, 480);
+    setMinimumSize(700, 480);
+
+    init_backend();
+}
+
+Window::Window(QWidget *parent) :
+    QWidget(parent)
+{
+    _window = new _Window(parent);
+    _window->show();
 }
 
 void Window::resizeEvent(QResizeEvent *event) {
-    QMainWindow::resizeEvent(event);
-    tabs->resize(container->itemAt(0)->geometry());
-    root->resize(content->itemAt(0)->geometry());
-    controls->resize(container->itemAt(2)->geometry());
-    preview->widgetHeight = content->itemAt(1)->geometry().height();
-    preview->setZoom(preview->currentZoomFactor);
+    QWidget::resizeEvent(event);
+//    _window->tabs->resize(_window->container->itemAt(0)->geometry());
+//    _window->root->resize(_window->content->itemAt(0)->geometry());
+//    _window->controls->resize(_window->container->itemAt(2)->geometry());
+//    _window->preview->widgetHeight = _window->content->itemAt(1)->geometry().height();
+//    _window->preview->setZoom(_window->preview->currentZoomFactor);
 }
 
-void Window::tabBarIndexChanged(qint32 index) {
+void _Window::tabBarIndexChanged(qint32 index) {
     root->rootObject->setProperty("index", index);
 }
 
-void Window::swipeViewIndexChanged(qint32 index) {
+void _Window::swipeViewIndexChanged(qint32 index) {
     tabs->rootObject->setProperty("index", index);
 }
 
-void Window::cancelButtonClicked() {
+void _Window::cancelButtonClicked() {
     exit(0);
+}
+
+static int add_printer_callback(PrinterObj *p) {
+    printf("print_frontend.c : Printer %s added!\n", p->name);
+}
+
+static int remove_printer_callback(char *printer_name) {
+    printf("print_frontend.c : Printer %s removed!\n", printer_name);
+}
+
+gpointer _Window::ui_add_printer(gpointer user_data) {
+    /*
+     * Need this delay so that the FrontendObj
+     * initialization completes
+    */
+    bool* enabled = (bool*)user_data;
+    for (int i = 0; i < 100000000; i++);
+    Command cmd;
+    if (*enabled) {
+        cmd.command = "unhide-remote-cups";
+        parse_commands(&cmd);
+    }
+    else {
+        cmd.command = "hide-remote-cups";
+        parse_commands(&cmd);
+    }
+    clearPrinters();
+    g_hash_table_foreach(f->printer, ui_add_printer_aux, NULL);
+}
+
+void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data) {
+    _window->addPrinter((const char*)key);
+    qDebug() << "Added" << (const char*)key;
+}
+
+void _Window::addPrinter(const char *printer) {
+    QObject* obj = root->rootObject->findChild<QObject*>("generalObject");
+    if (obj) {
+        QMetaObject::invokeMethod(obj,
+                                  "updateDestinationModel",
+                                  Q_ARG(QVariant, printer));
+    }
+    else
+        qDebug() << "generalObject Not Found";
+}
+
+gpointer _Window::parse_commands(gpointer user_data) {
+    Command* cmd = (Command*)user_data;
+    if (cmd->command.compare("hide-remote-cups") == 0)
+        hide_remote_cups_printers(f);
+    else if (cmd->command.compare("unhide-remote-cups") == 0)
+        unhide_remote_cups_printers(f);
+    else if (cmd->command.compare("get-all-options") == 0) {
+        char printerName[300];
+        strcpy(printerName, cmd->arg1.c_str());
+        get_all_printer_options(_window->f, printerName);
+    }
+}
+
+void _Window::init_backend() {
+    event_callback add_cb = (event_callback)add_printer_callback;
+    event_callback rem_cb = (event_callback)remove_printer_callback;
+    f = get_new_FrontendObj(NULL, add_cb, rem_cb);
+    bool enabled = true;
+    //g_thread_new("add_printer_thread", (GThreadFunc)ui_add_printer, &enabled);
+    ui_add_printer(&enabled);
+    connect_to_dbus(f);
+    loop = g_main_loop_new(NULL, FALSE);
+    //g_main_loop_run(loop);
+}
+
+void _Window::clearPrinters() {
+//    QObject* obj = root->rootObject->findChild<QObject*>("generalObject");
+//    if (obj) {
+//        QMetaObject::invokeMethod(obj,
+//                                  "clearDestinationModel");
+//    }
+//    else
+//        qDebug() << "generalObject Not Found";
 }
 
 Tabs::Tabs(QWidget* parent) :
@@ -201,3 +292,13 @@ void Controls::resize(const QRect& rect) {
     QWidget::resize(rect.width(), rect.height());
     controls->resize(rect.width(), rect.height());
 }
+
+void ui_add_job_hold_until(char *startJobOption) {}
+
+void ui_add_maximum_print_copies(char *_copies) {}
+
+void ui_add_pages_per_side(char *pages) {}
+
+void ui_clear_supported_media() {}
+
+void ui_add_supported_media(char *media) {}

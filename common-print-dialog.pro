@@ -5,7 +5,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 TARGET = cpd
 TEMPLATE = lib
 
-CONFIG += c++11
+CONFIG += c++11 no_keywords
 unix {
     target.path = /usr/lib
     INSTALLS += target
@@ -15,7 +15,7 @@ unix {
 
 SOURCES += \#app/main.cpp \
     app/preview.cpp \
-    app/commonprintdialog.cpp \
+    \#app/commonprintdialog.cpp \
     backends/cups/src/frontend_interface.c \
     backends/cups/src/frontend_helper.c \
     backends/cups/src/common_helper.c \
@@ -54,7 +54,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     app/preview.h \
-    app/commonprintdialog.h \
+    \#app/commonprintdialog.h \
     backends/cups/src/print_frontend.h \
     backends/cups/src/frontend_interface.h \
     backends/cups/src/frontend_helper.h \

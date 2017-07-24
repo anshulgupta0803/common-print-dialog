@@ -9,7 +9,10 @@ CPD::CPD(QPrinter *printer, QWidget *parent) :
 CPD::CPD(QWidget *parent) :
     QWidget(parent)
 {
-    Window *w = new Window();
+    w = new Window();
+}
+
+void CPD::show() {
     w->show();
 }
 

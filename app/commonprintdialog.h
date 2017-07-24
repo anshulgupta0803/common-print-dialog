@@ -8,7 +8,7 @@ extern "C" {
 #include <QQmlApplicationEngine>
 #include <QObject>
 
-gpointer parse_commands(gpointer user_data);
+//gpointer parse_commands(gpointer user_data);
 
 class _CommonPrintDialog
 {
@@ -37,7 +37,7 @@ public:
 
 class BackendObject: public QObject {
     Q_OBJECT
-public slots:
+public Q_SLOTS:
     void newPrinterSelected(const QString &printer);
     void remotePrintersToggled(const QString enabled);
     void cancelButtonClicked();
