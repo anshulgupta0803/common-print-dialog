@@ -4,15 +4,10 @@
 CPD::CPD(QPrinter *printer, QWidget *parent) :
     QWidget(parent)
 {
+    w = new CPrintDialog(printer, parent);
 }
 
-CPD::CPD(QWidget *parent) :
-    QWidget(parent)
-{
-    w = new Window();
-}
-
-void CPD::show() {
+void CPD::showDialog() {
     w->show();
 }
 

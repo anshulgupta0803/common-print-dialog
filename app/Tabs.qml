@@ -10,7 +10,7 @@ TabBar {
     currentIndex: index
     onCurrentIndexChanged: tabBarIndexChanged(tabBar.currentIndex)
 
-    width: 640
+    width: 700
     height: 32
     TabButton {
         text: qsTr("General")

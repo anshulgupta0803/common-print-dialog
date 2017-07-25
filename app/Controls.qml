@@ -15,7 +15,7 @@ RowLayout {
     signal zoomSliderValueChanged(real value)
 
     Rectangle {
-        width: 320
+        width: 350
         //Layout.preferredWidth: 320
         //Layout.minimumWidth: 320
 
@@ -44,7 +44,7 @@ RowLayout {
 
     Rectangle {
         id: rectangle
-        width: 320
+        width: 350
         //Layout.preferredWidth: 320
         //Layout.minimumWidth: 320
 

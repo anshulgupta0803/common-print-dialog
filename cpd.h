@@ -5,16 +5,15 @@
 #include <QPrinter>
 #include <QWidget>
 
-class Window;
+class CPrintDialog;
 
 class CPDSHARED_EXPORT CPD : public QWidget
 {
 
 public:
-    Window *w;
+    CPrintDialog *w;
     CPD(QPrinter *printer, QWidget *parent = Q_NULLPTR);
-    CPD(QWidget *parent = Q_NULLPTR);
-    void show();
+    void showDialog();
     QString information();
 };
 
