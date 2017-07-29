@@ -4,3 +4,6 @@
 [submodule "backends/gcp"]
 	path = backends/gcp
 	url = https://github.com/anshulgupta0803/gcp-backend.git
+[submodule "backends/interface"]
+	path = backends/interface
+	url = https://github.com/anshulgupta0803/cpd-interface-files.git

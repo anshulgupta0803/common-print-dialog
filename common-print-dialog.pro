@@ -13,16 +13,15 @@ unix {
     PKGCONFIG += gio-unix-2.0 glib-2.0 gobject-2.0 poppler-qt5
 }
 
-SOURCES += \#app/main.cpp \
+SOURCES += \
     app/preview.cpp \
-    \#app/commonprintdialog.cpp \
-    backends/cups/src/frontend_interface.c \
-    backends/cups/src/frontend_helper.c \
-    backends/cups/src/common_helper.c \
-    backends/cups/src/backend_interface.c \
     app/window.cpp \
     cpd.cpp \
-    app/components.cpp
+    app/components.cpp \
+    backends/cups/src/backend_interface.c \
+    backends/cups/src/common_helper.c \
+    backends/cups/src/frontend_helper.c \
+    backends/cups/src/frontend_interface.c
 
 RESOURCES += qml.qrc
 
@@ -55,14 +54,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     app/preview.h \
-    \#app/commonprintdialog.h \
-    backends/cups/src/print_frontend.h \
-    backends/cups/src/frontend_interface.h \
-    backends/cups/src/frontend_helper.h \
-    backends/cups/src/CPD.h \
-    backends/cups/src/common_helper.h \
-    backends/cups/src/backend_interface.h \
     app/window.h \
     cpd.h \
     cpd_global.h \
-    app/components.h
+    app/components.h \
+    backends/cups/release/headers/backend_interface.h \
+    backends/cups/release/headers/common_helper.h \
+    backends/cups/release/headers/CPD.h \
+    backends/cups/release/headers/frontend_helper.h \
+    backends/cups/release/headers/frontend_interface.h
+
+#LIBS += -L/home/anshul/Dropbox/Documents/common-print-dialog/backends/cups/release/libs -lCPD -lCPDcore

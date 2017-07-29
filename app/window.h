@@ -11,7 +11,6 @@
 
 extern "C" {
     #include "../backends/cups/src/CPD.h"
-    #include "../backends/cups/src/print_frontend.h"
 }
 
 class QPrinter;
@@ -30,7 +29,6 @@ class _Window : public QWidget {
     Q_OBJECT
 public:
     FrontendObj *f;
-    GMainLoop *loop;
     Tabs *tabs;
     Root *root;
     Preview *preview;
@@ -46,7 +44,7 @@ public:
     void addMaximumPrintCopies(int copies) {}
     void addJobHoldUntil(char* startJobOption) {}
     void addPagesPerSize(char* pages) {}
-    void updateAllOptions(const QString &printer) {}
+    void updateAllOptions(const QString &printer);
     gpointer parse_commands(gpointer user_data);
     gpointer ui_add_printer(gpointer user_data);
 
@@ -54,6 +52,9 @@ public Q_SLOTS:
     void tabBarIndexChanged(qint32 index);
     void swipeViewIndexChanged(qint32 index);
     void cancelButtonClicked();
+    void newPrinterSelected(const QString &printer);
+    void remotePrintersToggled(const QString &enabled);
+
 };
 
 class Q_PRINTSUPPORT_EXPORT CPrintDialog : public QAbstractPrintDialog {

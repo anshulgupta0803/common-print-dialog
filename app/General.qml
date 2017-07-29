@@ -61,13 +61,6 @@ RowLayout {
 
             ListModel {
                 id: destinationModel
-                ListElement {
-                    destination: "A-Very-Long-Random-Name-Of-A-Printer-From-CUPS"
-                }
-
-                ListElement {
-                    destination: "Short-Name"
-                }
             }
 
             ComboBox {
@@ -86,7 +79,6 @@ RowLayout {
                 }
 
                 onCurrentIndexChanged: {
-                    //console.log(destinationComboBox.textAt(destinationComboBox.currentIndex))
                     newPrinterSelected(destinationComboBox.textAt(destinationComboBox.currentIndex))
                 }
             }
