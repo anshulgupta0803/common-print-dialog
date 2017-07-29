@@ -7,7 +7,8 @@
 
 /* The preview works by using poppler to convert a page of pdf to QImage */
 
-QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &requested_size) {
+QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &requested_size)
+{
     QString filename;
     QStringList imagesource = id.split("/");
     QStringList::iterator it;
@@ -28,13 +29,13 @@ QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &re
     QImage image;
 
     Poppler::Document *document = Poppler::Document::load(filename);
-    if (!document || document->isLocked()){
+    if (!document || document->isLocked()) {
         qCritical("File '%s' does not exist or is locked!", qUtf8Printable(filename));
         return image;
     }
 
     Poppler::Page *page = document->page(pageNumber);
-    if (page == nullptr){
+    if (page == nullptr) {
         qCritical("File '%s' is empty?", qUtf8Printable(filename));
         return image;
     }
@@ -57,9 +58,10 @@ QImage QPdfPreview::requestImage(const QString &id, QSize *size, const QSize &re
     return image;
 }
 
-int QPreviewData::get_number_of_pages(QString filename){
+int QPreviewData::get_number_of_pages(QString filename)
+{
     Poppler::Document *document = Poppler::Document::load(filename);
-    if (!document || document->isLocked()){
+    if (!document || document->isLocked()) {
         qCritical("File '%s' does not exist or is locked!", qUtf8Printable(filename));
         return 0;
     }
@@ -67,7 +69,8 @@ int QPreviewData::get_number_of_pages(QString filename){
     return document->numPages();
 }
 
-QSizeF QPreviewData::getPageSize(QString page) {
+QSizeF QPreviewData::getPageSize(QString page)
+{
     /*
      * Need to come up with a different logic
      * This will return page size of A1 for A10 or

@@ -7,32 +7,35 @@
 #include <QPainter>
 #include <QPrinter>
 
-class Tabs : public QWidget {
+class Tabs : public QWidget
+{
     Q_OBJECT
 public:
-    QQuickItem* rootObject;
-    Tabs(QWidget* parent = Q_NULLPTR);
+    QQuickItem *rootObject;
+    Tabs(QWidget *parent = Q_NULLPTR);
     ~Tabs() = default;
 
 private:
-    QQuickWidget* tabs;
+    QQuickWidget *tabs;
 };
 
-class Root : public QWidget {
+class Root : public QWidget
+{
     Q_OBJECT
 public:
-    QQuickItem* rootObject;
-    Root(QWidget* parent = Q_NULLPTR);
+    QQuickItem *rootObject;
+    Root(QWidget *parent = Q_NULLPTR);
     ~Root() = default;
 
 private:
-    QQuickWidget* root;
+    QQuickWidget *root;
 };
 
-class Preview : public QWidget {
+class Preview : public QWidget
+{
     Q_OBJECT
 public:
-    Preview(QPrinter* _printer, QWidget* parent = Q_NULLPTR);
+    Preview(QPrinter *_printer, QWidget *parent = Q_NULLPTR);
     ~Preview() = default;
     qreal widgetHeight = 0;
     qreal currentZoomFactor = 1;
@@ -44,23 +47,24 @@ public Q_SLOTS:
     void showPrevPage();
 
 private:
-    QPrinter* printer;
-    QPrintPreviewWidget* preview;
+    QPrinter *printer;
+    QPrintPreviewWidget *preview;
     int pageNumber = 0;
     int pageCount = 0;
     qreal paperHeight = 0;
     bool previewPainted = 0;
 };
 
-class Controls : public QWidget {
+class Controls : public QWidget
+{
     Q_OBJECT
 public:
-    QQuickItem* rootObject;
-    Controls(QWidget* parent = Q_NULLPTR);
+    QQuickItem *rootObject;
+    Controls(QWidget *parent = Q_NULLPTR);
     ~Controls() = default;
 
 private:
-    QQuickWidget* controls;
+    QQuickWidget *controls;
 };
 
 

@@ -1,24 +1,26 @@
 #include "components.h"
 #include <poppler/qt5/poppler-qt5.h>
 
-Tabs::Tabs(QWidget* parent) :
+Tabs::Tabs(QWidget *parent) :
     QWidget(parent),
-    tabs(new QQuickWidget(QUrl("qrc:/app/Tabs.qml"), this)) {
+    tabs(new QQuickWidget(QUrl("qrc:/app/Tabs.qml"), this))
+{
 
     tabs->setResizeMode(QQuickWidget::SizeRootObjectToView);
     tabs->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     rootObject = tabs->rootObject();
 }
 
-Root::Root(QWidget* parent) :
+Root::Root(QWidget *parent) :
     QWidget(parent),
-    root(new QQuickWidget(QUrl("qrc:/app/Root.qml"), this)) {
+    root(new QQuickWidget(QUrl("qrc:/app/Root.qml"), this))
+{
 
     root->setResizeMode(QQuickWidget::SizeRootObjectToView);
     root->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     rootObject = root->rootObject();
 }
-Preview::Preview(QPrinter* _printer, QWidget* parent) :
+Preview::Preview(QPrinter *_printer, QWidget *parent) :
     QWidget(parent),
     printer(_printer),
     preview(new QPrintPreviewWidget(printer, this))
@@ -31,12 +33,13 @@ Preview::Preview(QPrinter* _printer, QWidget* parent) :
     printer->setFullPage(false);
 
     QObject::connect(preview,
-                     SIGNAL(paintRequested(QPrinter*)),
+                     SIGNAL(paintRequested(QPrinter *)),
                      this,
                      SLOT(print()));
 }
 
-void Preview::print() {
+void Preview::print()
+{
     QPainter painter(printer);
     painter.setRenderHints(QPainter::Antialiasing |
                            QPainter::TextAntialiasing |
@@ -45,7 +48,7 @@ void Preview::print() {
     QFile f;
     f.setFileName(":/app/test.pdf");
     f.open(QIODevice::ReadOnly);
-    QByteArray pdf=f.readAll();
+    QByteArray pdf = f.readAll();
 
     Poppler::Document *document = Poppler::Document::loadFromData(pdf);
     if (!document)
@@ -59,7 +62,8 @@ void Preview::print() {
     if (page == nullptr)
         qCritical("File '%s' is empty?", qUtf8Printable(":/app/test.pdf"));
 
-    QImage image = page->renderToImage(72.0, 72.0, 0, 0, page->pageSize().width(), page->pageSize().height());
+    QImage image = page->renderToImage(72.0, 72.0, 0, 0, page->pageSize().width(),
+                                       page->pageSize().height());
     if (image.isNull())
         qCritical("Error!");
 
@@ -70,26 +74,30 @@ void Preview::print() {
     painter.end();
 }
 
-void Preview::setZoom(qreal zoomFactor) {
-    if(previewPainted)
+void Preview::setZoom(qreal zoomFactor)
+{
+    if (previewPainted)
         preview->setZoomFactor(zoomFactor  * (widgetHeight / paperHeight));
     preview->updatePreview();
     currentZoomFactor = zoomFactor;
 }
 
-void Preview::showNextPage() {
+void Preview::showNextPage()
+{
     pageNumber = pageNumber < (pageCount - 1) ? pageNumber + 1 : pageNumber;
     preview->updatePreview();
 }
 
-void Preview::showPrevPage() {
+void Preview::showPrevPage()
+{
     pageNumber = pageNumber > 0 ? pageNumber - 1 : pageNumber;
     preview->updatePreview();
 }
 
-Controls::Controls(QWidget* parent) :
+Controls::Controls(QWidget *parent) :
     QWidget(parent),
-    controls(new QQuickWidget(QUrl("qrc:/app/Controls.qml"), this)) {
+    controls(new QQuickWidget(QUrl("qrc:/app/Controls.qml"), this))
+{
 
     controls->setResizeMode(QQuickWidget::SizeRootObjectToView);
     controls->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

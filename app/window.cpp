@@ -46,7 +46,7 @@ _Window::_Window(QPrinter *printer, QWidget *parent) :
                      preview,
                      SLOT(showPrevPage()));
 
-    QObject* generalObject = root->rootObject->findChild<QObject*>("generalObject");
+    QObject *generalObject = root->rootObject->findChild<QObject *>("generalObject");
 
     QObject::connect(generalObject,
                      SIGNAL(newPrinterSelected(QString)),
@@ -89,40 +89,46 @@ _Window::_Window(QPrinter *printer, QWidget *parent) :
     init_backend();
 }
 
-CPrintDialog::CPrintDialog(QPrinter* printer, QWidget *parent) :
+CPrintDialog::CPrintDialog(QPrinter *printer, QWidget *parent) :
     QAbstractPrintDialog(printer, parent)
 {
     _window = new _Window(printer, parent);
     _window->show();
 }
 
-void _Window::tabBarIndexChanged(qint32 index) {
+void _Window::tabBarIndexChanged(qint32 index)
+{
     root->rootObject->setProperty("index", index);
 }
 
-void _Window::swipeViewIndexChanged(qint32 index) {
+void _Window::swipeViewIndexChanged(qint32 index)
+{
     tabs->rootObject->setProperty("index", index);
 }
 
-void _Window::cancelButtonClicked() {
+void _Window::cancelButtonClicked()
+{
     exit(0);
 }
 
-static int add_printer_callback(PrinterObj *p) {
+static int add_printer_callback(PrinterObj *p)
+{
     //qDebug() << "Printer" << p->name << "added!";
     _window->addPrinter(p->name);
 }
 
-static int remove_printer_callback(char *printer_name) {
+static int remove_printer_callback(char *printer_name)
+{
     qDebug() << "Printer" << printer_name << "removed!";
 }
 
-gpointer _Window::ui_add_printer(gpointer user_data) {
+gpointer _Window::ui_add_printer(gpointer user_data)
+{
     /*
      * Need this delay so that the FrontendObj
      * initialization completes
     */
-    bool* enabled = (bool*)user_data;
+    bool *enabled = (bool *)user_data;
     for (int i = 0; i < 100000000; i++);
     Command cmd;
     if (*enabled)
@@ -134,23 +140,25 @@ gpointer _Window::ui_add_printer(gpointer user_data) {
     g_hash_table_foreach(f->printer, ui_add_printer_aux, NULL);
 }
 
-void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data) {
-    _window->addPrinter((const char*)key);
+void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data)
+{
+    _window->addPrinter((const char *)key);
 }
 
-void _Window::addPrinter(const char *printer) {
-    QObject* obj = root->rootObject->findChild<QObject*>("generalObject");
+void _Window::addPrinter(const char *printer)
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("generalObject");
     if (obj) {
         QMetaObject::invokeMethod(obj,
                                   "updateDestinationModel",
                                   Q_ARG(QVariant, printer));
-    }
-    else
+    } else
         qDebug() << "generalObject Not Found";
 }
 
-gpointer _Window::parse_commands(gpointer user_data) {
-    Command* cmd = (Command*)user_data;
+gpointer _Window::parse_commands(gpointer user_data)
+{
+    Command *cmd = (Command *)user_data;
     if (cmd->command.compare("hide-remote-cups") == 0)
         hide_remote_cups_printers(f);
     else if (cmd->command.compare("unhide-remote-cups") == 0)
@@ -172,7 +180,8 @@ gpointer _Window::parse_commands(gpointer user_data) {
     }
 }
 
-void _Window::init_backend() {
+void _Window::init_backend()
+{
     event_callback add_cb = (event_callback)add_printer_callback;
     event_callback rem_cb = (event_callback)remove_printer_callback;
     f = get_new_FrontendObj(NULL, add_cb, rem_cb);
@@ -182,17 +191,18 @@ void _Window::init_backend() {
     //ui_add_printer(&enabled);
 }
 
-void _Window::clearPrinters() {
-    QObject* obj = root->rootObject->findChild<QObject*>("generalObject");
+void _Window::clearPrinters()
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("generalObject");
     if (obj) {
         QMetaObject::invokeMethod(obj,
                                   "clearDestinationModel");
-    }
-    else
+    } else
         qDebug() << "generalObject Not Found";
 }
 
-void _Window::newPrinterSelected(const QString &printer) {
+void _Window::newPrinterSelected(const QString &printer)
+{
     Command cmd;
     cmd.command = "get-all-options";
     cmd.arg1 = printer.toStdString();
@@ -200,7 +210,8 @@ void _Window::newPrinterSelected(const QString &printer) {
         parse_commands(&cmd);
 }
 
-void _Window::remotePrintersToggled(const QString &enabled) {
+void _Window::remotePrintersToggled(const QString &enabled)
+{
     qDebug() << enabled;
 }
 

@@ -10,7 +10,7 @@
 #include <QDebug>
 
 extern "C" {
-    #include "../backends/cups/src/CPD.h"
+#include "../backends/cups/src/CPD.h"
 }
 
 class QPrinter;
@@ -25,7 +25,8 @@ typedef struct {
     std::string arg2;
 } Command;
 
-class _Window : public QWidget {
+class _Window : public QWidget
+{
     Q_OBJECT
 public:
     FrontendObj *f;
@@ -35,15 +36,15 @@ public:
     Controls *controls;
     QGridLayout *masterLayout;
 
-    _Window(QPrinter* printer, QWidget* parent = Q_NULLPTR);
+    _Window(QPrinter *printer, QWidget *parent = Q_NULLPTR);
     void init_backend();
-    void addPrinter(const char* printer);
+    void addPrinter(const char *printer);
     void clearPrinters();
-    void addPrinterSupportedMedia(char* media) {}
+    void addPrinterSupportedMedia(char *media) {}
     void clearPrintersSupportedMedia() {}
     void addMaximumPrintCopies(int copies) {}
-    void addJobHoldUntil(char* startJobOption) {}
-    void addPagesPerSize(char* pages) {}
+    void addJobHoldUntil(char *startJobOption) {}
+    void addPagesPerSize(char *pages) {}
     void updateAllOptions(const QString &printer);
     gpointer parse_commands(gpointer user_data);
     gpointer ui_add_printer(gpointer user_data);
@@ -57,7 +58,8 @@ public Q_SLOTS:
 
 };
 
-class Q_PRINTSUPPORT_EXPORT CPrintDialog : public QAbstractPrintDialog {
+class Q_PRINTSUPPORT_EXPORT CPrintDialog : public QAbstractPrintDialog
+{
 public:
     CPrintDialog(QPrinter *printer, QWidget *parent = Q_NULLPTR);
     int exec() override {}
