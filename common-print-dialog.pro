@@ -14,13 +14,8 @@ unix {
 }
 
 SOURCES += \
-    app/preview.cpp \
     cpd.cpp \
     app/components.cpp \
-    backends/cups/src/backend_interface.c \
-    backends/cups/src/common_helper.c \
-    backends/cups/src/frontend_helper.c \
-    backends/cups/src/frontend_interface.c \
     app/window.cpp
 
 RESOURCES += qml.qrc
@@ -53,15 +48,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    app/preview.h \
     cpd.h \
     cpd_global.h \
     app/components.h \
-    backends/cups/release/headers/backend_interface.h \
-    backends/cups/release/headers/common_helper.h \
-    backends/cups/release/headers/CPD.h \
-    backends/cups/release/headers/frontend_helper.h \
-    backends/cups/release/headers/frontend_interface.h \
     app/window.h
 
-#LIBS += -L/home/anshul/Dropbox/Documents/common-print-dialog/backends/cups/release/libs -lCPD -lCPDcore
+LIBS +=  -L/usr/lib/ -lCPDFrontend
+
+INCLUDEPATH += $$PWD/backends/cups/release/headers
+DEPENDPATH += $$PWD/backends/cups/release/headers

@@ -10,13 +10,13 @@
 #include <QDebug>
 
 extern "C" {
-#include "../backends/cups/src/CPD.h"
+#include <CPD.h>
 }
 
 class QPrinter;
 
-static int add_printer_callback(PrinterObj *p);
-static int remove_printer_callback(char *printer_name);
+static void add_printer_callback(PrinterObj *p);
+static void remove_printer_callback(char *printer_name);
 void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data);
 
 typedef struct {
@@ -46,7 +46,7 @@ public:
     void addJobHoldUntil(char *startJobOption) {}
     void addPagesPerSize(char *pages) {}
     void updateAllOptions(const QString &printer);
-    gpointer parse_commands(gpointer user_data);
+    void parse_commands(Command cmd);
     gpointer ui_add_printer(gpointer user_data);
 
 public Q_SLOTS:

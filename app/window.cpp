@@ -4,11 +4,11 @@ _Window *_window;
 
 _Window::_Window(QPrinter *printer, QWidget *parent) :
     QWidget(parent),
-    masterLayout(new QGridLayout(this)),
     tabs(new Tabs(this)),
     root(new Root(this)),
     preview(new Preview(printer, this)),
-    controls(new Controls(this))
+    controls(new Controls(this)),
+    masterLayout(new QGridLayout(this))
 {
     /*
      * masterLayout
@@ -111,15 +111,15 @@ void _Window::cancelButtonClicked()
     exit(0);
 }
 
-static int add_printer_callback(PrinterObj *p)
+static void add_printer_callback(PrinterObj *p)
 {
     //qDebug() << "Printer" << p->name << "added!";
     _window->addPrinter(p->name);
 }
 
-static int remove_printer_callback(char *printer_name)
+static void remove_printer_callback(char *printer_name)
 {
-    qDebug() << "Printer" << printer_name << "removed!";
+    qDebug() << "Printer" << printer_name << "removed! callback";
 }
 
 gpointer _Window::ui_add_printer(gpointer user_data)
@@ -135,14 +135,14 @@ gpointer _Window::ui_add_printer(gpointer user_data)
         cmd.command = "unhide-remote-cups";
     else
         cmd.command = "hide-remote-cups";
-    parse_commands(&cmd);
+    parse_commands(cmd);
     clearPrinters();
     g_hash_table_foreach(f->printer, ui_add_printer_aux, NULL);
 }
 
 void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data)
 {
-    _window->addPrinter((const char *)key);
+    _window->addPrinter(static_cast<const char *>(key));
 }
 
 void _Window::addPrinter(const char *printer)
@@ -156,27 +156,26 @@ void _Window::addPrinter(const char *printer)
         qDebug() << "generalObject Not Found";
 }
 
-gpointer _Window::parse_commands(gpointer user_data)
+void _Window::parse_commands(Command cmd)
 {
-    Command *cmd = (Command *)user_data;
-    if (cmd->command.compare("hide-remote-cups") == 0)
+    if (cmd.command.compare("hide-remote-cups") == 0)
         hide_remote_cups_printers(f);
-    else if (cmd->command.compare("unhide-remote-cups") == 0)
+    else if (cmd.command.compare("unhide-remote-cups") == 0)
         unhide_remote_cups_printers(f);
-    else if (cmd->command.compare("get-all-options") == 0) {
+    else if (cmd.command.compare("get-all-options") == 0) {
         char printerName[300];
-        strcpy(printerName, cmd->arg1.c_str());
+        strcpy(printerName, cmd.arg1.c_str());
         Options *options = get_all_printer_options(_window->f, printerName, "CUPS");
-        for (int i = 0; i < options->count; i++) {
-            GHashTableIter iterator;
-            g_hash_table_iter_init(&iterator, options->table);
-            GList *keys = g_hash_table_get_keys(options->table);
-            qDebug() << (char *)keys->data;
-//            for (int j = 0; j < options[0][i].num_supported; j++)
-//                qDebug() << options[0][i].supported_values[j];
-//            qDebug() << "-----------";
+        GHashTableIter iterator;
+        g_hash_table_iter_init(&iterator, options->table);
+        gpointer _key, _value;
+        while (g_hash_table_iter_next(&iterator, &_key, &_value)) {
+            char *key = (char *)_key;
+            Option *value = (Option *)_value;
+            if (strcmp(key, "media") == 0) {
+                qDebug() << "123media";
+            }
         }
-
     }
 }
 
@@ -185,10 +184,7 @@ void _Window::init_backend()
     event_callback add_cb = (event_callback)add_printer_callback;
     event_callback rem_cb = (event_callback)remove_printer_callback;
     f = get_new_FrontendObj(NULL, add_cb, rem_cb);
-    //bool enabled = true;
-    //g_thread_new("add_printer_thread", (GThreadFunc)ui_add_printer, &enabled);
     connect_to_dbus(f);
-    //ui_add_printer(&enabled);
 }
 
 void _Window::clearPrinters()
@@ -207,12 +203,15 @@ void _Window::newPrinterSelected(const QString &printer)
     cmd.command = "get-all-options";
     cmd.arg1 = printer.toStdString();
     if (cmd.arg1.compare("") != 0)
-        parse_commands(&cmd);
+        parse_commands(cmd);
 }
 
 void _Window::remotePrintersToggled(const QString &enabled)
 {
-    qDebug() << enabled;
+    bool toggle = enabled.compare("true") == 0 ? true : false;
+    Command cmd;
+    cmd.command = toggle ? "unhide-remote-cups" : "hide-remote-cups";
+    parse_commands(cmd);
 }
 
 void ui_add_job_hold_until(char *startJobOption) {}
