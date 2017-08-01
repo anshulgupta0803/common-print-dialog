@@ -1,5 +1,5 @@
 #include "cpd.h"
-#include "app/window.h"
+#include "app/QCPDialog.h"
 
 CPD::CPD(QPrinter *printer, QWidget *parent) :
     QWidget(parent)

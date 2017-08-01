@@ -1,42 +1,31 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef QCPDIALOG_H
+#define QCPDIALOG_H
 
-#include <QGridLayout>
-#include <QPainter>
 #include <QAbstractPrintDialog>
-#include <QPrinter>
-#include "components.h"
-
-#include <QDebug>
-
-extern "C" {
-#include <CPD.h>
-}
 
 class QPrinter;
+class QGridLayout;
+class Tabs;
+class Root;
+class Preview;
+class Controls;
 
-static void add_printer_callback(PrinterObj *p);
-static void remove_printer_callback(char *printer_name);
-void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data);
+struct _FrontendObj;
+using FrontendObj = _FrontendObj;
 
-typedef struct {
-    std::string command;
-    std::string arg1;
-    std::string arg2;
-} Command;
+struct _GMainLoop;
+using GMainLoop = _GMainLoop;
 
-class _Window : public QWidget
+struct _PrinterObj;
+using PrinterObj = _PrinterObj;
+
+using gpointer = void *;
+
+class QCPDialog : public QAbstractPrintDialog
 {
     Q_OBJECT
 public:
-    FrontendObj *f;
-    Tabs *tabs;
-    Root *root;
-    Preview *preview;
-    Controls *controls;
-    QGridLayout *masterLayout;
-
-    _Window(QPrinter *printer, QWidget *parent = Q_NULLPTR);
+    QCPDialog(QPrinter *printer, QWidget *parent = Q_NULLPTR);
     void init_backend();
     void addPrinter(const char *printer);
     void clearPrinters();
@@ -46,8 +35,11 @@ public:
     void addJobHoldUntil(char *startJobOption) {}
     void addPagesPerSize(char *pages) {}
     void updateAllOptions(const QString &printer);
-    void parse_commands(Command cmd);
-    gpointer ui_add_printer(gpointer user_data);
+    void parse_commands(gpointer user_data);
+    int exec() override
+    {
+        return QDialog::exec();
+    }
 
 public Q_SLOTS:
     void tabBarIndexChanged(qint32 index);
@@ -56,13 +48,23 @@ public Q_SLOTS:
     void newPrinterSelected(const QString &printer);
     void remotePrintersToggled(const QString &enabled);
 
+private:
+    FrontendObj *f;
+    Tabs *tabs;
+    Root *root;
+    Preview *preview;
+    Controls *controls;
+    QGridLayout *masterLayout;
 };
 
 class Q_PRINTSUPPORT_EXPORT CPrintDialog : public QAbstractPrintDialog
 {
 public:
     CPrintDialog(QPrinter *printer, QWidget *parent = Q_NULLPTR);
-    int exec() override {}
+    int exec() override
+    {
+        return 0;
+    }
 };
 
-#endif // WINDOW_H
+#endif // QCPDIALOG_H

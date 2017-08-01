@@ -14,16 +14,23 @@ unix {
 }
 
 SOURCES += \
-    cpd.cpp \
     app/components.cpp \
-    app/window.cpp
+    app/QCPDialog.cpp \
+    cpd.cpp
+
+HEADERS += \
+    app/components.h \
+    app/QCPDialog.h \
+    cpd.h \
+    cpd_global.h
+
+
+LIBS +=  -L/usr/lib/ -lCPDFrontend -lcups
+
+DEPENDPATH += $$PWD/backends/cups/release/headers
+INCLUDEPATH += $${DEPENDPATH}
 
 RESOURCES += qml.qrc
-
-LIBS += -lcups
-
-DEPENDPATH += backends/cups
-INCLUDEPATH += $${DEPENDPATH}
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -46,14 +53,3 @@ DEFINES += QT_DEPRECATED_WARNINGS COMMONPRINTDIALOGLIBRARY_LIBRARY
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-HEADERS += \
-    cpd.h \
-    cpd_global.h \
-    app/components.h \
-    app/window.h
-
-LIBS +=  -L/usr/lib/ -lCPDFrontend
-
-INCLUDEPATH += $$PWD/backends/cups/release/headers
-DEPENDPATH += $$PWD/backends/cups/release/headers
