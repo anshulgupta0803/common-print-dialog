@@ -2,6 +2,7 @@
 #define QCPDIALOG_H
 
 #include <QAbstractPrintDialog>
+#include <CPDFrontend.h>
 
 class QPrinter;
 class QGridLayout;

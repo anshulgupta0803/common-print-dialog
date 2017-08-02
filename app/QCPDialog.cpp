@@ -2,7 +2,7 @@
 #include <QGridLayout>
 #include <QQuickItem>
 #include "components.h"
-#include <CPD.h>
+#include <CPDFrontend.h>
 
 namespace {
 struct Command {
