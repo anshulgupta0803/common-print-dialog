@@ -1,8 +1,11 @@
 #ifndef QCPDIALOG_H
 #define QCPDIALOG_H
 
-#include <QAbstractPrintDialog>
+extern "C" {
 #include <CPDFrontend.h>
+}
+
+#include <QAbstractPrintDialog>
 
 class QPrinter;
 class QGridLayout;
