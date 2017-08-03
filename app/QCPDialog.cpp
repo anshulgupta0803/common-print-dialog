@@ -2,7 +2,9 @@
 #include <QGridLayout>
 #include <QQuickItem>
 #include "components.h"
+extern "C" {
 #include <CPDFrontend.h>
+}
 
 namespace {
 struct Command {
@@ -100,13 +102,6 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
     init_backend();
 }
 
-CPrintDialog::CPrintDialog(QPrinter *printer, QWidget *parent) :
-    QAbstractPrintDialog(printer, parent)
-{
-    qcpdialog = new QCPDialog(printer, parent);
-    qcpdialog->show();
-}
-
 void QCPDialog::tabBarIndexChanged(qint32 index)
 {
     root->rootObject->setProperty("index", index);
@@ -124,13 +119,13 @@ void QCPDialog::cancelButtonClicked()
 
 static void add_printer_callback(PrinterObj *p)
 {
-    //qDebug() << "Printer" << p->name << "added!";
-    qcpdialog->addPrinter(p->name);
+    qDebug() << "Printer" << p->name << "added!";
+    //qcpdialog->addPrinter(p->name);
 }
 
 static void remove_printer_callback(char *printer_name)
 {
-    qDebug() << "Printer" << printer_name << "removed! callback";
+    qDebug() << "Printer" << printer_name << "removed!";
 }
 
 void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data)
@@ -142,13 +137,18 @@ void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data)
 
 void QCPDialog::addPrinter(const char *printer)
 {
+    qDebug() << printer << "0";
     QObject *obj = root->rootObject->findChild<QObject *>("generalObject");
+    qDebug() << printer << "1";
     if (obj) {
+        qDebug() << printer << "2";
         QMetaObject::invokeMethod(obj,
                                   "updateDestinationModel",
                                   Q_ARG(QVariant, printer));
-    } else
+        qDebug() << "3";
+    } else {
         qDebug() << "generalObject Not Found";
+    }
 }
 
 void QCPDialog::parse_commands(gpointer user_data)
@@ -216,3 +216,9 @@ void ui_add_pages_per_side(char *pages) {}
 void ui_clear_supported_media() {}
 
 void ui_add_supported_media(char *media) {}
+
+QString QCPDialog::information()
+{
+    QString str = "CPD Library";
+    return str;
+}

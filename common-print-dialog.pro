@@ -2,7 +2,7 @@ QT += qml quick widgets quickwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += printsupport
 
-TARGET = cpd
+TARGET = QCPDialog
 TEMPLATE = lib
 
 CONFIG += c++11 no_keywords
@@ -15,17 +15,13 @@ unix {
 
 SOURCES += \
     app/components.cpp \
-    app/QCPDialog.cpp \
-    cpd.cpp
+    app/QCPDialog.cpp
 
 HEADERS += \
     app/components.h \
     app/QCPDialog.h \
-    cpd.h \
-    cpd_global.h
+    app/QCPDialog_global.h
 
 RESOURCES += qml.qrc
-DEFINES += CPD_LIBRARY
+DEFINES += QCPDIALOG_LIBRARY
 DEFINES += QT_DEPRECATED_WARNINGS
-
-QMAKE_LFLAGS += -fPIC

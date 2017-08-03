@@ -1,8 +1,9 @@
 #ifndef QCPDIALOG_H
 #define QCPDIALOG_H
 
+#include "QCPDialog_global.h"
+
 #include <QAbstractPrintDialog>
-#include <CPDFrontend.h>
 
 class QPrinter;
 class QGridLayout;
@@ -22,7 +23,7 @@ using PrinterObj = _PrinterObj;
 
 using gpointer = void *;
 
-class QCPDialog : public QAbstractPrintDialog
+class CPDSHARED_EXPORT QCPDialog : public QAbstractPrintDialog
 {
     Q_OBJECT
 public:
@@ -37,6 +38,7 @@ public:
     void addPagesPerSize(char *pages) {}
     void updateAllOptions(const QString &printer);
     void parse_commands(gpointer user_data);
+    QString information();
     int exec() override
     {
         return QDialog::exec();
@@ -56,16 +58,6 @@ private:
     Preview *preview;
     Controls *controls;
     QGridLayout *masterLayout;
-};
-
-class Q_PRINTSUPPORT_EXPORT CPrintDialog : public QAbstractPrintDialog
-{
-public:
-    CPrintDialog(QPrinter *printer, QWidget *parent = Q_NULLPTR);
-    int exec() override
-    {
-        return 0;
-    }
 };
 
 #endif // QCPDIALOG_H
