@@ -12,7 +12,6 @@ struct Command {
     std::string arg1;
     std::string arg2;
 };
-QCPDialog *qcpdialog;
 }
 
 QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
@@ -114,13 +113,13 @@ void QCPDialog::swipeViewIndexChanged(qint32 index)
 
 void QCPDialog::cancelButtonClicked()
 {
-    exit(0);
+    disconnect_from_dbus(f);
+    close();
 }
 
 static void add_printer_callback(PrinterObj *p)
 {
     qDebug() << "Printer" << p->name << "added!";
-    //qcpdialog->addPrinter(p->name);
 }
 
 static void remove_printer_callback(char *printer_name)
@@ -128,24 +127,13 @@ static void remove_printer_callback(char *printer_name)
     qDebug() << "Printer" << printer_name << "removed!";
 }
 
-void ui_add_printer_aux(gpointer key, gpointer value, gpointer user_data)
-{
-    Q_UNUSED(value);
-    Q_UNUSED(user_data);
-    qcpdialog->addPrinter(static_cast<const char *>(key));
-}
-
 void QCPDialog::addPrinter(const char *printer)
 {
-    qDebug() << printer << "0";
     QObject *obj = root->rootObject->findChild<QObject *>("generalObject");
-    qDebug() << printer << "1";
     if (obj) {
-        qDebug() << printer << "2";
         QMetaObject::invokeMethod(obj,
                                   "updateDestinationModel",
                                   Q_ARG(QVariant, printer));
-        qDebug() << "3";
     } else {
         qDebug() << "generalObject Not Found";
     }
@@ -161,7 +149,7 @@ void QCPDialog::parse_commands(gpointer user_data)
     else if (cmd->command.compare("get-all-options") == 0) {
         char printerName[300];
         strcpy(printerName, cmd->arg1.c_str());
-        Options *options = get_all_printer_options(qcpdialog->f, printerName, (char *)"CUPS");
+        Options *options = get_all_printer_options(f, printerName, (char *)"CUPS");
         GHashTableIter iterator;
         g_hash_table_iter_init(&iterator, options->table);
         gpointer _key, _value;
@@ -195,7 +183,8 @@ void QCPDialog::clearPrinters()
 
 void QCPDialog::newPrinterSelected(const QString &printer)
 {
-    Options *options = get_all_printer_options(f, printer.toLatin1().data(), "CUPS");
+    QStringList list = printer.split('#');
+    Options *options = get_all_printer_options(f, list[0].toLatin1().data(), list[1].toLatin1().data());
     qDebug() << "Total Options:" << options->count;
 }
 

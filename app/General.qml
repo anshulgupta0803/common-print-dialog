@@ -61,6 +61,14 @@ RowLayout {
 
             ListModel {
                 id: destinationModel
+                ListElement {
+                    destination: "3100CN"
+                    backend: "CUPS"
+                }
+                ListElement {
+                    destination: "X950"
+                    backend: "CUPS"
+                }
             }
 
             ComboBox {
@@ -69,6 +77,7 @@ RowLayout {
                 width: parent.width * 0.65
                 Layout.minimumWidth: parent.width * 0.65
                 Layout.preferredWidth: parent.width * 0.65
+                textRole: "destination"
 
                 font.pixelSize: Style.textSize
 
@@ -79,7 +88,8 @@ RowLayout {
                 }
 
                 onCurrentIndexChanged: {
-                    newPrinterSelected(destinationComboBox.textAt(destinationComboBox.currentIndex))
+                    var element = destinationModel.get(destinationComboBox.currentIndex)
+                    newPrinterSelected(element.destination + "#" + element.backend)
                 }
             }
 
