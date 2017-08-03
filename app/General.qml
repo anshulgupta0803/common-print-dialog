@@ -16,8 +16,8 @@ RowLayout {
         destinationModel.clear()
     }
 
-    function updateDestinationModel(printer) {
-        destinationModel.append({destination: printer})
+    function updateDestinationModel(printer, backend) {
+        destinationModel.append({destination: printer, backend: backend})
         if (destinationComboBox.count > 0 && destinationComboBox.currentIndex == -1)
             destinationComboBox.currentIndex = 0
     }

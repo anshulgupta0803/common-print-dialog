@@ -13,6 +13,10 @@ ColumnLayout{
             startJobComboBox.currentIndex = 0
     }
 
+    function clearStartJobsModel() {
+        startJobModel.clear()
+    }
+
     Layout.fillWidth: true
 
     ListModel{
