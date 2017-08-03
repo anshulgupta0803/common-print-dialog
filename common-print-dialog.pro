@@ -22,6 +22,6 @@ HEADERS += \
     app/QCPDialog.h \
     app/QCPDialog_global.h
 
-RESOURCES += qml.qrc
+RESOURCES += app/qml.qrc
 DEFINES += QCPDIALOG_LIBRARY
 DEFINES += QT_DEPRECATED_WARNINGS

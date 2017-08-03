@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Root.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>MoreOptions.qml</file>
+        <file>General.qml</file>
+        <file>PageSetup.qml</file>
+        <file>Preview.qml</file>
+        <file>Jobs.qml</file>
+        <file>Advanced.qml</file>
+        <file>test.pdf</file>
+        <file>Style.qml</file>
+        <file>qmldir</file>
+        <file>Options.qml</file>
+        <file>Controls.qml</file>
+        <file>Tabs.qml</file>
+    </qresource>
+</RCC>

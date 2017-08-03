@@ -3,7 +3,7 @@
 
 Tabs::Tabs(QWidget *parent) :
     QWidget(parent),
-    tabs(new QQuickWidget(QUrl("qrc:/app/Tabs.qml"), this))
+    tabs(new QQuickWidget(QUrl("qrc:/Tabs.qml"), this))
 {
 
     tabs->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -13,7 +13,7 @@ Tabs::Tabs(QWidget *parent) :
 
 Root::Root(QWidget *parent) :
     QWidget(parent),
-    root(new QQuickWidget(QUrl("qrc:/app/Root.qml"), this))
+    root(new QQuickWidget(QUrl("qrc:/Root.qml"), this))
 {
 
     root->setResizeMode(QQuickWidget::SizeRootObjectToView);
@@ -46,21 +46,21 @@ void Preview::print()
                            QPainter::SmoothPixmapTransform);
 
     QFile f;
-    f.setFileName(":/app/test.pdf");
+    f.setFileName(":/test.pdf");
     f.open(QIODevice::ReadOnly);
     QByteArray pdf = f.readAll();
 
     Poppler::Document *document = Poppler::Document::loadFromData(pdf);
     if (!document)
-        qCritical("File '%s' does not exist!", qUtf8Printable(":/app/test.pdf"));
+        qCritical("File '%s' does not exist!", qUtf8Printable(":/test.pdf"));
     if (document->isLocked())
-        qCritical("File %s is locked!", qUtf8Printable(":/app/test.pdf"));
+        qCritical("File %s is locked!", qUtf8Printable(":/test.pdf"));
 
     pageCount = document->numPages();
 
     Poppler::Page *page = document->page(pageNumber);
     if (page == nullptr)
-        qCritical("File '%s' is empty?", qUtf8Printable(":/app/test.pdf"));
+        qCritical("File '%s' is empty?", qUtf8Printable(":/test.pdf"));
 
     QImage image = page->renderToImage(72.0, 72.0, 0, 0, page->pageSize().width(),
                                        page->pageSize().height());
@@ -96,7 +96,7 @@ void Preview::showPrevPage()
 
 Controls::Controls(QWidget *parent) :
     QWidget(parent),
-    controls(new QQuickWidget(QUrl("qrc:/app/Controls.qml"), this))
+    controls(new QQuickWidget(QUrl("qrc:/Controls.qml"), this))
 {
 
     controls->setResizeMode(QQuickWidget::SizeRootObjectToView);
