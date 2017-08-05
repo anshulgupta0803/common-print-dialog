@@ -37,11 +37,9 @@ class Preview : public QWidget
 public:
     Preview(QPrinter *_printer, QWidget *parent = Q_NULLPTR);
     ~Preview() = default;
-    qreal widgetHeight = 0;
-    qreal currentZoomFactor = 1;
 
 public Q_SLOTS:
-    void print();
+    void print(QPrinter *printer);
     void setZoom(qreal zoomFactor);
     void showNextPage();
     void showPrevPage();
@@ -51,8 +49,8 @@ private:
     QPrintPreviewWidget *preview;
     int pageNumber = 0;
     int pageCount = 0;
-    qreal paperHeight = 0;
-    bool previewPainted = 0;
+    qreal baseZoomFactor = 0;
+    bool zoomChanged = false;
 };
 
 class Controls : public QWidget

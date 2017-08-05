@@ -26,60 +26,70 @@ Preview::Preview(QPrinter *_printer, QWidget *parent) :
     preview(new QPrintPreviewWidget(printer, this))
 {
     preview->setGeometry(0, 0, 380, 408);
-    preview->fitToWidth();
+    preview->fitInView();
 
-    printer->setPaperSize(QPrinter::Letter);
+    printer->setPaperSize(QPrinter::A4);
     printer->setOrientation(QPrinter::Portrait);
-    printer->setFullPage(false);
 
     QObject::connect(preview,
                      SIGNAL(paintRequested(QPrinter *)),
                      this,
-                     SLOT(print()));
+                     SLOT(print(QPrinter *)));
 }
 
-void Preview::print()
+void Preview::print(QPrinter *printer)
 {
-    QPainter painter(printer);
+    QPainter painter;
+    painter.begin(printer);
+
     painter.setRenderHints(QPainter::Antialiasing |
                            QPainter::TextAntialiasing |
                            QPainter::SmoothPixmapTransform);
 
-    QFile f;
-    f.setFileName(":/test.pdf");
-    f.open(QIODevice::ReadOnly);
-    QByteArray pdf = f.readAll();
-
-    Poppler::Document *document = Poppler::Document::loadFromData(pdf);
-    if (!document)
-        qCritical("File '%s' does not exist!", qUtf8Printable(":/test.pdf"));
-    if (document->isLocked())
-        qCritical("File %s is locked!", qUtf8Printable(":/test.pdf"));
-
-    pageCount = document->numPages();
-
-    Poppler::Page *page = document->page(pageNumber);
-    if (page == nullptr)
-        qCritical("File '%s' is empty?", qUtf8Printable(":/test.pdf"));
-
-    QImage image = page->renderToImage(72.0, 72.0, 0, 0, page->pageSize().width(),
-                                       page->pageSize().height());
-    if (image.isNull())
-        qCritical("Error!");
-
-    paperHeight = page->pageSize().height();
-    previewPainted = true;
-
-    painter.drawImage(0, 0, image, 0, 0, 0, 0, 0);
+    QString text{"Hello World!"};
+    QRect rect({100, 100}, QSize{500, 500});
+    painter.drawText(rect, Qt::AlignLeft | Qt::AlignTop, text);
+    painter.drawEllipse(rect);
     painter.end();
+
+//    QFile f;
+//    f.setFileName(":/test.pdf");
+//    f.open(QIODevice::ReadOnly);
+//    QByteArray pdf = f.readAll();
+
+//    Poppler::Document *document = Poppler::Document::loadFromData(pdf);
+//    if (!document)
+//        qCritical("File '%s' does not exist!", qUtf8Printable(":/test.pdf"));
+//    if (document->isLocked())
+//        qCritical("File %s is locked!", qUtf8Printable(":/test.pdf"));
+
+//    pageCount = document->numPages();
+
+//    Poppler::Page *page = document->page(pageNumber);
+//    if (page == nullptr)
+//        qCritical("File '%s' is empty?", qUtf8Printable(":/test.pdf"));
+
+//    QImage image = page->renderToImage(72.0, 72.0, 0, 0, page->pageSize().width(),
+//                                       page->pageSize().height());
+//    if (image.isNull())
+//        qCritical("Error!");
+
+//    painter.drawImage(0, 0, image, 0, 0, 0, 0, 0);
+//    painter.end();
 }
 
 void Preview::setZoom(qreal zoomFactor)
 {
-    if (previewPainted)
-        preview->setZoomFactor(zoomFactor  * (widgetHeight / paperHeight));
-    preview->updatePreview();
-    currentZoomFactor = zoomFactor;
+    if (!zoomChanged) {
+        // Sets the base zoom factor if zoom has not been changed
+        baseZoomFactor = preview->zoomFactor();
+        zoomChanged = true;
+    }
+    /* Whenever zoom slider changes, it rescales it down to
+     * baseZoomFactor and then zoom in to the desired amount.
+     */
+    preview->setZoomFactor(baseZoomFactor);
+    preview->zoomIn(zoomFactor);
 }
 
 void Preview::showNextPage()

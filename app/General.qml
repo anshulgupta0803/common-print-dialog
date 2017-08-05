@@ -12,25 +12,26 @@ RowLayout {
     signal newPrinterSelected(string printer)
     signal remotePrintersToggled(string enabled)
 
+    function updateDestinationModel(printer, backend) {
+        destinationModel.append({destination: printer, backend: backend})
+        if (destinationComboBox.currentIndex == -1 && destinationComboBox.count > 0)
+            destinationComboBox.currentIndex = 0
+    }
+
     function clearDestinationModel() {
         destinationModel.clear()
     }
 
-    function updateDestinationModel(printer, backend) {
-        destinationModel.append({destination: printer, backend: backend})
-        if (destinationComboBox.count > 0 && destinationComboBox.currentIndex == -1)
-            destinationComboBox.currentIndex = 0
+    function updatePaperSizeModel(media, isDefault) {
+        paperSizeModel.append({pageSize: media})
+        if (isDefault === 0)
+            paperSizeComboBox.currentIndex = paperSizeModel.count - 1
     }
 
     function clearPaperSizeModel() {
         paperSizeModel.clear()
     }
 
-    function updatePaperSizeModel(media) {
-        paperSizeModel.append({pageSize: media})
-        if (paperSizeComboBox.count > 0 && paperSizeComboBox.currentIndex == -1)
-            paperSizeComboBox.currentIndex = 0
-    }
 
     Item {
         id: leftGridLayoutContainer
@@ -204,6 +205,41 @@ RowLayout {
                 font.pixelSize: Style.textSize
                 editable: true
                 validator: IntValidator {}
+
+                onValueChanged: {
+                    if (copiesSpinBox.value > 1) {
+                        collateCheckBox.visible = true
+                        collateCheckBox.checked = true
+                    } else {
+                        collateCheckBox.visible = false
+                    }
+                }
+            }
+
+            Label {
+                id: pageHandlingLabel
+                text: qsTr("Page Handling")
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                font.pixelSize: Style.textSize
+            }
+
+            RowLayout {
+                id: pageHandlingRowLayout
+                spacing: 5
+
+                CheckBox {
+                    id: collateCheckBox
+                    text: qsTr("Collate")
+                    font.pixelSize: Style.textSize
+                    visible: false
+                    checked: true
+                }
+
+                CheckBox {
+                    id: reverseCheckBox
+                    text: qsTr("Reverse")
+                    font.pixelSize: Style.textSize
+                }
             }
 
             Label {
@@ -222,10 +258,7 @@ RowLayout {
                     text: qsTr("Portrait")
                     checked: true
                     font.pixelSize: Style.textSize
-                    onClicked: {
-                        generalPreview.orientationChanged("Portrait")
-
-                    }
+                    //onClicked: generalPreview.orientationChanged("Portrait")
                 }
 
                 RadioButton {
@@ -246,6 +279,9 @@ RowLayout {
 
             ListModel {
                 id: paperSizeModel
+                ListElement {
+                    pageSize: "A4"
+                }
             }
 
             ComboBox {
@@ -253,7 +289,7 @@ RowLayout {
                 model: paperSizeModel
                 delegate: ItemDelegate {
                     width: paperSizeComboBox.width
-                    text: qsTr(pageSize)
+                    text: pageSize
                     font.pixelSize: Style.textSize
                 }
 

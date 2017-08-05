@@ -7,16 +7,8 @@ extern "C" {
 #include <CPDFrontend.h>
 }
 
-namespace {
-struct Command {
-    std::string command;
-    std::string arg1;
-    std::string arg2;
-};
-}
-
 static void add_printer_callback(PrinterObj *p);
-static void remove_printer_callback(char *printer_name);
+static void remove_printer_callback(PrinterObj *p);
 
 QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
     QAbstractPrintDialog (printer, parent),
@@ -95,8 +87,6 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
     masterLayout->addWidget(preview,  1, 1, 1, 1);
     masterLayout->addWidget(controls, 2, 0, 1, 2);
 
-    preview->widgetHeight = masterLayout->itemAt(1)->geometry().height();
-
     adjustSize();
 
     setMaximumSize(700, 480);
@@ -118,9 +108,9 @@ static void add_printer_callback(PrinterObj *p)
     qDebug() << "Printer" << p->name << "added!";
 }
 
-static void remove_printer_callback(char *printer_name)
+static void remove_printer_callback(PrinterObj *p)
 {
-    qDebug() << "Printer" << printer_name << "removed!";
+    qDebug() << "Printer" << p->name << "removed!";
 }
 
 void QCPDialog::addPrinter(char *printer, char *backend)
@@ -154,27 +144,57 @@ void QCPDialog::newPrinterSelected(const QString &printer)
     while (g_hash_table_iter_next(&iter, &_key, &_value)) {
         char *key = static_cast<char *>(_key);
         Option *value = static_cast<Option *>(_value);
-        if (strcmp(key, "copies") == 0) {
+        if (strncmp(key, "copies", 6) == 0) {
             for (int i = 0; i < value->num_supported; i++)
                 addMaximumPrintCopies(value->supported_values[i]);
-        } else if (strcmp(key, "finishings") == 0) {
+        } else if (strncmp(key, "finishings", 10) == 0) {
 
-        } else if (strcmp(key, "ipp-attribute-fidelity") == 0) {
+        } else if (strncmp(key, "ipp-attribute-fidelity", 22) == 0) {
 
-        } else if (strcmp(key, "job-hold-until") == 0) {
-            clearJobHoldUntil();
+        } else if (strncmp(key, "job-hold-until", 14) == 0) {
+            clearStartJobsModel();
             for (int i = 0; i < value->num_supported; i++)
-                addJobHoldUntil(value->supported_values[i]);
+                updateStartJobsModel(value->supported_values[i]);
+        } else if (strncmp(key, "job-name", 8) == 0) {
+
+        } else if (strncmp(key, "job-priority", 12) == 0) {
+
+        } else if (strncmp(key, "job-sheets", 10) == 0) {
+
+        } else if (strncmp(key, "media-col", 9) == 0) {
+
+        } else if (strncmp(key, "media", 5) == 0) {
+            clearPaperSizeModel();
+            for (int i = 0; i < value->num_supported; i++)
+                updatePaperSizeModel(value->supported_values[i],
+                                     strcmp(value->supported_values[i], value->default_value));
+        } else if (strncmp(key, "multiple-document-handling", 26) == 0) {
+
+        } else if (strncmp(key, "number-up", 9) == 0) {
+
+        } else if (strncmp(key, "output-bin", 10) == 0) {
+
+        } else if (strncmp(key, "orientation-requested", 21) == 0) {
+
+        } else if (strncmp(key, "page-ranges", 11) == 0) {
+
+        } else if (strncmp(key, "print-color-mode", 16) == 0) {
+
+        } else if (strncmp(key, "print-quality", 13) == 0) {
+
+        } else if (strncmp(key, "printer-resolution", 18) == 0) {
+
+        } else if (strncmp(key, "sides", 5) == 0) {
+
+        } else {
+            qDebug() << "Unhandled Option:" << key;
         }
     }
 }
 
 void QCPDialog::remotePrintersToggled(const QString &enabled)
 {
-    bool toggle = enabled.compare("true") == 0 ? true : false;
-    Command cmd;
-    cmd.command = toggle ? "unhide-remote-cups" : "hide-remote-cups";
-    //parse_commands(&cmd);
+    enabled.compare("true") == 0 ? unhide_remote_cups_printers(f) : hide_remote_cups_printers(f);
 }
 
 void QCPDialog::addMaximumPrintCopies(char *_copies)
@@ -189,7 +209,7 @@ void QCPDialog::addMaximumPrintCopies(char *_copies)
         qDebug() << "generalObject Not Found";
 }
 
-void QCPDialog::addJobHoldUntil(char *startJobOption)
+void QCPDialog::updateStartJobsModel(char *startJobOption)
 {
     QObject *obj = root->rootObject->findChild<QObject *>("jobsObject");
     if (obj)
@@ -198,13 +218,34 @@ void QCPDialog::addJobHoldUntil(char *startJobOption)
         qDebug() << "jobsObject Not Found";
 }
 
-void QCPDialog::clearJobHoldUntil()
+void QCPDialog::clearStartJobsModel()
 {
     QObject *obj = root->rootObject->findChild<QObject *>("jobsObject");
     if (obj)
         QMetaObject::invokeMethod(obj, "clearStartJobsModel");
     else
         qDebug() << "jobsObject Not Found";
+}
+
+void QCPDialog::updatePaperSizeModel(char *media, int isDefault)
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("generalObject");
+    if (obj)
+        QMetaObject::invokeMethod(obj,
+                                  "updatePaperSizeModel",
+                                  Q_ARG(QVariant, media),
+                                  Q_ARG(QVariant, isDefault));
+    else
+        qDebug() << "generalObject Not Found";
+}
+
+void QCPDialog::clearPaperSizeModel()
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("generalObject");
+    if (obj)
+        QMetaObject::invokeMethod(obj, "clearPaperSizeModel");
+    else
+        qDebug() << "generalObject Not Found";
 }
 
 void QCPDialog::tabBarIndexChanged(qint32 index)

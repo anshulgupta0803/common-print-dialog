@@ -29,22 +29,25 @@ class CPDSHARED_EXPORT QCPDialog : public QAbstractPrintDialog
 public:
     QCPDialog(QPrinter *printer, QWidget *parent = Q_NULLPTR);
     void init_backend();
+
     void addPrinter(char *printer, char *backend);
     void clearPrinters();
+
     void addMaximumPrintCopies(char *_copies);
-    void addJobHoldUntil(char *startJobOption);
-    void clearJobHoldUntil();
-    void addPrinterSupportedMedia(char *media)
-    {
-        Q_UNUSED(media);
-    }
-    void clearPrintersSupportedMedia() {}
+
+    void updateStartJobsModel(char *startJobOption);
+    void clearStartJobsModel();
+
+    void updatePaperSizeModel(char *media, int isDefault);
+    void clearPaperSizeModel();
+
     void addPagesPerSize(char *pages)
     {
         Q_UNUSED(pages);
     }
-    void updateAllOptions(const QString &printer);
+
     QString information();
+
     int exec() override
     {
         return QDialog::exec();
