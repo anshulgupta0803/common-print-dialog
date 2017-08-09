@@ -1,0 +1,1241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE QDOCINDEX>
+<INDEX url="" title="Common Print Dialog Project" version="" project="Common Print Dialog">
+    <namespace threadsafety="unspecified" name="" status="commendable" access="public" module="common print dialog">
+        <function threadsafety="unspecified" name="remove_printer_callback" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="162" virtual="non" meta="plain" const="false" static="true" overload="false" type="void" signature="void remove_printer_callback(PrinterObj *p)">
+            <parameter left="PrinterObj *" right="" name="p" default=""/>
+        </function>
+        <class threadsafety="unspecified" name="QCPDialog" href="qcpdialog.html" status="commendable" access="public" location="QCPDialog.h" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.h" lineno="50" module="Common Print Dialog">
+            <function threadsafety="unspecified" name="QCPDialog" fullname="QCPDialog::QCPDialog" href="qcpdialog.html#QCPDialog" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="53" virtual="non" meta="constructor" const="false" static="false" overload="false" type="" signature="QCPDialog(QPrinter *printer, QWidget *parent)">
+                <parameter left="QPrinter *" right="" name="printer" default=""/>
+                <parameter left="QWidget *" right="" name="parent" default="Q_NULLPTR"/>
+            </function>
+            <function threadsafety="unspecified" name="addMaximumPrintCopies" fullname="QCPDialog::addMaximumPrintCopies" href="qcpdialog.html#addMaximumPrintCopies" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="281" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void addMaximumPrintCopies(char *_copies)">
+                <parameter left="char *" right="" name="_copies" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="addPrinter" fullname="QCPDialog::addPrinter" href="qcpdialog.html#addPrinter" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="173" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void addPrinter(char *printer, char *backend)">
+                <parameter left="char *" right="" name="printer" default=""/>
+                <parameter left="char *" right="" name="backend" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="cancelButtonClicked" fullname="QCPDialog::cancelButtonClicked" href="qcpdialog.html#cancelButtonClicked" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="386" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void cancelButtonClicked()"/>
+            <function threadsafety="unspecified" name="clearPaperSizeModel" fullname="QCPDialog::clearPaperSizeModel" href="qcpdialog.html#clearPaperSizeModel" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="348" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void clearPaperSizeModel()"/>
+            <function threadsafety="unspecified" name="clearPrinters" fullname="QCPDialog::clearPrinters" href="qcpdialog.html#clearPrinters" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="190" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void clearPrinters()"/>
+            <function threadsafety="unspecified" name="clearStartJobsModel" fullname="QCPDialog::clearStartJobsModel" href="qcpdialog.html#clearStartJobsModel" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="315" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void clearStartJobsModel()"/>
+            <function threadsafety="unspecified" name="information" fullname="QCPDialog::information" href="qcpdialog.html#information" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="397" virtual="non" meta="plain" const="false" static="false" overload="false" type="QString" signature="QString information()"/>
+            <function threadsafety="unspecified" name="init_backend" fullname="QCPDialog::init_backend" href="qcpdialog.html#init_backend" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="139" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void init_backend()"/>
+            <function threadsafety="unspecified" name="newPrinterSelected" fullname="QCPDialog::newPrinterSelected" href="qcpdialog.html#newPrinterSelected" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="205" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void newPrinterSelected(const QString &amp;printer)">
+                <parameter left="const QString &amp;" right="" name="printer" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="remotePrintersToggled" fullname="QCPDialog::remotePrintersToggled" href="qcpdialog.html#remotePrintersToggled" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="270" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void remotePrintersToggled(const QString &amp;enabled)">
+                <parameter left="const QString &amp;" right="" name="enabled" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="swipeViewIndexChanged" fullname="QCPDialog::swipeViewIndexChanged" href="qcpdialog.html#swipeViewIndexChanged" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="374" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void swipeViewIndexChanged(qint32 index)">
+                <parameter left="qint32" right="" name="index" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="tabBarIndexChanged" fullname="QCPDialog::tabBarIndexChanged" href="qcpdialog.html#tabBarIndexChanged" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="363" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void tabBarIndexChanged(qint32 index)">
+                <parameter left="qint32" right="" name="index" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="updatePaperSizeModel" fullname="QCPDialog::updatePaperSizeModel" href="qcpdialog.html#updatePaperSizeModel" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="330" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void updatePaperSizeModel(char *media, int isDefault)">
+                <parameter left="char *" right="" name="media" default=""/>
+                <parameter left="int" right="" name="isDefault" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="updateStartJobsModel" fullname="QCPDialog::updateStartJobsModel" href="qcpdialog.html#updateStartJobsModel" status="commendable" access="public" location="QCPDialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.cpp" lineno="300" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void updateStartJobsModel(char *startJobOption)">
+                <parameter left="char *" right="" name="startJobOption" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="addPagesPerSize" fullname="QCPDialog::addPagesPerSize" href="qcpdialog.html#addPagesPerSize" status="commendable" access="public" location="QCPDialog.h" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.h" lineno="68" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void addPagesPerSize(char *pages)">
+                <parameter left="char *" right="" name="pages" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="exec" fullname="QCPDialog::exec" href="qcpdialog.html#exec" status="commendable" access="public" location="QCPDialog.h" filepath="/home/rithvikp/common-print-dialog/app/QCPDialog.h" lineno="75" virtual="non" meta="plain" const="false" static="false" overload="false" type="int" signature="int exec()"/>
+        </class>
+        <function threadsafety="unspecified" name="add_printer_callback" status="commendable" access="public" location="commonprintdialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/commonprintdialog.cpp" lineno="67" virtual="non" meta="plain" const="false" static="true" overload="false" type="void" signature="void add_printer_callback(PrinterObj *p)">
+            <parameter left="PrinterObj *" right="" name="p" default=""/>
+        </function>
+        <class threadsafety="unspecified" name="Controls" href="controls.html" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="77" module="Common Print Dialog">
+            <function threadsafety="unspecified" name="Controls" fullname="Controls::Controls" href="controls.html#Controls" status="commendable" access="public" location="components.cpp" filepath="/home/rithvikp/common-print-dialog/app/components.cpp" lineno="200" virtual="non" meta="constructor" const="false" static="false" overload="false" type="" signature="Controls(QWidget *parent)">
+                <parameter left="QWidget *" right="" name="parent" default="Q_NULLPTR"/>
+            </function>
+            <function threadsafety="unspecified" name="~Controls" fullname="Controls::~Controls" href="controls.html#dtor.Controls" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="83" virtual="non" meta="destructor" const="false" static="false" overload="false" type="" signature="~Controls()"/>
+            <variable threadsafety="unspecified" name="rootObject" fullname="Controls::rootObject" href="controls.html#rootObject-var" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="81" type="QQuickItem *" static="false"/>
+        </class>
+        <class threadsafety="unspecified" name="Preview" href="preview.html" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="55" module="Common Print Dialog">
+            <function threadsafety="unspecified" name="Preview" fullname="Preview::Preview" href="preview.html#Preview" status="commendable" access="public" location="components.cpp" filepath="/home/rithvikp/common-print-dialog/app/components.cpp" lineno="79" virtual="non" meta="constructor" const="false" static="false" overload="false" type="" signature="Preview(QPrinter *_printer, QWidget *parent)">
+                <parameter left="QPrinter *" right="" name="_printer" default=""/>
+                <parameter left="QWidget *" right="" name="parent" default="Q_NULLPTR"/>
+            </function>
+            <function threadsafety="unspecified" name="print" fullname="Preview::print" href="preview.html#print" status="commendable" access="public" location="components.cpp" filepath="/home/rithvikp/common-print-dialog/app/components.cpp" lineno="102" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void print(QPrinter *printer)">
+                <parameter left="QPrinter *" right="" name="printer" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="setZoom" fullname="Preview::setZoom" href="preview.html#setZoom" status="commendable" access="public" location="components.cpp" filepath="/home/rithvikp/common-print-dialog/app/components.cpp" lineno="150" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void setZoom(qreal zoomFactor)">
+                <parameter left="qreal" right="" name="zoomFactor" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="showNextPage" fullname="Preview::showNextPage" href="preview.html#showNextPage" status="commendable" access="public" location="components.cpp" filepath="/home/rithvikp/common-print-dialog/app/components.cpp" lineno="170" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void showNextPage()"/>
+            <function threadsafety="unspecified" name="showPrevPage" fullname="Preview::showPrevPage" href="preview.html#showPrevPage" status="commendable" access="public" location="components.cpp" filepath="/home/rithvikp/common-print-dialog/app/components.cpp" lineno="182" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void showPrevPage()"/>
+            <function threadsafety="unspecified" name="~Preview" fullname="Preview::~Preview" href="preview.html#dtor.Preview" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="60" virtual="non" meta="destructor" const="false" static="false" overload="false" type="" signature="~Preview()"/>
+        </class>
+        <class threadsafety="unspecified" name="Root" href="root.html" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="43" module="Common Print Dialog">
+            <function threadsafety="unspecified" name="Root" fullname="Root::Root" href="root.html#Root" status="commendable" access="public" location="components.cpp" filepath="/home/rithvikp/common-print-dialog/app/components.cpp" lineno="57" virtual="non" meta="constructor" const="false" static="false" overload="false" type="" signature="Root(QWidget *parent)">
+                <parameter left="QWidget *" right="" name="parent" default="Q_NULLPTR"/>
+            </function>
+            <function threadsafety="unspecified" name="~Root" fullname="Root::~Root" href="root.html#dtor.Root" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="49" virtual="non" meta="destructor" const="false" static="false" overload="false" type="" signature="~Root()"/>
+            <variable threadsafety="unspecified" name="rootObject" fullname="Root::rootObject" href="root.html#rootObject-var" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="47" type="QQuickItem *" static="false"/>
+        </class>
+        <class threadsafety="unspecified" name="Tabs" href="tabs.html" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="31" module="Common Print Dialog">
+            <function threadsafety="unspecified" name="Tabs" fullname="Tabs::Tabs" href="tabs.html#Tabs" status="commendable" access="public" location="components.cpp" filepath="/home/rithvikp/common-print-dialog/app/components.cpp" lineno="36" virtual="non" meta="constructor" const="false" static="false" overload="false" type="" signature="Tabs(QWidget *parent)">
+                <parameter left="QWidget *" right="" name="parent" default="Q_NULLPTR"/>
+            </function>
+            <function threadsafety="unspecified" name="~Tabs" fullname="Tabs::~Tabs" href="tabs.html#dtor.Tabs" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="37" virtual="non" meta="destructor" const="false" static="false" overload="false" type="" signature="~Tabs()"/>
+            <variable threadsafety="unspecified" name="rootObject" fullname="Tabs::rootObject" href="tabs.html#rootObject-var" status="commendable" access="public" location="components.h" filepath="/home/rithvikp/common-print-dialog/app/components.h" lineno="35" type="QQuickItem *" static="false"/>
+        </class>
+        <class threadsafety="unspecified" name="_PrintBackendProxy" href="printbackendproxy.html" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1081">
+            <variable threadsafety="unspecified" name="parent_instance" fullname="_PrintBackendProxy::parent_instance" href="printbackendproxy.html#parent_instance-var" status="commendable" access="public" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1083" type="GDBusProxy" static="false"/>
+            <variable threadsafety="unspecified" name="priv" fullname="_PrintBackendProxy::priv" href="printbackendproxy.html#priv-var" status="commendable" access="public" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1084" type="PrintBackendProxyPrivate *" static="false"/>
+        </class>
+        <function threadsafety="unspecified" name="print_backend_call_get_printers_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="980" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_printers_sync(PrintBackend *proxy, const gchar *arg_access_token, const gchar *arg_connection_status, GVariant **out_printer_id_name_pairs, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_access_token" default=""/>
+            <parameter left="const gchar *" right="" name="arg_connection_status" default=""/>
+            <parameter left="GVariant **" right="" name="out_printer_id_name_pairs" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_print_jobs_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1055" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_print_jobs_sync(PrintBackend *proxy, const gchar *arg_access_token, const gchar *arg_uid, const gchar *arg_owner, const gchar *arg_status, const gchar *arg_sortorder, GVariant **out_print_jobs, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_access_token" default=""/>
+            <parameter left="const gchar *" right="" name="arg_uid" default=""/>
+            <parameter left="const gchar *" right="" name="arg_owner" default=""/>
+            <parameter left="const gchar *" right="" name="arg_status" default=""/>
+            <parameter left="const gchar *" right="" name="arg_sortorder" default=""/>
+            <parameter left="GVariant **" right="" name="out_print_jobs" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_print_jobs_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1049" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_print_jobs_finish(PrintBackend *proxy, GVariant **out_print_jobs, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GVariant **" right="" name="out_print_jobs" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_print_jobs" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1038" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_print_jobs(PrintBackend *proxy, const gchar *arg_access_token, const gchar *arg_uid, const gchar *arg_owner, const gchar *arg_status, const gchar *arg_sortorder, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_access_token" default=""/>
+            <parameter left="const gchar *" right="" name="arg_uid" default=""/>
+            <parameter left="const gchar *" right="" name="arg_owner" default=""/>
+            <parameter left="const gchar *" right="" name="arg_status" default=""/>
+            <parameter left="const gchar *" right="" name="arg_sortorder" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_submit_print_job_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1028" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_submit_print_job_sync(PrintBackend *proxy, const gchar *arg_uid, const gchar *arg_access_token, const gchar *arg_title, const gchar *arg_ticket, gboolean *out_status, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_uid" default=""/>
+            <parameter left="const gchar *" right="" name="arg_access_token" default=""/>
+            <parameter left="const gchar *" right="" name="arg_title" default=""/>
+            <parameter left="const gchar *" right="" name="arg_ticket" default=""/>
+            <parameter left="gboolean *" right="" name="out_status" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_submit_print_job_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1022" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_submit_print_job_finish(PrintBackend *proxy, gboolean *out_status, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gboolean *" right="" name="out_status" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_submit_print_job" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1012" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_submit_print_job(PrintBackend *proxy, const gchar *arg_uid, const gchar *arg_access_token, const gchar *arg_title, const gchar *arg_ticket, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_uid" default=""/>
+            <parameter left="const gchar *" right="" name="arg_access_token" default=""/>
+            <parameter left="const gchar *" right="" name="arg_title" default=""/>
+            <parameter left="const gchar *" right="" name="arg_ticket" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printer_options_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1003" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_printer_options_sync(PrintBackend *proxy, const gchar *arg_uid, const gchar *arg_access_token, GVariant **out_media_options, GVariant **out_vendor_capability, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_uid" default=""/>
+            <parameter left="const gchar *" right="" name="arg_access_token" default=""/>
+            <parameter left="GVariant **" right="" name="out_media_options" default=""/>
+            <parameter left="GVariant **" right="" name="out_vendor_capability" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printer_options_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="996" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_printer_options_finish(PrintBackend *proxy, GVariant **out_media_options, GVariant **out_vendor_capability, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GVariant **" right="" name="out_media_options" default=""/>
+            <parameter left="GVariant **" right="" name="out_vendor_capability" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printer_options" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="988" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_printer_options(PrintBackend *proxy, const gchar *arg_uid, const gchar *arg_access_token, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_uid" default=""/>
+            <parameter left="const gchar *" right="" name="arg_access_token" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="G_DEFINE_AUTOPTR_CLEANUP_FUNC" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1165" virtual="non" meta="plain" const="false" static="false" overload="true" overload-number="2" type="" signature="G_DEFINE_AUTOPTR_CLEANUP_FUNC(PrintBackendSkeleton , g_object_unref )">
+            <parameter left="PrintBackendSkeleton" right="" name="" default=""/>
+            <parameter left="g_object_unref" right="" name="" default=""/>
+        </function>
+        <class threadsafety="unspecified" name="_PrintBackendProxyClass" href="printbackendproxyclass.html" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1088">
+            <variable threadsafety="unspecified" name="parent_class" fullname="_PrintBackendProxyClass::parent_class" href="printbackendproxyclass.html#parent_class-var" status="commendable" access="public" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1089" type="GDBusProxyClass" static="false"/>
+        </class>
+        <function threadsafety="unspecified" name="print_backend_proxy_get_type" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1092" virtual="non" meta="plain" const="false" static="false" overload="false" type="GType" signature="GType print_backend_proxy_get_type(void )">
+            <parameter left="void" right="" name="" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="G_DEFINE_AUTOPTR_CLEANUP_FUNC" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1095" virtual="non" meta="plain" const="false" static="false" overload="false" type="" signature="G_DEFINE_AUTOPTR_CLEANUP_FUNC(PrintBackendProxy , g_object_unref )">
+            <parameter left="PrintBackendProxy" right="" name="" default=""/>
+            <parameter left="g_object_unref" right="" name="" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_proxy_new_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1107" virtual="non" meta="plain" const="false" static="false" overload="false" type="PrintBackend *" signature="PrintBackend * print_backend_proxy_new_finish(GAsyncResult *res, GError **error)">
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_proxy_new_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1110" virtual="non" meta="plain" const="false" static="false" overload="false" type="PrintBackend *" signature="PrintBackend * print_backend_proxy_new_sync(GDBusConnection *connection, GDBusProxyFlags flags, const gchar *name, const gchar *object_path, GCancellable *cancellable, GError **error)">
+            <parameter left="GDBusConnection *" right="" name="connection" default=""/>
+            <parameter left="GDBusProxyFlags" right="" name="flags" default=""/>
+            <parameter left="const gchar *" right="" name="name" default=""/>
+            <parameter left="const gchar *" right="" name="object_path" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_proxy_new_for_bus" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1118" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_proxy_new_for_bus(GBusType bus_type, GDBusProxyFlags flags, const gchar *name, const gchar *object_path, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="GBusType" right="" name="bus_type" default=""/>
+            <parameter left="GDBusProxyFlags" right="" name="flags" default=""/>
+            <parameter left="const gchar *" right="" name="name" default=""/>
+            <parameter left="const gchar *" right="" name="object_path" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_proxy_new_for_bus_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1126" virtual="non" meta="plain" const="false" static="false" overload="false" type="PrintBackend *" signature="PrintBackend * print_backend_proxy_new_for_bus_finish(GAsyncResult *res, GError **error)">
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_proxy_new_for_bus_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1129" virtual="non" meta="plain" const="false" static="false" overload="false" type="PrintBackend *" signature="PrintBackend * print_backend_proxy_new_for_bus_sync(GBusType bus_type, GDBusProxyFlags flags, const gchar *name, const gchar *object_path, GCancellable *cancellable, GError **error)">
+            <parameter left="GBusType" right="" name="bus_type" default=""/>
+            <parameter left="GDBusProxyFlags" right="" name="flags" default=""/>
+            <parameter left="const gchar *" right="" name="name" default=""/>
+            <parameter left="const gchar *" right="" name="object_path" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <class threadsafety="unspecified" name="_PrintBackendSkeleton" href="printbackendskeleton.html" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1151">
+            <variable threadsafety="unspecified" name="parent_instance" fullname="_PrintBackendSkeleton::parent_instance" href="printbackendskeleton.html#parent_instance-var" status="commendable" access="public" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1153" type="GDBusInterfaceSkeleton" static="false"/>
+            <variable threadsafety="unspecified" name="priv" fullname="_PrintBackendSkeleton::priv" href="printbackendskeleton.html#priv-var" status="commendable" access="public" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1154" type="PrintBackendSkeletonPrivate *" static="false"/>
+        </class>
+        <class threadsafety="unspecified" name="_PrintBackendSkeletonClass" href="printbackendskeletonclass.html" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1158">
+            <variable threadsafety="unspecified" name="parent_class" fullname="_PrintBackendSkeletonClass::parent_class" href="printbackendskeletonclass.html#parent_class-var" status="commendable" access="public" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1159" type="GDBusInterfaceSkeletonClass" static="false"/>
+        </class>
+        <function threadsafety="unspecified" name="print_backend_skeleton_get_type" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="1162" virtual="non" meta="plain" const="false" static="false" overload="false" type="GType" signature="GType print_backend_skeleton_get_type(void )">
+            <parameter left="void" right="" name="" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_resolution_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="811" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_resolution_sync(PrintBackend *proxy, const gchar *arg_printer_name, gint arg_x_res, gint arg_y_res, gboolean *out_possible, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gint" right="" name="arg_x_res" default=""/>
+            <parameter left="gint" right="" name="arg_y_res" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_quality_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="891" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_quality_finish(PrintBackend *proxy, gchar **out_quality, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_quality" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <qmlclass threadsafety="unspecified" name="main" href="qml-main.html" status="internal" access="private" location="main.qml" filepath="/home/rithvikp/common-print-dialog/app/main.qml" lineno="26" title="main" fulltitle="main" subtitle=""/>
+        <function threadsafety="unspecified" name="print_backend_call_check_media" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="820" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_check_media(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_media_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_media_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_media_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="828" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_media_finish(PrintBackend *proxy, gboolean *out_possible, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_media_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="834" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_media_sync(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_media_name, gboolean *out_possible, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_media_name" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_orientation" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="842" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_check_orientation(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_orientation, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_orientation" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_orientation_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="850" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_orientation_finish(PrintBackend *proxy, gboolean *out_possible, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_orientation_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="856" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_orientation_sync(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_orientation, gboolean *out_possible, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_orientation" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_page_range" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="864" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_page_range(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_page_range_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="871" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_page_range_finish(PrintBackend *proxy, GVariant **out_ranges, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GVariant **" right="" name="out_ranges" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_page_range_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="877" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_page_range_sync(PrintBackend *proxy, const gchar *arg_printer_name, GVariant **out_ranges, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GVariant **" right="" name="out_ranges" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_quality" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="884" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_quality(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printers_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="974" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_printers_finish(PrintBackend *proxy, GVariant **out_printer_id_name_pairs, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GVariant **" right="" name="out_printer_id_name_pairs" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_quality_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="897" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_quality_sync(PrintBackend *proxy, const gchar *arg_printer_name, gchar **out_quality, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gchar **" right="" name="out_quality" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_quality" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="904" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_check_quality(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_quality, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_quality" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_quality_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="912" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_quality_finish(PrintBackend *proxy, gboolean *out_possible, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_quality_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="918" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_quality_sync(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_quality, gboolean *out_possible, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_quality" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_color" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="926" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_check_color(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_color_mode, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_color_mode" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_color_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="934" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_color_finish(PrintBackend *proxy, gboolean *out_possible, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_color_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="940" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_color_sync(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_color_mode, gboolean *out_possible, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_color_mode" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_apply_settings" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="948" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_apply_settings(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_apply_settings_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="955" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_apply_settings_finish(PrintBackend *proxy, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_apply_settings_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="960" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_apply_settings_sync(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printers" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="966" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_printers(PrintBackend *proxy, const gchar *arg_access_token, const gchar *arg_connection_status, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_access_token" default=""/>
+            <parameter left="const gchar *" right="" name="arg_connection_status" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <qmlclass threadsafety="unspecified" name="Advanced" href="qml-advanced.html" status="internal" access="private" location="Advanced.qml" filepath="/home/rithvikp/common-print-dialog/app/Advanced.qml" lineno="29" title="Advanced" fulltitle="Advanced" subtitle=""/>
+        <function threadsafety="unspecified" name="make_api_request" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="48" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean make_api_request(RestProxy *proxy, RestProxyCall **call, const gchar *method, const gchar *function, const gchar *header, const gchar *header_value, ... )">
+            <parameter left="RestProxy *" right="" name="proxy" default=""/>
+            <parameter left="RestProxyCall **" right="" name="call" default=""/>
+            <parameter left="const gchar *" right="" name="method" default=""/>
+            <parameter left="const gchar *" right="" name="function" default=""/>
+            <parameter left="const gchar *" right="" name="header" default=""/>
+            <parameter left="const gchar *" right="" name="header_value" default=""/>
+            <parameter left="..." right="" name="" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="json_data_get_root" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="57" virtual="non" meta="plain" const="false" static="false" overload="false" type="JsonObject *" signature="JsonObject * json_data_get_root(const gchar *data)">
+            <parameter left="const gchar *" right="" name="data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="get_array_from_json_object" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="59" virtual="non" meta="plain" const="false" static="false" overload="false" type="JsonArray *" signature="JsonArray * get_array_from_json_object(JsonObject *jobject, const gchar *name)">
+            <parameter left="JsonObject *" right="" name="jobject" default=""/>
+            <parameter left="const gchar *" right="" name="name" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="get_glist_for_string_member_in_json_array" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="62" virtual="non" meta="plain" const="false" static="false" overload="false" type="GList *" signature="GList * get_glist_for_string_member_in_json_array(JsonArray *jarray, const gchar *name)">
+            <parameter left="JsonArray *" right="" name="jarray" default=""/>
+            <parameter left="const gchar *" right="" name="name" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="get_access_token" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="65" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean get_access_token(gchar **out_access_token, gint *out_expires_in, GError **error)">
+            <parameter left="gchar **" right="" name="out_access_token" default=""/>
+            <parameter left="gint *" right="" name="out_expires_in" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="get_printer_struct_from_json_array" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="69" virtual="non" meta="plain" const="false" static="false" overload="false" type="GList *" signature="GList * get_printer_struct_from_json_array(JsonArray *jarray, const gchar *id, const gchar *name)">
+            <parameter left="JsonArray *" right="" name="jarray" default=""/>
+            <parameter left="const gchar *" right="" name="id" default=""/>
+            <parameter left="const gchar *" right="" name="name" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="get_media_size_options" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="73" virtual="non" meta="plain" const="false" static="false" overload="false" type="GList *" signature="GList * get_media_size_options(JsonArray *jarray)">
+            <parameter left="JsonArray *" right="" name="jarray" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="get_vendor_capability_options" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="75" virtual="non" meta="plain" const="false" static="false" overload="false" type="GList *" signature="GList * get_vendor_capability_options(JsonArray *array)">
+            <parameter left="JsonArray *" right="" name="array" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="get_print_jobs_list" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="77" virtual="non" meta="plain" const="false" static="false" overload="false" type="GList *" signature="GList * get_print_jobs_list(JsonArray *jarray)">
+            <parameter left="JsonArray *" right="" name="jarray" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="connect_to_dbus" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="79" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void connect_to_dbus(GDBusConnection *connection, PrintBackend *skeleton, gchar *obj_path)">
+            <parameter left="GDBusConnection *" right="" name="connection" default=""/>
+            <parameter left="PrintBackend *" right="" name="skeleton" default=""/>
+            <parameter left="gchar *" right="" name="obj_path" default=""/>
+        </function>
+        <class threadsafety="unspecified" name="printer" href="printer.html" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="43">
+            <variable threadsafety="unspecified" name="id" fullname="printer::id" href="printer.html#id-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="44" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="name" fullname="printer::name" href="printer.html#name-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="45" type="gchar *" static="false"/>
+        </class>
+        <qmlclass threadsafety="unspecified" name="Controls" href="qml-controls.html" status="internal" access="private" location="Controls.qml" filepath="/home/rithvikp/common-print-dialog/app/Controls.qml" lineno="30" title="Controls" fulltitle="Controls" subtitle="">
+            <qmlsignal threadsafety="unspecified" name="cancelButtonClicked" fullname="Controls::cancelButtonClicked" href="qml-controls.html#cancelButtonClicked-signal" status="commendable" access="public" location="Controls.qml" filepath="/home/rithvikp/common-print-dialog/app/Controls.qml" lineno="33"/>
+            <qmlsignal threadsafety="unspecified" name="nextPageButtonClicked" fullname="Controls::nextPageButtonClicked" href="qml-controls.html#nextPageButtonClicked-signal" status="commendable" access="public" location="Controls.qml" filepath="/home/rithvikp/common-print-dialog/app/Controls.qml" lineno="34"/>
+            <qmlsignal threadsafety="unspecified" name="prevPageButtonClicked" fullname="Controls::prevPageButtonClicked" href="qml-controls.html#prevPageButtonClicked-signal" status="commendable" access="public" location="Controls.qml" filepath="/home/rithvikp/common-print-dialog/app/Controls.qml" lineno="35"/>
+            <qmlsignal threadsafety="unspecified" name="zoomSliderValueChanged" fullname="Controls::zoomSliderValueChanged" href="qml-controls.html#zoomSliderValueChanged-signal" status="commendable" access="public" location="Controls.qml" filepath="/home/rithvikp/common-print-dialog/app/Controls.qml" lineno="36"/>
+        </qmlclass>
+        <qmlclass threadsafety="unspecified" name="General" href="qml-general.html" status="internal" access="private" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="27" title="General" fulltitle="General" subtitle="">
+            <qmlproperty threadsafety="unspecified" name="maximumCopies" fullname="General::maximumCopies" href="qml-general.html#maximumCopies-prop" status="commendable" access="public" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="31" type="int" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="paperSizeComboBox" fullname="General::paperSizeComboBox" href="qml-general.html#paperSizeComboBox-prop" status="commendable" access="public" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="30" type="alias" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="paperSizeModel" fullname="General::paperSizeModel" href="qml-general.html#paperSizeModel-prop" status="commendable" access="public" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="29" type="alias" attached="false" writable="true"/>
+            <qmlsignal threadsafety="unspecified" name="newPrinterSelected" fullname="General::newPrinterSelected" href="qml-general.html#newPrinterSelected-signal" status="commendable" access="public" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="33"/>
+            <qmlsignal threadsafety="unspecified" name="remotePrintersToggled" fullname="General::remotePrintersToggled" href="qml-general.html#remotePrintersToggled-signal" status="commendable" access="public" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="34"/>
+            <qmlmethod threadsafety="unspecified" name="clearDestinationModel" fullname="General::clearDestinationModel" href="qml-general.html#clearDestinationModel-method" status="commendable" access="public" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="42"/>
+            <qmlmethod threadsafety="unspecified" name="clearPaperSizeModel" fullname="General::clearPaperSizeModel" href="qml-general.html#clearPaperSizeModel-method" status="commendable" access="public" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="52"/>
+            <qmlmethod threadsafety="unspecified" name="updateDestinationModel" fullname="General::updateDestinationModel" href="qml-general.html#updateDestinationModel-method" status="commendable" access="public" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="36"/>
+            <qmlmethod threadsafety="unspecified" name="updatePaperSizeModel" fullname="General::updatePaperSizeModel" href="qml-general.html#updatePaperSizeModel-method" status="commendable" access="public" location="General.qml" filepath="/home/rithvikp/common-print-dialog/app/General.qml" lineno="46"/>
+        </qmlclass>
+        <qmlclass threadsafety="unspecified" name="Jobs" href="qml-jobs.html" status="internal" access="private" location="Jobs.qml" filepath="/home/rithvikp/common-print-dialog/app/Jobs.qml" lineno="30" title="Jobs" fulltitle="Jobs" subtitle="">
+            <qmlmethod threadsafety="unspecified" name="clearStartJobsModel" fullname="Jobs::clearStartJobsModel" href="qml-jobs.html#clearStartJobsModel-method" status="commendable" access="public" location="Jobs.qml" filepath="/home/rithvikp/common-print-dialog/app/Jobs.qml" lineno="37"/>
+            <qmlmethod threadsafety="unspecified" name="updateStartJobsModel" fullname="Jobs::updateStartJobsModel" href="qml-jobs.html#updateStartJobsModel-method" status="commendable" access="public" location="Jobs.qml" filepath="/home/rithvikp/common-print-dialog/app/Jobs.qml" lineno="31"/>
+        </qmlclass>
+        <qmlclass threadsafety="unspecified" name="MoreOptions" href="qml-moreoptions.html" status="internal" access="private" location="MoreOptions.qml" filepath="/home/rithvikp/common-print-dialog/app/MoreOptions.qml" lineno="27" title="MoreOptions" fulltitle="MoreOptions" subtitle=""/>
+        <qmlclass threadsafety="unspecified" name="Options" href="qml-options.html" status="internal" access="private" location="Options.qml" filepath="/home/rithvikp/common-print-dialog/app/Options.qml" lineno="27" title="Options" fulltitle="Options" subtitle=""/>
+        <qmlclass threadsafety="unspecified" name="PageSetup" href="qml-pagesetup.html" status="internal" access="private" location="PageSetup.qml" filepath="/home/rithvikp/common-print-dialog/app/PageSetup.qml" lineno="26" title="PageSetup" fulltitle="PageSetup" subtitle="">
+            <qmlproperty threadsafety="unspecified" name="landscapeRadioButton" fullname="PageSetup::landscapeRadioButton" href="qml-pagesetup.html#landscapeRadioButton-prop" status="commendable" access="public" location="PageSetup.qml" filepath="/home/rithvikp/common-print-dialog/app/PageSetup.qml" lineno="28" type="alias" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="portraitRadioButton" fullname="PageSetup::portraitRadioButton" href="qml-pagesetup.html#portraitRadioButton-prop" status="commendable" access="public" location="PageSetup.qml" filepath="/home/rithvikp/common-print-dialog/app/PageSetup.qml" lineno="27" type="alias" attached="false" writable="true"/>
+            <qmlmethod threadsafety="unspecified" name="updatePagesPerSideModel" fullname="PageSetup::updatePagesPerSideModel" href="qml-pagesetup.html#updatePagesPerSideModel-method" status="commendable" access="public" location="PageSetup.qml" filepath="/home/rithvikp/common-print-dialog/app/PageSetup.qml" lineno="30"/>
+        </qmlclass>
+        <qmlclass threadsafety="unspecified" name="Preview" href="qml-preview.html" status="internal" access="private" location="Preview.qml" filepath="/home/rithvikp/common-print-dialog/app/Preview.qml" lineno="29" title="Preview" fulltitle="Preview" subtitle="">
+            <qmlproperty threadsafety="unspecified" name="previousScaleValue" fullname="Preview::previousScaleValue" href="qml-preview.html#previousScaleValue-prop" status="commendable" access="public" location="Preview.qml" filepath="/home/rithvikp/common-print-dialog/app/Preview.qml" lineno="33" type="real" attached="false" writable="true"/>
+            <qmlsignal threadsafety="unspecified" name="nextPageButtonClicked" fullname="Preview::nextPageButtonClicked" href="qml-preview.html#nextPageButtonClicked-signal" status="commendable" access="public" location="Preview.qml" filepath="/home/rithvikp/common-print-dialog/app/Preview.qml" lineno="30"/>
+            <qmlsignal threadsafety="unspecified" name="prevPageButtonClicked" fullname="Preview::prevPageButtonClicked" href="qml-preview.html#prevPageButtonClicked-signal" status="commendable" access="public" location="Preview.qml" filepath="/home/rithvikp/common-print-dialog/app/Preview.qml" lineno="31"/>
+            <qmlsignal threadsafety="unspecified" name="zoomSliderValueChanged" fullname="Preview::zoomSliderValueChanged" href="qml-preview.html#zoomSliderValueChanged-signal" status="commendable" access="public" location="Preview.qml" filepath="/home/rithvikp/common-print-dialog/app/Preview.qml" lineno="32"/>
+        </qmlclass>
+        <qmlclass threadsafety="unspecified" name="Root" href="qml-root.html" status="internal" access="private" location="Root.qml" filepath="/home/rithvikp/common-print-dialog/app/Root.qml" lineno="27" title="Root" fulltitle="Root" subtitle="">
+            <qmlproperty threadsafety="unspecified" name="index" fullname="Root::index" href="qml-root.html#index-prop" status="commendable" access="public" location="Root.qml" filepath="/home/rithvikp/common-print-dialog/app/Root.qml" lineno="30" type="int" attached="false" writable="true"/>
+            <qmlsignal threadsafety="unspecified" name="swipeViewIndexChanged" fullname="Root::swipeViewIndexChanged" href="qml-root.html#swipeViewIndexChanged-signal" status="commendable" access="public" location="Root.qml" filepath="/home/rithvikp/common-print-dialog/app/Root.qml" lineno="29"/>
+        </qmlclass>
+        <qmlclass threadsafety="unspecified" name="Style" href="qml-style.html" status="internal" access="private" location="Style.qml" filepath="/home/rithvikp/common-print-dialog/app/Style.qml" lineno="25" title="Style" fulltitle="Style" subtitle="">
+            <qmlproperty threadsafety="unspecified" name="tabBarHeight" fullname="Style::tabBarHeight" href="qml-style.html#tabBarHeight-prop" status="commendable" access="public" location="Style.qml" filepath="/home/rithvikp/common-print-dialog/app/Style.qml" lineno="27" type="int" attached="false" writable="true"/>
+            <qmlproperty threadsafety="unspecified" name="textSize" fullname="Style::textSize" href="qml-style.html#textSize-prop" status="commendable" access="public" location="Style.qml" filepath="/home/rithvikp/common-print-dialog/app/Style.qml" lineno="26" type="int" attached="false" writable="true"/>
+        </qmlclass>
+        <qmlclass threadsafety="unspecified" name="Tabs" href="qml-tabs.html" status="internal" access="private" location="Tabs.qml" filepath="/home/rithvikp/common-print-dialog/app/Tabs.qml" lineno="27" title="Tabs" fulltitle="Tabs" subtitle="">
+            <qmlproperty threadsafety="unspecified" name="index" fullname="Tabs::index" href="qml-tabs.html#index-prop" status="commendable" access="public" location="Tabs.qml" filepath="/home/rithvikp/common-print-dialog/app/Tabs.qml" lineno="30" type="int" attached="false" writable="true"/>
+            <qmlsignal threadsafety="unspecified" name="tabBarIndexChanged" fullname="Tabs::tabBarIndexChanged" href="qml-tabs.html#tabBarIndexChanged-signal" status="commendable" access="public" location="Tabs.qml" filepath="/home/rithvikp/common-print-dialog/app/Tabs.qml" lineno="29"/>
+        </qmlclass>
+        <function threadsafety="unspecified" name="on_handle_get_printer_options" status="internal" access="private" location="gcp_server.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp_server.h" lineno="37" virtual="non" meta="plain" const="false" static="true" overload="false" type="gboolean" signature="gboolean on_handle_get_printer_options(PrintBackend *skeleton, GDBusMethodInvocation *invocation, const gchar *uid, const gchar *access_token, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="skeleton" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="uid" default=""/>
+            <parameter left="const gchar *" right="" name="access_token" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="gcp_object_new" status="internal" access="private" location="gcp.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp.h" lineno="40" virtual="non" meta="plain" const="false" static="false" overload="false" type="GCPObject *" signature="GCPObject * gcp_object_new()"/>
+        <function threadsafety="unspecified" name="gcp_object_get_printers" status="internal" access="private" location="gcp.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp.h" lineno="48" virtual="non" meta="plain" const="false" static="false" overload="false" type="GList *" signature="GList * gcp_object_get_printers(GCPObject *self, const gchar *access_token, const gchar *connection_status)">
+            <parameter left="GCPObject *" right="" name="self" default=""/>
+            <parameter left="const gchar *" right="" name="access_token" default=""/>
+            <parameter left="const gchar *" right="" name="connection_status" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="gcp_object_get_media_size_options" status="internal" access="private" location="gcp.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp.h" lineno="54" virtual="non" meta="plain" const="false" static="false" overload="false" type="GList *" signature="GList * gcp_object_get_media_size_options(GCPObject *self, const gchar *uid, const gchar *access_token)">
+            <parameter left="GCPObject *" right="" name="self" default=""/>
+            <parameter left="const gchar *" right="" name="uid" default=""/>
+            <parameter left="const gchar *" right="" name="access_token" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="gcp_object_get_vendor_capability_options" status="internal" access="private" location="gcp.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp.h" lineno="59" virtual="non" meta="plain" const="false" static="false" overload="false" type="GList *" signature="GList * gcp_object_get_vendor_capability_options(GCPObject *self, const gchar *uid, const gchar *access_token)">
+            <parameter left="GCPObject *" right="" name="self" default=""/>
+            <parameter left="const gchar *" right="" name="uid" default=""/>
+            <parameter left="const gchar *" right="" name="access_token" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="gcp_object_submit_print_job" status="internal" access="private" location="gcp.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp.h" lineno="69" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean gcp_object_submit_print_job(GCPObject *self, const gchar *uid, const gchar *access_token, const gchar *title, const gchar *ticket)">
+            <parameter left="GCPObject *" right="" name="self" default=""/>
+            <parameter left="const gchar *" right="" name="uid" default=""/>
+            <parameter left="const gchar *" right="" name="access_token" default=""/>
+            <parameter left="const gchar *" right="" name="title" default=""/>
+            <parameter left="const gchar *" right="" name="ticket" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="gcp_object_get_print_jobs" status="internal" access="private" location="gcp.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp.h" lineno="76" virtual="non" meta="plain" const="false" static="false" overload="false" type="GList *" signature="GList * gcp_object_get_print_jobs(GCPObject *self, const gchar *access_token, const gchar *uid, const gchar *owner, const gchar *status, const gchar *sortorder)">
+            <parameter left="GCPObject *" right="" name="self" default=""/>
+            <parameter left="const gchar *" right="" name="access_token" default=""/>
+            <parameter left="const gchar *" right="" name="uid" default=""/>
+            <parameter left="const gchar *" right="" name="owner" default=""/>
+            <parameter left="const gchar *" right="" name="status" default=""/>
+            <parameter left="const gchar *" right="" name="sortorder" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="G_DECLARE_DERIVABLE_TYPE" status="internal" access="private" location="gcp_server.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp_server.h" lineno="11" virtual="non" meta="plain" const="false" static="false" overload="true" overload-number="2" type="G_BEGIN_DECLS" signature="G_BEGIN_DECLS G_DECLARE_DERIVABLE_TYPE(ServerObject , server_object , Server , OBJECT , GObject )">
+            <parameter left="ServerObject" right="" name="" default=""/>
+            <parameter left="server_object" right="" name="" default=""/>
+            <parameter left="Server" right="" name="" default=""/>
+            <parameter left="OBJECT" right="" name="" default=""/>
+            <parameter left="GObject" right="" name="" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="server_object_new" status="internal" access="private" location="gcp_server.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp_server.h" lineno="19" virtual="non" meta="plain" const="false" static="false" overload="false" type="ServerObject *" signature="ServerObject * server_object_new()"/>
+        <function threadsafety="unspecified" name="acquire_session_bus_name" status="internal" access="private" location="gcp_server.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp_server.h" lineno="22" virtual="non" meta="plain" const="false" static="true" overload="false" type="void" signature="void acquire_session_bus_name()"/>
+        <function threadsafety="unspecified" name="on_name_acquired" status="internal" access="private" location="gcp_server.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp_server.h" lineno="25" virtual="non" meta="plain" const="false" static="true" overload="false" type="void" signature="void on_name_acquired(GDBusConnection *connection, const gchar *name, gpointer user_data)">
+            <parameter left="GDBusConnection *" right="" name="connection" default=""/>
+            <parameter left="const gchar *" right="" name="name" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="on_handle_get_printers" status="internal" access="private" location="gcp_server.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp_server.h" lineno="30" virtual="non" meta="plain" const="false" static="true" overload="false" type="gboolean" signature="gboolean on_handle_get_printers(PrintBackend *skeleton, GDBusMethodInvocation *invocation, const gchar *access_token, const gchar *connection_status, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="skeleton" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="access_token" default=""/>
+            <parameter left="const gchar *" right="" name="connection_status" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="G_DECLARE_DERIVABLE_TYPE" status="internal" access="private" location="gcp.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp.h" lineno="11" virtual="non" meta="plain" const="false" static="false" overload="false" type="G_BEGIN_DECLS" signature="G_BEGIN_DECLS G_DECLARE_DERIVABLE_TYPE(GCPObject , gcp_object , GCP , OBJECT , GObject )">
+            <parameter left="GCPObject" right="" name="" default=""/>
+            <parameter left="gcp_object" right="" name="" default=""/>
+            <parameter left="GCP" right="" name="" default=""/>
+            <parameter left="OBJECT" right="" name="" default=""/>
+            <parameter left="GObject" right="" name="" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="on_handle_submit_print_job" status="internal" access="private" location="gcp_server.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp_server.h" lineno="44" virtual="non" meta="plain" const="false" static="true" overload="false" type="gboolean" signature="gboolean on_handle_submit_print_job(PrintBackend *skeleton, GDBusMethodInvocation *invocation, const gchar *uid, const gchar *access_token, const gchar *title, const gchar *ticket, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="skeleton" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="uid" default=""/>
+            <parameter left="const gchar *" right="" name="access_token" default=""/>
+            <parameter left="const gchar *" right="" name="title" default=""/>
+            <parameter left="const gchar *" right="" name="ticket" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="on_handle_get_print_jobs" status="internal" access="private" location="gcp_server.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp_server.h" lineno="53" virtual="non" meta="plain" const="false" static="true" overload="false" type="gboolean" signature="gboolean on_handle_get_print_jobs(PrintBackend *skeleton, GDBusMethodInvocation *invocation, const gchar *access_token, const gchar *uid, const gchar *owner, const gchar *status, const gchar *sortorder, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="skeleton" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="access_token" default=""/>
+            <parameter left="const gchar *" right="" name="uid" default=""/>
+            <parameter left="const gchar *" right="" name="owner" default=""/>
+            <parameter left="const gchar *" right="" name="status" default=""/>
+            <parameter left="const gchar *" right="" name="sortorder" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="connect_to_signals" status="internal" access="private" location="gcp_server.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/gcp_server.h" lineno="62" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void connect_to_signals(PrintBackend *skeleton)">
+            <parameter left="PrintBackend *" right="" name="skeleton" default=""/>
+        </function>
+        <class threadsafety="unspecified" name="media_size" href="media-size.html" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="12">
+            <variable threadsafety="unspecified" name="custom_display_name" fullname="media_size::custom_display_name" href="media-size.html#custom_display_name-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="19" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="height_microns" fullname="media_size::height_microns" href="media-size.html#height_microns-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="13" type="gint" static="false"/>
+            <variable threadsafety="unspecified" name="is_continuous_feed" fullname="media_size::is_continuous_feed" href="media-size.html#is_continuous_feed-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="15" type="gboolean" static="false"/>
+            <variable threadsafety="unspecified" name="is_default" fullname="media_size::is_default" href="media-size.html#is_default-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="16" type="gboolean" static="false"/>
+            <variable threadsafety="unspecified" name="name" fullname="media_size::name" href="media-size.html#name-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="18" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="vendor_id" fullname="media_size::vendor_id" href="media-size.html#vendor_id-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="17" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="width_microns" fullname="media_size::width_microns" href="media-size.html#width_microns-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="14" type="gint" static="false"/>
+        </class>
+        <class threadsafety="unspecified" name="vendor_capability_option" href="vendor-capability-option.html" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="22">
+            <variable threadsafety="unspecified" name="display_name" fullname="vendor_capability_option::display_name" href="vendor-capability-option.html#display_name-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="23" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="is_default" fullname="vendor_capability_option::is_default" href="vendor-capability-option.html#is_default-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="24" type="gboolean" static="false"/>
+            <variable threadsafety="unspecified" name="value" fullname="vendor_capability_option::value" href="vendor-capability-option.html#value-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="25" type="gchar *" static="false"/>
+        </class>
+        <class threadsafety="unspecified" name="vendor_capability" href="vendor-capability.html" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="28">
+            <variable threadsafety="unspecified" name="display_name" fullname="vendor_capability::display_name" href="vendor-capability.html#display_name-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="30" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="id" fullname="vendor_capability::id" href="vendor-capability.html#id-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="29" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="options" fullname="vendor_capability::options" href="vendor-capability.html#options-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="32" type="GList *" static="false"/>
+            <variable threadsafety="unspecified" name="type" fullname="vendor_capability::type" href="vendor-capability.html#type-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="31" type="gchar *" static="false"/>
+        </class>
+        <class threadsafety="unspecified" name="print_job" href="print-job.html" status="internal" access="private" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="35">
+            <variable threadsafety="unspecified" name="id" fullname="print_job::id" href="print-job.html#id-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="36" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="printerName" fullname="print_job::printerName" href="print-job.html#printerName-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="39" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="printerid" fullname="print_job::printerid" href="print-job.html#printerid-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="38" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="status" fullname="print_job::status" href="print-job.html#status-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="40" type="gchar *" static="false"/>
+            <variable threadsafety="unspecified" name="title" fullname="print_job::title" href="print-job.html#title-var" status="commendable" access="public" location="utils.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/utils.h" lineno="37" type="gchar *" static="false"/>
+        </class>
+        <function threadsafety="unspecified" name="print_backend_complete_get_printer_options" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="370" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_printer_options(PrintBackend *object, GDBusMethodInvocation *invocation, GVariant *media_options, GVariant *vendor_capability)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="GVariant *" right="" name="media_options" default=""/>
+            <parameter left="GVariant *" right="" name="vendor_capability" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_supported_values_raw_string" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="314" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_supported_values_raw_string(PrintBackend *object, GDBusMethodInvocation *invocation, gint num_values, GVariant *option_values)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gint" right="" name="num_values" default=""/>
+            <parameter left="GVariant *" right="" name="option_values" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_supported_quality" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="320" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_supported_quality(PrintBackend *object, GDBusMethodInvocation *invocation, gint num_values, GVariant *values)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gint" right="" name="num_values" default=""/>
+            <parameter left="GVariant *" right="" name="values" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_check_resolution" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="326" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_check_resolution(PrintBackend *object, GDBusMethodInvocation *invocation, gboolean possible)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gboolean" right="" name="possible" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_check_media" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="331" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_check_media(PrintBackend *object, GDBusMethodInvocation *invocation, gboolean possible)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gboolean" right="" name="possible" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_check_orientation" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="336" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_check_orientation(PrintBackend *object, GDBusMethodInvocation *invocation, gboolean possible)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gboolean" right="" name="possible" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_page_range" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="341" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_page_range(PrintBackend *object, GDBusMethodInvocation *invocation, GVariant *ranges)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="GVariant *" right="" name="ranges" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_quality" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="346" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_quality(PrintBackend *object, GDBusMethodInvocation *invocation, const gchar *quality)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="quality" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_check_quality" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="351" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_check_quality(PrintBackend *object, GDBusMethodInvocation *invocation, gboolean possible)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gboolean" right="" name="possible" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_check_color" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="356" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_check_color(PrintBackend *object, GDBusMethodInvocation *invocation, gboolean possible)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gboolean" right="" name="possible" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_apply_settings" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="361" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_apply_settings(PrintBackend *object, GDBusMethodInvocation *invocation)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_printers" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="365" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_printers(PrintBackend *object, GDBusMethodInvocation *invocation, GVariant *printer_id_name_pairs)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="GVariant *" right="" name="printer_id_name_pairs" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_default_value" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="309" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_default_value(PrintBackend *object, GDBusMethodInvocation *invocation, const gchar *option_value)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="option_value" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_submit_print_job" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="376" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_submit_print_job(PrintBackend *object, GDBusMethodInvocation *invocation, gboolean status)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gboolean" right="" name="status" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_print_jobs" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="381" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_print_jobs(PrintBackend *object, GDBusMethodInvocation *invocation, GVariant *print_jobs)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="GVariant *" right="" name="print_jobs" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_emit_printer_added" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="389" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_emit_printer_added(PrintBackend *object, const gchar *arg_printer_name, const gchar *arg_printer_info, const gchar *arg_printer_location, const gchar *arg_printer_make_and_model, const gchar *arg_printer_uri, gboolean arg_printer_is_accepting_jobs, const gchar *arg_printer_state)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_info" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_location" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_make_and_model" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_uri" default=""/>
+            <parameter left="gboolean" right="" name="arg_printer_is_accepting_jobs" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_state" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_emit_printer_removed" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="399" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_emit_printer_removed(PrintBackend *object, const gchar *arg_printer_name)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_activate_backend" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="406" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_activate_backend(PrintBackend *proxy, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_activate_backend_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="412" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_activate_backend_finish(PrintBackend *proxy, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_activate_backend_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="417" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_activate_backend_sync(PrintBackend *proxy, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_printer" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="422" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_default_printer(PrintBackend *proxy, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_printer_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="428" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_printer_finish(PrintBackend *proxy, gchar **out_printer_name, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_name" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_printer_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="434" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_printer_sync(PrintBackend *proxy, gchar **out_printer_name, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_list_basic_options" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="440" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_list_basic_options(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_printer_state" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="239" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_printer_state(PrintBackend *object, GDBusMethodInvocation *invocation, const gchar *state)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="state" default=""/>
+        </function>
+        <class threadsafety="unspecified" name="CommonPrintDialog" href="commonprintdialog.html" status="internal" access="private" location="commonprintdialog.h" filepath="/home/rithvikp/common-print-dialog/app/commonprintdialog.h" lineno="32">
+            <function threadsafety="unspecified" name="CommonPrintDialog" fullname="CommonPrintDialog::CommonPrintDialog" href="commonprintdialog.html#CommonPrintDialog" status="commendable" access="public" location="commonprintdialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/commonprintdialog.cpp" lineno="25" virtual="non" meta="constructor" const="false" static="false" overload="false" type="" signature="CommonPrintDialog()"/>
+            <function threadsafety="unspecified" name="exec" fullname="CommonPrintDialog::exec" href="commonprintdialog.html#exec" status="commendable" access="public" location="commonprintdialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/commonprintdialog.cpp" lineno="29" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void exec()"/>
+        </class>
+        <class threadsafety="unspecified" name="BackendObject" href="backendobject.html" status="internal" access="private" location="commonprintdialog.h" filepath="/home/rithvikp/common-print-dialog/app/commonprintdialog.h" lineno="38">
+            <function threadsafety="unspecified" name="cancelButtonClicked" fullname="BackendObject::cancelButtonClicked" href="backendobject.html#cancelButtonClicked" status="commendable" access="public" location="commonprintdialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/commonprintdialog.cpp" lineno="250" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void cancelButtonClicked()"/>
+            <function threadsafety="unspecified" name="newPrinterSelected" fullname="BackendObject::newPrinterSelected" href="backendobject.html#newPrinterSelected" status="commendable" access="public" location="commonprintdialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/commonprintdialog.cpp" lineno="236" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void newPrinterSelected(const QString &amp;printer)">
+                <parameter left="const QString &amp;" right="" name="printer" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="remotePrintersToggled" fullname="BackendObject::remotePrintersToggled" href="backendobject.html#remotePrintersToggled" status="commendable" access="public" location="commonprintdialog.cpp" filepath="/home/rithvikp/common-print-dialog/app/commonprintdialog.cpp" lineno="240" virtual="non" meta="slot" const="false" static="false" overload="false" type="void" signature="void remotePrintersToggled(const QString enabled)">
+                <parameter left="const QString" right="" name="enabled" default=""/>
+            </function>
+        </class>
+        <class threadsafety="unspecified" name="QPdfPreview" href="qpdfpreview.html" status="internal" access="private" location="preview.h" filepath="/home/rithvikp/common-print-dialog/app/preview.h" lineno="7">
+            <function threadsafety="unspecified" name="requestImage" fullname="QPdfPreview::requestImage" href="qpdfpreview.html#requestImage" status="commendable" access="public" location="preview.cpp" filepath="/home/rithvikp/common-print-dialog/app/preview.cpp" lineno="10" virtual="non" meta="plain" const="false" static="false" overload="false" type="QImage" signature="QImage requestImage(const QString &amp;id, QSize *size, const QSize &amp;requested_size)">
+                <parameter left="const QString &amp;" right="" name="id" default=""/>
+                <parameter left="QSize *" right="" name="size" default=""/>
+                <parameter left="const QSize &amp;" right="" name="requested_size" default=""/>
+            </function>
+            <function threadsafety="unspecified" name="QPdfPreview" fullname="QPdfPreview::QPdfPreview" href="qpdfpreview.html#QPdfPreview" status="commendable" access="public" location="preview.h" filepath="/home/rithvikp/common-print-dialog/app/preview.h" lineno="10" virtual="non" meta="constructor" const="false" static="false" overload="false" type="" signature="QPdfPreview()"/>
+        </class>
+        <class threadsafety="unspecified" name="QPreviewData" href="qpreviewdata.html" status="internal" access="private" location="preview.h" filepath="/home/rithvikp/common-print-dialog/app/preview.h" lineno="14">
+            <function threadsafety="unspecified" name="getPageSize" fullname="QPreviewData::getPageSize" href="qpreviewdata.html#getPageSize" status="commendable" access="public" location="preview.cpp" filepath="/home/rithvikp/common-print-dialog/app/preview.cpp" lineno="72" virtual="non" meta="plain" const="false" static="false" overload="false" type="QSizeF" signature="QSizeF getPageSize(QString page)">
+                <parameter left="QString" right="" name="page" default=""/>
+            </function>
+        </class>
+        <class threadsafety="unspecified" name="_PrintBackendIface" href="printbackendiface.html" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="28">
+            <variable threadsafety="unspecified" name="parent_iface" fullname="_PrintBackendIface::parent_iface" href="printbackendiface.html#parent_iface-var" status="commendable" access="public" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="29" type="GTypeInterface" static="false"/>
+        </class>
+        <function threadsafety="unspecified" name="print_backend_get_type" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="213" virtual="non" meta="plain" const="false" static="false" overload="false" type="GType" signature="GType print_backend_get_type(void )">
+            <parameter left="void" right="" name="" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_interface_info" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="215" virtual="non" meta="plain" const="false" static="false" overload="false" type="GDBusInterfaceInfo *" signature="GDBusInterfaceInfo * print_backend_interface_info(void )">
+            <parameter left="void" right="" name="" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_override_properties" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="216" virtual="non" meta="plain" const="false" static="false" overload="false" type="guint" signature="guint print_backend_override_properties(GObjectClass *klass, guint property_id_begin)">
+            <parameter left="GObjectClass *" right="" name="klass" default=""/>
+            <parameter left="guint" right="" name="property_id_begin" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_activate_backend" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="221" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_activate_backend(PrintBackend *object, GDBusMethodInvocation *invocation)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_default_printer" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="225" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_default_printer(PrintBackend *object, GDBusMethodInvocation *invocation, const gchar *printer_name)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="printer_name" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_list_basic_options" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="230" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_list_basic_options(PrintBackend *object, GDBusMethodInvocation *invocation, const gchar *printer_info, const gchar *printer_location, const gchar *printer_make_and_model, gboolean printer_is_accepting_jobs, const gchar *printer_state)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="printer_info" default=""/>
+            <parameter left="const gchar *" right="" name="printer_location" default=""/>
+            <parameter left="const gchar *" right="" name="printer_make_and_model" default=""/>
+            <parameter left="gboolean" right="" name="printer_is_accepting_jobs" default=""/>
+            <parameter left="const gchar *" right="" name="printer_state" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_list_basic_options_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="447" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_list_basic_options_finish(PrintBackend *proxy, gchar **out_printer_info, gchar **out_printer_location, gchar **out_printer_make_and_model, gboolean *out_printer_is_accepting_jobs, gchar **out_printer_state, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_info" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_location" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_make_and_model" default=""/>
+            <parameter left="gboolean *" right="" name="out_printer_is_accepting_jobs" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_state" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_is_accepting_jobs" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="244" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_is_accepting_jobs(PrintBackend *object, GDBusMethodInvocation *invocation, gboolean is_accepting)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gboolean" right="" name="is_accepting" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_printer_capabilities" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="249" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_printer_capabilities(PrintBackend *object, GDBusMethodInvocation *invocation, gboolean copies, gboolean media, gboolean number_up, gboolean orientation, gboolean color_mode, gboolean print_quality, gboolean sides, gboolean resolution)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gboolean" right="" name="copies" default=""/>
+            <parameter left="gboolean" right="" name="media" default=""/>
+            <parameter left="gboolean" right="" name="number_up" default=""/>
+            <parameter left="gboolean" right="" name="orientation" default=""/>
+            <parameter left="gboolean" right="" name="color_mode" default=""/>
+            <parameter left="gboolean" right="" name="print_quality" default=""/>
+            <parameter left="gboolean" right="" name="sides" default=""/>
+            <parameter left="gboolean" right="" name="resolution" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_default_media" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="261" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_default_media(PrintBackend *object, GDBusMethodInvocation *invocation, const gchar *media_name)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="media_name" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_supported_media" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="266" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_supported_media(PrintBackend *object, GDBusMethodInvocation *invocation, gint num_values, GVariant *values)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gint" right="" name="num_values" default=""/>
+            <parameter left="GVariant *" right="" name="values" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_default_orientation" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="272" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_default_orientation(PrintBackend *object, GDBusMethodInvocation *invocation, const gchar *orientation)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="orientation" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_supported_orientation" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="277" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_supported_orientation(PrintBackend *object, GDBusMethodInvocation *invocation, gint num_values, GVariant *values)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gint" right="" name="num_values" default=""/>
+            <parameter left="GVariant *" right="" name="values" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_default_resolution" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="283" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_default_resolution(PrintBackend *object, GDBusMethodInvocation *invocation, const gchar *resolution)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="resolution" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_supported_resolution" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="288" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_supported_resolution(PrintBackend *object, GDBusMethodInvocation *invocation, gint num_values, GVariant *values)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gint" right="" name="num_values" default=""/>
+            <parameter left="GVariant *" right="" name="values" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_default_color" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="294" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_default_color(PrintBackend *object, GDBusMethodInvocation *invocation, const gchar *color_mode)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="const gchar *" right="" name="color_mode" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_get_supported_color" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="299" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_get_supported_color(PrintBackend *object, GDBusMethodInvocation *invocation, gint num_values, GVariant *values)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+            <parameter left="gint" right="" name="num_values" default=""/>
+            <parameter left="GVariant *" right="" name="values" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_complete_ping" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="305" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_complete_ping(PrintBackend *object, GDBusMethodInvocation *invocation)">
+            <parameter left="PrintBackend *" right="" name="object" default=""/>
+            <parameter left="GDBusMethodInvocation *" right="" name="invocation" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_ping_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="717" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_ping_finish(PrintBackend *proxy, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_resolution_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="639" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_resolution_sync(PrintBackend *proxy, const gchar *arg_printer_name, gchar **out_resolution, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gchar **" right="" name="out_resolution" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_resolution" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="646" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_supported_resolution(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_resolution_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="653" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_resolution_finish(PrintBackend *proxy, gint *out_num_values, GVariant **out_values, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_resolution_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="660" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_resolution_sync(PrintBackend *proxy, const gchar *arg_printer_name, gint *out_num_values, GVariant **out_values, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_color" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="668" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_default_color(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_color_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="675" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_color_finish(PrintBackend *proxy, gchar **out_color_mode, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_color_mode" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_color_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="681" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_color_sync(PrintBackend *proxy, const gchar *arg_printer_name, gchar **out_color_mode, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gchar **" right="" name="out_color_mode" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_color" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="688" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_supported_color(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_color_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="695" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_color_finish(PrintBackend *proxy, gint *out_num_values, GVariant **out_values, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_color_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="702" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_color_sync(PrintBackend *proxy, const gchar *arg_printer_name, gint *out_num_values, GVariant **out_values, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_ping" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="710" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_ping(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_resolution_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="633" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_resolution_finish(PrintBackend *proxy, gchar **out_resolution, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_resolution" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_ping_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="722" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_ping_sync(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_value" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="728" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_default_value(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_option_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_option_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_value_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="736" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_value_finish(PrintBackend *proxy, gchar **out_option_value, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_option_value" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_value_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="742" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_value_sync(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_option_name, gchar **out_option_value, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_option_name" default=""/>
+            <parameter left="gchar **" right="" name="out_option_value" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_values_raw_string" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="750" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_supported_values_raw_string(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_option_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_option_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_values_raw_string_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="758" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_values_raw_string_finish(PrintBackend *proxy, gint *out_num_values, GVariant **out_option_values, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_option_values" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_values_raw_string_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="765" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_values_raw_string_sync(PrintBackend *proxy, const gchar *arg_printer_name, const gchar *arg_option_name, gint *out_num_values, GVariant **out_option_values, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="const gchar *" right="" name="arg_option_name" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_option_values" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_quality" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="774" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_supported_quality(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_quality_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="781" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_quality_finish(PrintBackend *proxy, gint *out_num_values, GVariant **out_values, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_quality_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="788" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_quality_sync(PrintBackend *proxy, const gchar *arg_printer_name, gint *out_num_values, GVariant **out_values, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_resolution" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="796" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_check_resolution(PrintBackend *proxy, const gchar *arg_printer_name, gint arg_x_res, gint arg_y_res, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gint" right="" name="arg_x_res" default=""/>
+            <parameter left="gint" right="" name="arg_y_res" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_media_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="549" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_media_finish(PrintBackend *proxy, gchar **out_media_name, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_media_name" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_list_basic_options_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="457" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_list_basic_options_sync(PrintBackend *proxy, const gchar *arg_printer_name, gchar **out_printer_info, gchar **out_printer_location, gchar **out_printer_make_and_model, gboolean *out_printer_is_accepting_jobs, gchar **out_printer_state, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_info" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_location" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_make_and_model" default=""/>
+            <parameter left="gboolean *" right="" name="out_printer_is_accepting_jobs" default=""/>
+            <parameter left="gchar **" right="" name="out_printer_state" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printer_state" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="468" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_printer_state(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printer_state_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="475" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_printer_state_finish(PrintBackend *proxy, gchar **out_state, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_state" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printer_state_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="481" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_printer_state_sync(PrintBackend *proxy, const gchar *arg_printer_name, gchar **out_state, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gchar **" right="" name="out_state" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_is_accepting_jobs" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="488" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_is_accepting_jobs(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_is_accepting_jobs_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="495" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_is_accepting_jobs_finish(PrintBackend *proxy, gboolean *out_is_accepting, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gboolean *" right="" name="out_is_accepting" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_is_accepting_jobs_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="501" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_is_accepting_jobs_sync(PrintBackend *proxy, const gchar *arg_printer_name, gboolean *out_is_accepting, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gboolean *" right="" name="out_is_accepting" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printer_capabilities" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="508" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_printer_capabilities(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printer_capabilities_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="515" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_printer_capabilities_finish(PrintBackend *proxy, gboolean *out_copies, gboolean *out_media, gboolean *out_number_up, gboolean *out_orientation, gboolean *out_color_mode, gboolean *out_print_quality, gboolean *out_sides, gboolean *out_resolution, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gboolean *" right="" name="out_copies" default=""/>
+            <parameter left="gboolean *" right="" name="out_media" default=""/>
+            <parameter left="gboolean *" right="" name="out_number_up" default=""/>
+            <parameter left="gboolean *" right="" name="out_orientation" default=""/>
+            <parameter left="gboolean *" right="" name="out_color_mode" default=""/>
+            <parameter left="gboolean *" right="" name="out_print_quality" default=""/>
+            <parameter left="gboolean *" right="" name="out_sides" default=""/>
+            <parameter left="gboolean *" right="" name="out_resolution" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_printer_capabilities_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="528" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_printer_capabilities_sync(PrintBackend *proxy, const gchar *arg_printer_name, gboolean *out_copies, gboolean *out_media, gboolean *out_number_up, gboolean *out_orientation, gboolean *out_color_mode, gboolean *out_print_quality, gboolean *out_sides, gboolean *out_resolution, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gboolean *" right="" name="out_copies" default=""/>
+            <parameter left="gboolean *" right="" name="out_media" default=""/>
+            <parameter left="gboolean *" right="" name="out_number_up" default=""/>
+            <parameter left="gboolean *" right="" name="out_orientation" default=""/>
+            <parameter left="gboolean *" right="" name="out_color_mode" default=""/>
+            <parameter left="gboolean *" right="" name="out_print_quality" default=""/>
+            <parameter left="gboolean *" right="" name="out_sides" default=""/>
+            <parameter left="gboolean *" right="" name="out_resolution" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_media" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="542" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_default_media(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_check_resolution_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="805" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_check_resolution_finish(PrintBackend *proxy, gboolean *out_possible, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gboolean *" right="" name="out_possible" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_media_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="555" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_media_sync(PrintBackend *proxy, const gchar *arg_printer_name, gchar **out_media_name, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gchar **" right="" name="out_media_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_media" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="562" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_supported_media(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_media_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="569" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_media_finish(PrintBackend *proxy, gint *out_num_values, GVariant **out_values, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_media_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="576" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_media_sync(PrintBackend *proxy, const gchar *arg_printer_name, gint *out_num_values, GVariant **out_values, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_orientation" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="584" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_default_orientation(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_orientation_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="591" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_orientation_finish(PrintBackend *proxy, gchar **out_orientation, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gchar **" right="" name="out_orientation" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_orientation_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="597" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_default_orientation_sync(PrintBackend *proxy, const gchar *arg_printer_name, gchar **out_orientation, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gchar **" right="" name="out_orientation" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_orientation" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="604" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_supported_orientation(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_orientation_finish" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="611" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_orientation_finish(PrintBackend *proxy, gint *out_num_values, GVariant **out_values, GAsyncResult *res, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GAsyncResult *" right="" name="res" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_supported_orientation_sync" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="618" virtual="non" meta="plain" const="false" static="false" overload="false" type="gboolean" signature="gboolean print_backend_call_get_supported_orientation_sync(PrintBackend *proxy, const gchar *arg_printer_name, gint *out_num_values, GVariant **out_values, GCancellable *cancellable, GError **error)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="gint *" right="" name="out_num_values" default=""/>
+            <parameter left="GVariant **" right="" name="out_values" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GError **" right="" name="error" default=""/>
+        </function>
+        <function threadsafety="unspecified" name="print_backend_call_get_default_resolution" status="internal" access="private" location="backend_interface.h" filepath="/home/rithvikp/common-print-dialog/backends/gcp/backend/backend_interface.h" lineno="626" virtual="non" meta="plain" const="false" static="false" overload="false" type="void" signature="void print_backend_call_get_default_resolution(PrintBackend *proxy, const gchar *arg_printer_name, GCancellable *cancellable, GAsyncReadyCallback callback, gpointer user_data)">
+            <parameter left="PrintBackend *" right="" name="proxy" default=""/>
+            <parameter left="const gchar *" right="" name="arg_printer_name" default=""/>
+            <parameter left="GCancellable *" right="" name="cancellable" default=""/>
+            <parameter left="GAsyncReadyCallback" right="" name="callback" default=""/>
+            <parameter left="gpointer" right="" name="user_data" default=""/>
+        </function>
+        <module name="Common Print Dialog" href="common-print-dialog-module.html" status="internal" seen="false" title="" members="QCPDialog,Tabs,Root,Preview,Controls"/>
+    </namespace>
+</INDEX>
