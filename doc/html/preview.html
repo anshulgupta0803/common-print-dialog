@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- components.cpp -->
+  <title>Preview Class | Common Print Dialog </title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    window.onload = function(){document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");};
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<li>Preview</li>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Preview Class</h1>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign"> <span class="preprocessor">#include &lt;Preview&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> </td></tr></table></div><ul>
+<li><a href="preview-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="preview.html#Preview">Preview</a></b>(QPrinter *<i> _printer</i>, QWidget *<i> parent</i> = Q_NULLPTR)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="preview.html#dtor.Preview">~Preview</a></b>()</td></tr>
+</table></div>
+<a name="public-slots"></a>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#print">print</a></b>(QPrinter *<i> printer</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#setZoom">setZoom</a></b>(qreal<i> zoomFactor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#showNextPage">showNextPage</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="preview.html#showPrevPage">showPrevPage</a></b>()</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$Preview-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>Preview class creates a widget to display the preview of the print job</p>
+</div>
+<!-- @@@Preview -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Preview[overload1]$$$PreviewQPrinter*QWidget* -->
+<h3 class="fn" id="Preview"><a name="Preview"></a>Preview::<span class="name">Preview</span>(<span class="type">QPrinter</span> *<i> _printer</i>, <span class="type">QWidget</span> *<i> parent</i> = Q_NULLPTR)</h3>
+<p>Constructs Preview objects with <i>parent</i> as the parent widget and <i>_printer</i> as the printer. The <i>_printer</i> is used further to change the job options that get reflected in the preview.</p>
+<!-- @@@Preview -->
+<!-- $$$~Preview[overload1]$$$~Preview -->
+<h3 class="fn" id="dtor.Preview"><a name="dtor.Preview"></a>Preview::<span class="name">~Preview</span>()</h3>
+<!-- @@@~Preview -->
+<!-- $$$print[overload1]$$$printQPrinter* -->
+<h3 class="fn" id="print"><a name="print"></a><code>[slot] </code><span class="type">void</span> Preview::<span class="name">print</span>(<span class="type">QPrinter</span> *<i> printer</i>)</h3>
+<p>The function acts as a slot for the paintRequested signal emitted by QPrintPreviewWidget. The function uses poppler and <i>printer</i> settings to generated and paint the image.</p>
+<!-- @@@print -->
+<!-- $$$setZoom[overload1]$$$setZoomqreal -->
+<h3 class="fn" id="setZoom"><a name="setZoom"></a><code>[slot] </code><span class="type">void</span> Preview::<span class="name">setZoom</span>(<span class="type">qreal</span><i> zoomFactor</i>)</h3>
+<p>This function acts as a slot for the zoomSliderValueChanged signal emitted from pages/preview_toolbar.qml and sets the size of the page shown in the preview according to the <i>zoomFactor</i>.</p>
+<!-- @@@setZoom -->
+<!-- $$$showNextPage[overload1]$$$showNextPage -->
+<h3 class="fn" id="showNextPage"><a name="showNextPage"></a><code>[slot] </code><span class="type">void</span> Preview::<span class="name">showNextPage</span>()</h3>
+<p>This function acts as a slot for the nextPageButtonClicked signal emitted from pages/preview_toolbar.qml and shows the next page in the document in the preview window.</p>
+<!-- @@@showNextPage -->
+<!-- $$$showPrevPage[overload1]$$$showPrevPage -->
+<h3 class="fn" id="showPrevPage"><a name="showPrevPage"></a><code>[slot] </code><span class="type">void</span> Preview::<span class="name">showPrevPage</span>()</h3>
+<p>This function acts as a slot for the prevPageButtonClicked signal emitted from pages/preview_toolbar.qml and shows the previous page in the document in the preview window.</p>
+<!-- @@@showPrevPage -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2016 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>
