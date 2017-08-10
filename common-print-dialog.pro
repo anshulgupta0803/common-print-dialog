@@ -16,14 +16,14 @@ unix {
 }
 
 SOURCES += \
-    app/components.cpp \
-    app/QCPDialog.cpp
+    src/components.cpp \
+    src/QCPDialog.cpp
 
 HEADERS += \
-    app/components.h \
-    app/QCPDialog.h \
-    app/QCPDialog_global.h
+    src/components.h \
+    src/QCPDialog.h \
+    src/QCPDialog_global.h
 
-RESOURCES += app/qml.qrc
+RESOURCES += src/qml.qrc
 DEFINES += QCPDIALOG_LIBRARY
 DEFINES += QT_DEPRECATED_WARNINGS
