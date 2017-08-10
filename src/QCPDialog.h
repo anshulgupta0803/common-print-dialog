@@ -23,7 +23,7 @@
 #define QCPDIALOG_H
 
 #include "QCPDialog_global.h"
-
+#include "singleton.h"
 #include <QAbstractPrintDialog>
 
 class QPrinter;
@@ -51,7 +51,6 @@ public:
     QCPDialog(QPrinter *printer, QWidget *parent = Q_NULLPTR);
     void init_backend();
 
-    void addPrinter(char *printer, char *backend);
     void clearPrinters();
 
     void addMaximumPrintCopies(char *_copies);
@@ -74,10 +73,9 @@ public:
         return QDialog::exec();
     }
 
-    static void add_printer_callback(PrinterObj *p);
-    static void remove_printer_callback(PrinterObj *p);
-
 public Q_SLOTS:
+    void addPrinter(char *printer_name, char *printer_id, char *backend_name);
+    void removePrinter(char *printer_name);
     void tabBarIndexChanged(qint32 index);
     void swipeViewIndexChanged(qint32 index);
     void cancelButtonClicked();
@@ -92,5 +90,21 @@ private:
     Controls *controls;
     QGridLayout *masterLayout;
 };
+
+class CallbackFunctions : public QObject
+{
+    Q_OBJECT
+public:
+    explicit CallbackFunctions(QObject *parent = 0);
+    static void add_printer_callback(PrinterObj *p);
+    static void remove_printer_callback(PrinterObj *p);
+
+Q_SIGNALS:
+    void addPrinterSignal(char *printer_name, char *printer_id, char *backend_name);
+    void removePrinterSignal(char *printer_name);
+
+};
+
+typedef Singleton<CallbackFunctions> cbf;
 
 #endif // QCPDIALOG_H

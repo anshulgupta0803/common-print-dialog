@@ -33,10 +33,23 @@ RowLayout {
     signal newPrinterSelected(string printer)
     signal remotePrintersToggled(string enabled)
 
-    function updateDestinationModel(printer, backend) {
-        destinationModel.append({destination: printer, backend: backend})
+    function addToDestinationModel(printer_name, printer_id, backend_name) {
+        destinationModel.append({destination: printer_name, printerID: printer_id, backend: backend_name})
         if (destinationComboBox.currentIndex == -1 && destinationComboBox.count > 0)
             destinationComboBox.currentIndex = 0
+    }
+
+    function removeFromDestinationModel(printer_name) {
+        var removed = false
+        for (var i = 0; i < destinationModel.count; i++) {
+            if (destinationModel.get(i).destination === printer_name) {
+                destinationModel.remove(i)
+                removed = true
+                break
+            }
+        }
+        if (!removed)
+            console.log("Unable to delete Printer " + printer_name)
     }
 
     function clearDestinationModel() {
@@ -83,14 +96,11 @@ RowLayout {
 
             ListModel {
                 id: destinationModel
-                ListElement {
-                    destination: "3100CN"
-                    backend: "CUPS"
-                }
-                ListElement {
-                    destination: "X950"
-                    backend: "CUPS"
-                }
+//                ListElement {
+//                    destination: "printer_name"
+//                    printerID: "printer_id"
+//                    backend: "backend_name"
+//                }
             }
 
             ComboBox {
@@ -111,7 +121,7 @@ RowLayout {
 
                 onCurrentIndexChanged: {
                     var element = destinationModel.get(destinationComboBox.currentIndex)
-                    newPrinterSelected(element.destination + "#" + element.backend)
+                    newPrinterSelected(element.printerID + "#" + element.backend)
                 }
             }
 

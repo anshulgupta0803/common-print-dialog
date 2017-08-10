@@ -22,7 +22,8 @@ SOURCES += \
 HEADERS += \
     src/components.h \
     src/QCPDialog.h \
-    src/QCPDialog_global.h
+    src/QCPDialog_global.h \
+    src/singleton.h
 
 RESOURCES += src/qml.qrc
 DEFINES += QCPDIALOG_LIBRARY

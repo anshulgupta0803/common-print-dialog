@@ -100,6 +100,16 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
                      this,
                      SLOT(remotePrintersToggled(QString)));
 
+    QObject::connect(cbf::Instance(),
+                     SIGNAL(addPrinterSignal(char *, char *, char *)),
+                     this,
+                     SLOT(addPrinter(char *, char *, char *)));
+
+    QObject::connect(cbf::Instance(),
+                     SIGNAL(removePrinterSignal(char *)),
+                     this,
+                     SLOT(removePrinter(char *)));
+
     tabs->setMinimumSize(700, 32);
 
     root->setMinimumSize(320, 408);
@@ -138,46 +148,75 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
  */
 void QCPDialog::init_backend()
 {
-    event_callback add_cb = (event_callback)add_printer_callback;
-    event_callback rem_cb = (event_callback)remove_printer_callback;
+    event_callback add_cb = (event_callback)CallbackFunctions::add_printer_callback;
+    event_callback rem_cb = (event_callback)CallbackFunctions::remove_printer_callback;
     f = get_new_FrontendObj(NULL, add_cb, rem_cb);
     connect_to_dbus(f);
 }
 
 /*!
- *  \fn static void add_printer_callback(PrinterObj *p)
+ *  \fn static void CallbackFunctions::CallbackFunctions(QObject *parent)
+ *
+ *  A singleton class which acts as a mediator between a static callback
+ *  function and QCPDialog class
+ */
+CallbackFunctions::CallbackFunctions(QObject *parent):
+    QObject (parent)
+{
+}
+
+/*!
+ *  \fn static void CallbackFunctions::add_printer_callback(PrinterObj *p)
  *
  *  Acts as a callback function whenever a new PrinterObj \a p is added.
  */
-void QCPDialog::add_printer_callback(PrinterObj *p)
+void CallbackFunctions::add_printer_callback(PrinterObj *p)
 {
-    qDebug() << "Printer" << p->name << "added!";
+    cbf::Instance()->addPrinterSignal(p->name, p->id, p->backend_name);
 }
 
 /*!
- *  \fn static void remove_printer_callback(PrinterObj *p)
+ *  \fn static void CallbackFunctions::remove_printer_callback(PrinterObj *p)
  *
  *  Acts as a callback function whenever a PrinterObj \a p is removed.
  */
-void QCPDialog::remove_printer_callback(PrinterObj *p)
+void CallbackFunctions::remove_printer_callback(PrinterObj *p)
 {
-    qDebug() << "Printer" << p->name << "removed!";
+    cbf::Instance()->removePrinterSignal(p->name);
 }
 
 /*!
- *  \fn void QCPDialog::addPrinter(char *printer, char *backend)
+ *  \fn void QCPDialog::addPrinter(char *printer_name, char *printer_id, char *backend_name)
  *
- *  Whenever a new printer with name \a printer and backend \a backend is discovered in the
- *  backends, this function is called which adds that printer to the UI.
+ *  Whenever a new printer with name \a printer_name, id \a printer_id and backend \a backend_name
+ *  is discovered in the backends, this function is called which adds that printer to the UI.
  */
-void QCPDialog::addPrinter(char *printer, char *backend)
+void QCPDialog::addPrinter(char *printer_name, char *printer_id, char *backend_name)
 {
     QObject *obj = root->rootObject->findChild<QObject *>("generalObject");
     if (obj)
         QMetaObject::invokeMethod(obj,
-                                  "updateDestinationModel",
-                                  Q_ARG(QVariant, printer),
-                                  Q_ARG(QVariant, backend));
+                                  "addToDestinationModel",
+                                  Q_ARG(QVariant, printer_name),
+                                  Q_ARG(QVariant, printer_id),
+                                  Q_ARG(QVariant, backend_name));
+    else
+        qDebug() << "generalObject Not Found";
+}
+
+/*!
+ *  \fn void QCPDialog::removePrinter(char *printer_name)
+ *
+ *  Whenever a printer with name \a printer_name is removed,
+ *  this function is called which removes that printer to the UI.
+ */
+void QCPDialog::removePrinter(char *printer_name)
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("generalObject");
+    if (obj)
+        QMetaObject::invokeMethod(obj,
+                                  "removeFromDestinationModel",
+                                  Q_ARG(QVariant, printer_name));
     else
         qDebug() << "generalObject Not Found";
 }
@@ -204,12 +243,15 @@ void QCPDialog::clearPrinters()
  */
 void QCPDialog::newPrinterSelected(const QString &printer)
 {
-    QStringList list = printer.split('#');  // printer is in the format: <printer_name>#<backend_name>
+    QStringList list = printer.split('#');  // printer is in the format: <printer_id>#<backend_name>
     PrinterObj *p = find_PrinterObj(f, list[0].toLatin1().data(), list[1].toLatin1().data());
+
     Options *options = get_all_options(p);
+
     GHashTableIter iter;
     g_hash_table_iter_init(&iter, options->table);
     gpointer _key, _value;
+
     while (g_hash_table_iter_next(&iter, &_key, &_value)) {
         char *key = static_cast<char *>(_key);
         Option *value = static_cast<Option *>(_value);
