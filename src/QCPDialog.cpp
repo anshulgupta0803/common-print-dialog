@@ -26,7 +26,7 @@
 #include <cstring>
 
 extern "C" {
-    #include <CPDFrontend.h>
+#include <CPDFrontend.h>
 }
 
 /*!
@@ -204,8 +204,9 @@ void QCPDialog::clearPrinters()
  */
 void QCPDialog::newPrinterSelected(const QString &printer)
 {
-    QStringList list = printer.split('#');
-    Options *options = get_all_printer_options(f, list[0].toLatin1().data(), list[1].toLatin1().data());
+    QStringList list = printer.split('#');  // printer is in the format: <printer_name>#<backend_name>
+    PrinterObj *p = find_PrinterObj(f, list[0].toLatin1().data(), list[1].toLatin1().data());
+    Options *options = get_all_options(p);
     GHashTableIter iter;
     g_hash_table_iter_init(&iter, options->table);
     gpointer _key, _value;

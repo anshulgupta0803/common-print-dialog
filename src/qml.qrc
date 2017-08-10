@@ -1,9 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
         <file>Root.qml</file>
         <file>qtquickcontrols2.conf</file>
-        <file>MoreOptions.qml</file>
         <file>General.qml</file>
         <file>PageSetup.qml</file>
         <file>Preview.qml</file>
