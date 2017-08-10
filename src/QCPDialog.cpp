@@ -149,7 +149,7 @@ void QCPDialog::init_backend()
  *
  *  Acts as a callback function whenever a new PrinterObj \a p is added.
  */
-static void add_printer_callback(PrinterObj *p)
+void QCPDialog::add_printer_callback(PrinterObj *p)
 {
     qDebug() << "Printer" << p->name << "added!";
 }
@@ -159,7 +159,7 @@ static void add_printer_callback(PrinterObj *p)
  *
  *  Acts as a callback function whenever a PrinterObj \a p is removed.
  */
-static void remove_printer_callback(PrinterObj *p)
+void QCPDialog::remove_printer_callback(PrinterObj *p)
 {
     qDebug() << "Printer" << p->name << "removed!";
 }

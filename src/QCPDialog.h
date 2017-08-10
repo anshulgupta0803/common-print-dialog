@@ -44,9 +44,6 @@ using PrinterObj = _PrinterObj;
 
 using gpointer = void *;
 
-static void add_printer_callback(PrinterObj *p);
-static void remove_printer_callback(PrinterObj *p);
-
 class CPDSHARED_EXPORT QCPDialog : public QAbstractPrintDialog
 {
     Q_OBJECT
@@ -76,6 +73,9 @@ public:
     {
         return QDialog::exec();
     }
+
+    static void add_printer_callback(PrinterObj *p);
+    static void remove_printer_callback(PrinterObj *p);
 
 public Q_SLOTS:
     void tabBarIndexChanged(qint32 index);

@@ -9,7 +9,7 @@ CONFIG += c++11 no_keywords
 unix {
     target.path = /usr/lib
     headerfiles.path = /usr/include/common-print-dialog
-    headerfiles.files = $$PWD/app/*.h
+    headerfiles.files = $$PWD/src/*.h
     INSTALLS += target headerfiles
     CONFIG += link_pkgconfig
     PKGCONFIG += CPDFrontend gio-unix-2.0 glib-2.0 gobject-2.0 poppler-qt5
