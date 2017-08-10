@@ -4,7 +4,7 @@
 - libpoppler-qt5-dev
 - libcups2-dev
 - Qt 5.7 or above
-- [CPDFrontend](https://github.com/NilanjanaLodh/PrintDialog_Backend)
+- [Helper libraries and CUPS Backend](https://github.com/NilanjanaLodh/PrintDialog_Backend) and [GCP Backend](https://github.com/dracarys09/gcp-backend)
 
 ## Build
 To build and install the Print Dialog Library
