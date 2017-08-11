@@ -23,7 +23,6 @@ import QtQuick 2.4
 import QtQml 2.2
 import QtQuick 2.7
 import QtQuick.Controls 2.0
-import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
 import "."
 
@@ -36,7 +35,7 @@ RowLayout {
     signal zoomSliderValueChanged(real value)
 
     Rectangle {
-        width: 350
+        width: 320
         //Layout.preferredWidth: 320
         //Layout.minimumWidth: 320
 
@@ -65,7 +64,7 @@ RowLayout {
 
     Rectangle {
         id: rectangle
-        width: 350
+        width: 380
         //Layout.preferredWidth: 320
         //Layout.minimumWidth: 320
 
@@ -79,7 +78,6 @@ RowLayout {
 
             id: buttons
             color: "#00000000"
-            radius: 15
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBaseline
             anchors.centerIn: parent
             width: parent.width
@@ -88,11 +86,12 @@ RowLayout {
             RowLayout {
                 anchors.centerIn: parent
 
-                RoundButton {
+                Button {
                     id: prevButton
+                    width: 48
                     text: qsTr("\u25C0")
                     highlighted: true
-                    radius: 15
+                    //radius: 15
                     onClicked: prevPageButtonClicked()
                 }
 
@@ -104,11 +103,12 @@ RowLayout {
                     onValueChanged: zoomSliderValueChanged(zoomSlider.value)
                 }
 
-                RoundButton {
+                Button {
                     id: nextButton
+                    width: 48
                     text: qsTr("\u25B6")
                     highlighted: true
-                    radius: 15
+                    //radius: 15
                     onClicked: nextPageButtonClicked()
                 }
             }
