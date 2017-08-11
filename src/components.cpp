@@ -43,6 +43,12 @@ Tabs::Tabs(QWidget *parent) :
     rootObject = tabs->rootObject();
 }
 
+void Tabs::resize(const QRect &rect)
+{
+    QWidget::resize(rect.width(), rect.height());
+    tabs->resize(rect.width(), rect.height());
+}
+
 /*! \class Root
  *  \inmodule Common Print Dialog
  *
@@ -62,6 +68,12 @@ Root::Root(QWidget *parent) :
     root->setResizeMode(QQuickWidget::SizeRootObjectToView);
     root->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     rootObject = root->rootObject();
+}
+
+void Root::resize(const QRect &rect)
+{
+    QWidget::resize(rect.width(), rect.height());
+    root->resize(rect.width(), rect.height());
 }
 
 /*! \class Preview
@@ -93,6 +105,12 @@ Preview::Preview(QPrinter *_printer, QWidget *parent) :
                      SLOT(print(QPrinter *)));
 }
 
+void Preview::resize(const QRect &rect)
+{
+    QWidget::resize(rect.width(), rect.height());
+    preview->resize(rect.width(), rect.height());
+}
+
 /*!
  * \fn void Preview::print(QPrinter *printer)
  *
@@ -112,6 +130,12 @@ void Preview::print(QPrinter *printer)
     QRect rect({100, 100}, QSize{500, 500});
     painter.drawText(rect, Qt::AlignLeft | Qt::AlignTop, text);
     painter.drawEllipse(rect);
+
+    printer->newPage();
+
+//    pageCount = 2;
+//    pageNumber = 0;
+
     painter.end();
 
 //    QFile f;
@@ -216,4 +240,10 @@ Controls::Controls(QWidget *parent) :
     controls->setResizeMode(QQuickWidget::SizeRootObjectToView);
     controls->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     rootObject = controls->rootObject();
+}
+
+void Controls::resize(const QRect &rect)
+{
+    QWidget::resize(rect.width(), rect.height());
+    controls->resize(rect.width(), rect.height());
 }

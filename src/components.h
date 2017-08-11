@@ -35,6 +35,7 @@ public:
     QQuickItem *rootObject;
     Tabs(QWidget *parent = Q_NULLPTR);
     ~Tabs() = default;
+    void resize(const QRect &rect);
 
 private:
     QQuickWidget *tabs;
@@ -47,6 +48,7 @@ public:
     QQuickItem *rootObject;
     Root(QWidget *parent = Q_NULLPTR);
     ~Root() = default;
+    void resize(const QRect &rect);
 
 private:
     QQuickWidget *root;
@@ -58,6 +60,7 @@ class Preview : public QWidget
 public:
     Preview(QPrinter *_printer, QWidget *parent = Q_NULLPTR);
     ~Preview() = default;
+    void resize(const QRect &rect);
     void setOrientation(const QString &orientation);
 
 public Q_SLOTS:
@@ -82,6 +85,7 @@ public:
     QQuickItem *rootObject;
     Controls(QWidget *parent = Q_NULLPTR);
     ~Controls() = default;
+    void resize(const QRect &rect);
 
 private:
     QQuickWidget *controls;

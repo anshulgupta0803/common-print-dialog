@@ -138,10 +138,19 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
 
     adjustSize();
 
-    setMaximumSize(700, 480);
-    setMinimumSize(700, 480);
+    //setMaximumSize(700, 480);
+    //setMinimumSize(700, 480);
 
     init_backend();
+}
+
+void QCPDialog::resizeEvent(QResizeEvent *event)
+{
+    event->accept();
+    tabs->resize(masterLayout->itemAt(0)->geometry());
+    root->resize(masterLayout->itemAt(1)->geometry());
+    preview->resize(masterLayout->itemAt(2)->geometry());
+    controls->resize(masterLayout->itemAt(3)->geometry());
 }
 
 /*!

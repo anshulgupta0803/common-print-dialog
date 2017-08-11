@@ -49,6 +49,9 @@ class CPDSHARED_EXPORT QCPDialog : public QAbstractPrintDialog
     Q_OBJECT
 public:
     QCPDialog(QPrinter *printer, QWidget *parent = Q_NULLPTR);
+
+    void resizeEvent(QResizeEvent *event) override;
+
     void init_backend();
 
     void clearPrinters();
