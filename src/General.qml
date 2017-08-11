@@ -32,6 +32,7 @@ RowLayout {
 
     signal newPrinterSelected(string printer)
     signal remotePrintersToggled(string enabled)
+    signal orientationChanged(string orientation)
 
     function addToDestinationModel(printer_name, printer_id, backend_name) {
         destinationModel.append({destination: printer_name, printerID: printer_id, backend: backend_name})
@@ -289,14 +290,14 @@ RowLayout {
                     text: qsTr("Portrait")
                     checked: true
                     font.pixelSize: Style.textSize
-                    //onClicked: generalPreview.orientationChanged("Portrait")
+                    onClicked: orientationChanged("Portrait")
                 }
 
                 RadioButton {
                     id: landscapeRadioButton
                     text: qsTr("Landscape")
                     font.pixelSize: Style.textSize
-                    //onClicked: generalPreview.orientationChanged("Landscape")
+                    onClicked: orientationChanged("Landscape")
                 }
             }
 

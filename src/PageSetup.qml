@@ -22,15 +22,21 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
+import "."
 
 Item {
     property alias portraitRadioButton: portraitRadioButton
     property alias landscapeRadioButton: landscapeRadioButton
 
-    function updatePagesPerSideModel(pages) {
+    function updatePagesPerSideModel(pages, isDefault) {
+        console.log(pages + " Received")
         pagesPerSideModel.append({pages: pages})
-        if (pagesPerSideComboBox.count > 0 && pagesPerSideComboBox.currentIndex == -1)
-            pagesPerSideComboBox.currentIndex = 0
+        if (isDefault === 0)
+            pagesPerSideComboBox.currentIndex = pagesPerSideModel.count - 1
+    }
+
+    function clearPagesPerSideModel() {
+        pagesPerSideModel.clear()
     }
 
     RowLayout {
@@ -53,7 +59,7 @@ Item {
                 id: mainLayoutLabel
                 text: qsTr("Layout")
                 font.bold: true
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
 
             Label {
@@ -64,7 +70,7 @@ Item {
                 id: twoSidedLabel
                 text: qsTr("Two Sided")
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
 
             RowLayout {
@@ -88,14 +94,14 @@ Item {
                     id: twoSidedSwitchValue
                     text: qsTr("OFF")
                     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                    font.pixelSize: 12
+                    font.pixelSize: Style.textSize
                 }
             }
 
             Label {
                 id: twoSidedConfigLabel
                 visible: false
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
 
             ComboBox {
@@ -109,12 +115,12 @@ Item {
                     }
                 }
                 visible: false
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
 
                 delegate: ItemDelegate {
                     width: twoSidedConfigComboBox.width
                     text: qsTr(twoSidedConfig)
-                    font.pixelSize: 12
+                    font.pixelSize: Style.textSize
                 }
             }
 
@@ -122,7 +128,7 @@ Item {
                 id: pagesPerSideLabel
                 text: qsTr("Pages per Side")
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
 
             ListModel {
@@ -132,18 +138,18 @@ Item {
             ComboBox {
                 id: pagesPerSideComboBox
                 model: pagesPerSideModel
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
                 delegate: ItemDelegate {
                     width: pagesPerSideComboBox.width
                     text: qsTr(pages)
-                    font.pixelSize: 12
+                    font.pixelSize: Style.textSize
                 }
             }
 
             Label {
                 text: qsTr("Only Print")
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
 
             ComboBox {
@@ -159,18 +165,18 @@ Item {
                         pages: "Odd Sheets"
                     }
                 }
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
                 delegate: ItemDelegate {
                     width: onlyPrintComboBox.width
                     text: qsTr(pages)
-                    font.pixelSize: 12
+                    font.pixelSize: Style.textSize
                 }
             }
 
             Label {
                 text: qsTr("Scale")
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
 
             RowLayout {
@@ -179,13 +185,13 @@ Item {
                     from: 1
                     value: 100
                     to: 100
-                    font.pixelSize: 12
+                    font.pixelSize: Style.textSize
                     editable: true
                 }
 
                 Label {
                     text: qsTr("%")
-                    font.pixelSize: 12
+                    font.pixelSize: Style.textSize
                 }
             }
 
@@ -193,7 +199,7 @@ Item {
                 id: mainPaperLabel
                 text: qsTr("Paper")
                 font.bold: true
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
 
             Label {
@@ -204,7 +210,7 @@ Item {
                 id: paperSourceLabel
                 text: qsTr("Paper Source")
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
 
             ComboBox {
@@ -232,12 +238,12 @@ Item {
                         paperSource: "Manual Feeder"
                     }
                 }
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
 
                 delegate: ItemDelegate {
                     width: paperSourceComboBox.width
                     text: qsTr(paperSource)
-                    font.pixelSize: 12
+                    font.pixelSize: Style.textSize
                 }
             }
 
@@ -245,7 +251,7 @@ Item {
                 id: orientationLabel
                 text: qsTr("Orientation")
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                font.pixelSize: 12
+                font.pixelSize: Style.textSize
             }
 
             RowLayout {
@@ -256,13 +262,13 @@ Item {
                     id: portraitRadioButton
                     text: qsTr("Portrait")
                     checked: true
-                    font.pixelSize: 12
+                    font.pixelSize: Style.textSize
                 }
 
                 RadioButton {
                     id: landscapeRadioButton
                     text: qsTr("Landscape")
-                    font.pixelSize: 12
+                    font.pixelSize: Style.textSize
                 }
             }
         }

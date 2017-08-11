@@ -140,6 +140,17 @@ void Preview::print(QPrinter *printer)
 //    painter.end();
 }
 
+void Preview::setOrientation(const QString &orientation)
+{
+    if (orientation.compare("Portrait") == 0)
+        printer->setOrientation(QPrinter::Portrait);
+    else if (orientation.compare("Landscape") == 0)
+        printer->setOrientation(QPrinter::Landscape);
+    else qDebug() << "Unhandled Orientation";
+
+    preview->updatePreview();
+}
+
 /*!
  *  \fn void Preview::setZoom(qreal zoomFactor)
  *

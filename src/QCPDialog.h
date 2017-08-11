@@ -61,10 +61,8 @@ public:
     void updatePaperSizeModel(char *media, int isDefault);
     void clearPaperSizeModel();
 
-    void addPagesPerSize(char *pages)
-    {
-        Q_UNUSED(pages);
-    }
+    void updatePagesPerSideModel(char *pages, int isDefault);
+    void clearPagesPerSideModel();
 
     QString information();
 
@@ -81,6 +79,7 @@ public Q_SLOTS:
     void cancelButtonClicked();
     void newPrinterSelected(const QString &printer);
     void remotePrintersToggled(const QString &enabled);
+    void orientationChanged(const QString &orientation);
 
 private:
     FrontendObj *f;

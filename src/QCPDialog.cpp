@@ -100,6 +100,11 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
                      this,
                      SLOT(remotePrintersToggled(QString)));
 
+    QObject::connect(generalObject,
+                     SIGNAL(orientationChanged(QString)),
+                     this,
+                     SLOT(orientationChanged(QString)));
+
     QObject::connect(cbf::Instance(),
                      SIGNAL(addPrinterSignal(char *, char *, char *)),
                      this,
@@ -282,6 +287,10 @@ void QCPDialog::newPrinterSelected(const QString &printer)
         } else if (strncmp(key, "multiple-document-handling", 26) == 0) {
 
         } else if (strncmp(key, "number-up", 9) == 0) {
+            clearPagesPerSideModel();
+            for (int i = 0; i < value->num_supported; i++)
+                updatePagesPerSideModel(value->supported_values[i],
+                                        strcmp(value->supported_values[i], value->default_value));
 
         } else if (strncmp(key, "output-bin", 10) == 0) {
 
@@ -313,6 +322,11 @@ void QCPDialog::newPrinterSelected(const QString &printer)
 void QCPDialog::remotePrintersToggled(const QString &enabled)
 {
     enabled.compare("true") == 0 ? unhide_remote_cups_printers(f) : hide_remote_cups_printers(f);
+}
+
+void QCPDialog::orientationChanged(const QString &orientation)
+{
+    preview->setOrientation(orientation);
 }
 
 /*!
@@ -395,6 +409,27 @@ void QCPDialog::clearPaperSizeModel()
         QMetaObject::invokeMethod(obj, "clearPaperSizeModel");
     else
         qDebug() << "generalObject Not Found";
+}
+
+void QCPDialog::updatePagesPerSideModel(char *pages, int isDefault)
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("pageSetupObject");
+    if (obj)
+        QMetaObject::invokeMethod(obj,
+                                  "updatePagesPerSideModel",
+                                  Q_ARG(QVariant, pages),
+                                  Q_ARG(QVariant, isDefault));
+    else
+        qDebug() << "pageSetupObject Not Found";
+}
+
+void QCPDialog::clearPagesPerSideModel()
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("pageSetupObject");
+    if (obj)
+        QMetaObject::invokeMethod(obj, "clearPagesPerSideModel");
+    else
+        qDebug() << "pageSetupObject Not Found";
 }
 
 /*!

@@ -58,6 +58,7 @@ class Preview : public QWidget
 public:
     Preview(QPrinter *_printer, QWidget *parent = Q_NULLPTR);
     ~Preview() = default;
+    void setOrientation(const QString &orientation);
 
 public Q_SLOTS:
     void print(QPrinter *printer);
