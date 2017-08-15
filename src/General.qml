@@ -33,6 +33,7 @@ RowLayout {
     signal newPrinterSelected(string printer)
     signal remotePrintersToggled(string enabled)
     signal orientationChanged(string orientation)
+    signal newPageSizeSelected(string pageSize)
 
     function addToDestinationModel(printer_name, printer_id, backend_name) {
         destinationModel.append({destination: printer_name, printerID: printer_id, backend: backend_name})
@@ -311,9 +312,9 @@ RowLayout {
 
             ListModel {
                 id: paperSizeModel
-                ListElement {
-                    pageSize: "A4"
-                }
+//                ListElement {
+//                    pageSize: "A4"
+//                }
             }
 
             ComboBox {
@@ -326,6 +327,11 @@ RowLayout {
                 }
 
                 font.pixelSize: Style.textSize
+
+                onCurrentIndexChanged: {
+                    var element = paperSizeModel.get(paperSizeComboBox.currentIndex)
+                    newPageSizeSelected(element.pageSize)
+                }
             }
         }
     }

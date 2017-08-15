@@ -24,9 +24,88 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import "."
 
-Item {
-    Label {
-        anchors.centerIn: parent
-        text: "Options"
+RowLayout {
+    spacing: 0
+
+    Item {
+        id: gridLayoutContainer
+        width: parent.width
+        Layout.preferredWidth: parent.width
+        Layout.minimumWidth: parent.width
+
+        height: parent.height
+        Layout.preferredHeight: parent.height
+        Layout.minimumHeight: parent.height
+
+        GridLayout {
+            id: gridLayout
+            width: parent.width
+            Layout.minimumWidth: parent.width
+            Layout.preferredWidth: parent.width
+
+            rows: 11
+            columns: 2
+
+            Label {
+                text: qsTr("Margins")
+                font.bold: true
+                font.pixelSize: Style.textSize
+                Layout.columnSpan: 2
+            }
+
+            Label {
+                text: qsTr("Top")
+                //Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                font.pixelSize: Style.textSize
+            }
+
+            TextField {
+                id: topTextField
+                placeholderText: qsTr("Top")
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: Style.textSize
+                validator: DoubleValidator {}
+            }
+
+            Label {
+                text: qsTr("Left")
+                //Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                font.pixelSize: Style.textSize
+            }
+
+            TextField {
+                id: leftTextField
+                placeholderText: qsTr("Left")
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: Style.textSize
+                validator: DoubleValidator {}
+            }
+            Label {
+                text: qsTr("Right")
+                //Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                font.pixelSize: Style.textSize
+            }
+
+            TextField {
+                id: rightTextField
+                placeholderText: qsTr("Right")
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: Style.textSize
+                validator: DoubleValidator {}
+            }
+            Label {
+                text: qsTr("Bottom")
+                //Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                font.pixelSize: Style.textSize
+            }
+
+            TextField {
+                id: bottomTextField
+                placeholderText: qsTr("Bottom")
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: Style.textSize
+                validator: DoubleValidator {}
+            }
+        }
     }
 }

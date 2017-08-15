@@ -62,6 +62,7 @@ public:
     ~Preview() = default;
     void resize(const QRect &rect);
     void setOrientation(const QString &orientation);
+    void setPageSize(QSizeF &size);
 
 public Q_SLOTS:
     void print(QPrinter *printer);

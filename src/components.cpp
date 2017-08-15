@@ -175,6 +175,12 @@ void Preview::setOrientation(const QString &orientation)
     preview->updatePreview();
 }
 
+void Preview::setPageSize(QSizeF &size)
+{
+    printer->setPageSize(QPageSize(size, QPageSize::Unit::Point));
+    preview->updatePreview();
+}
+
 /*!
  *  \fn void Preview::setZoom(qreal zoomFactor)
  *

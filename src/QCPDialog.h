@@ -61,7 +61,7 @@ public:
     void updateStartJobsModel(char *startJobOption);
     void clearStartJobsModel();
 
-    void updatePaperSizeModel(char *media, int isDefault);
+    void updatePaperSizeModel(std::string media, int isDefault);
     void clearPaperSizeModel();
 
     void updatePagesPerSideModel(char *pages, int isDefault);
@@ -83,6 +83,7 @@ public Q_SLOTS:
     void newPrinterSelected(const QString &printer);
     void remotePrintersToggled(const QString &enabled);
     void orientationChanged(const QString &orientation);
+    void newPageSizeSelected(const QString &pageSize);
 
 private:
     FrontendObj *f;
