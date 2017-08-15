@@ -110,6 +110,11 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
                      this,
                      SLOT(newPageSizeSelected(QString)));
 
+    QObject::connect(generalObject,
+                     SIGNAL(collateToggled(QString)),
+                     this,
+                     SLOT(collateToggled(QString)));
+
     QObject::connect(cbf::Instance(),
                      SIGNAL(addPrinterSignal(char *, char *, char *)),
                      this,
@@ -601,6 +606,16 @@ void QCPDialog::newPageSizeSelected(const QString &pageSize)
     }
 
     preview->setPageSize(size);
+}
+
+void QCPDialog::numCopiesChanged(const int copies)
+{
+    preview->setNumCopies(copies);
+}
+
+void QCPDialog::collateToggled(const QString &enabled)
+{
+    enabled.compare("true") == 0 ? preview->setCollateCopies(true) : preview->setCollateCopies(false);
 }
 
 /*!

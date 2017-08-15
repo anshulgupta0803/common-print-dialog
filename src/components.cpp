@@ -181,6 +181,18 @@ void Preview::setPageSize(QSizeF &size)
     preview->updatePreview();
 }
 
+void Preview::setNumCopies(int copies)
+{
+    printer->setNumCopies(copies);
+    preview->updatePreview();
+}
+
+void Preview::setCollateCopies(bool enabled)
+{
+    printer->setCollateCopies(enabled);
+    preview->updatePreview();
+}
+
 /*!
  *  \fn void Preview::setZoom(qreal zoomFactor)
  *

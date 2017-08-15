@@ -34,6 +34,8 @@ RowLayout {
     signal remotePrintersToggled(string enabled)
     signal orientationChanged(string orientation)
     signal newPageSizeSelected(string pageSize)
+    signal numCopiesChanged(int copies)
+    signal collateToggled(string enabled)
 
     function addToDestinationModel(printer_name, printer_id, backend_name) {
         destinationModel.append({destination: printer_name, printerID: printer_id, backend: backend_name})
@@ -246,6 +248,7 @@ RowLayout {
                     } else {
                         collateCheckBox.visible = false
                     }
+                    numCopiesChanged(copiesSpinBox.value)
                 }
             }
 
@@ -265,7 +268,8 @@ RowLayout {
                     text: qsTr("Collate")
                     font.pixelSize: Style.textSize
                     visible: false
-                    checked: true
+
+                    onCheckedChanged: collateToggled(collateCheckBox.checked)
                 }
 
                 CheckBox {

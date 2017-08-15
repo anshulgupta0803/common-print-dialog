@@ -84,6 +84,8 @@ public Q_SLOTS:
     void remotePrintersToggled(const QString &enabled);
     void orientationChanged(const QString &orientation);
     void newPageSizeSelected(const QString &pageSize);
+    void numCopiesChanged(const int copies);
+    void collateToggled(const QString &enabled);
 
 private:
     FrontendObj *f;
