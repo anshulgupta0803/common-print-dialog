@@ -25,8 +25,9 @@
 #include <QQuickItem>
 #include <QQuickWidget>
 #include <QPrintPreviewWidget>
-#include <QPainter>
 #include <QPrinter>
+
+#include <QPainter>
 
 class Tabs : public QWidget
 {
@@ -65,6 +66,7 @@ public:
     void setPageSize(QSizeF &size);
     void setNumCopies(int copies);
     void setCollateCopies(bool enabled);
+    void printfile();
 
 public Q_SLOTS:
     void print(QPrinter *printer);
@@ -74,6 +76,7 @@ public Q_SLOTS:
 
 private:
     QPrinter *printer;
+    QPainter painter;
     QPrintPreviewWidget *preview;
     int pageNumber = 0;
     int pageCount = 0;

@@ -98,6 +98,8 @@ Preview::Preview(QPrinter *_printer, QWidget *parent) :
 
     printer->setPaperSize(QPrinter::A4);
     printer->setOrientation(QPrinter::Portrait);
+    printer->setOutputFileName(QString("/home/anshul/Desktop/output.pdf"));
+    printer->setOutputFormat(QPrinter::NativeFormat);
 
     QObject::connect(preview,
                      SIGNAL(paintRequested(QPrinter *)),
@@ -119,7 +121,7 @@ void Preview::resize(const QRect &rect)
  */
 void Preview::print(QPrinter *printer)
 {
-    QPainter painter;
+
     painter.begin(printer);
 
     painter.setRenderHints(QPainter::Antialiasing |
@@ -130,13 +132,12 @@ void Preview::print(QPrinter *printer)
     QRect rect({100, 100}, QSize{500, 500});
     painter.drawText(rect, Qt::AlignLeft | Qt::AlignTop, text);
     painter.drawEllipse(rect);
-
-    printer->newPage();
+    //painter.end();
 
 //    pageCount = 2;
 //    pageNumber = 0;
 
-    painter.end();
+//    painter.end();
 
 //    QFile f;
 //    f.setFileName(":/test.pdf");
@@ -191,6 +192,11 @@ void Preview::setCollateCopies(bool enabled)
 {
     printer->setCollateCopies(enabled);
     preview->updatePreview();
+}
+
+void Preview::printfile()
+{
+    //painter.end();
 }
 
 /*!

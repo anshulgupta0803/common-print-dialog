@@ -80,6 +80,7 @@ public Q_SLOTS:
     void tabBarIndexChanged(qint32 index);
     void swipeViewIndexChanged(qint32 index);
     void cancelButtonClicked();
+    void printButtonClicked();
     void newPrinterSelected(const QString &printer);
     void remotePrintersToggled(const QString &enabled);
     void orientationChanged(const QString &orientation);
@@ -89,6 +90,7 @@ public Q_SLOTS:
 
 private:
     FrontendObj *f;
+    PrinterObj *p;
     Tabs *tabs;
     Root *root;
     Preview *preview;

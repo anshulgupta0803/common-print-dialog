@@ -30,6 +30,7 @@ RowLayout {
     spacing: 0
 
     signal cancelButtonClicked()
+    signal printButtonClicked()
     signal nextPageButtonClicked()
     signal prevPageButtonClicked()
     signal zoomSliderValueChanged(real value)
@@ -58,6 +59,7 @@ RowLayout {
                 text: qsTr("Print")
                 font.pixelSize: Style.textSize
                 highlighted: true
+                onClicked: printButtonClicked()
             }
         }
     }

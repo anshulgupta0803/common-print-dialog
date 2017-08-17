@@ -29,7 +29,6 @@ Item {
     property alias landscapeRadioButton: landscapeRadioButton
 
     function updatePagesPerSideModel(pages, isDefault) {
-        console.log(pages + " Received")
         pagesPerSideModel.append({pages: pages})
         if (isDefault === 0)
             pagesPerSideComboBox.currentIndex = pagesPerSideModel.count - 1

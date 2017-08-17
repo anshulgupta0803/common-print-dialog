@@ -74,6 +74,12 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
                      SLOT(cancelButtonClicked()));
 
     QObject::connect(controls->rootObject,
+                     SIGNAL(printButtonClicked()),
+                     this,
+                     SLOT(printButtonClicked()));
+
+
+    QObject::connect(controls->rootObject,
                      SIGNAL(zoomSliderValueChanged(qreal)),
                      preview,
                      SLOT(setZoom(qreal)));
@@ -268,7 +274,7 @@ void QCPDialog::clearPrinters()
 void QCPDialog::newPrinterSelected(const QString &printer)
 {
     QStringList list = printer.split('#');  // printer is in the format: <printer_id>#<backend_name>
-    PrinterObj *p = find_PrinterObj(f, list[0].toLatin1().data(), list[1].toLatin1().data());
+    p = find_PrinterObj(f, list[0].toLatin1().data(), list[1].toLatin1().data());
 
     Options *options = get_all_options(p);
 
@@ -756,7 +762,17 @@ void QCPDialog::swipeViewIndexChanged(qint32 index)
 void QCPDialog::cancelButtonClicked()
 {
     disconnect_from_dbus(f);
-    close();
+
+    reject();   // QDialog::reject()
+}
+
+void QCPDialog::printButtonClicked()
+{
+    preview->printfile();
+    print_file(p, (char *)"/home/anshul/Desktop/output.pdf");
+    disconnect_from_dbus(f);
+
+    accept();   // QDialog::accept()
 }
 
 /*!
