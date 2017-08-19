@@ -81,6 +81,7 @@ public Q_SLOTS:
     void swipeViewIndexChanged(qint32 index);
     void cancelButtonClicked();
     void printButtonClicked();
+    void checkPdfCreated();
     void newPrinterSelected(const QString &printer);
     void remotePrintersToggled(const QString &enabled);
     void orientationChanged(const QString &orientation);
@@ -96,6 +97,8 @@ private:
     Preview *preview;
     Controls *controls;
     QGridLayout *masterLayout;
+    QTimer *timer;
+    int timerCount = 0;
 };
 
 class CallbackFunctions : public QObject

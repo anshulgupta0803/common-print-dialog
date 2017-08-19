@@ -21,6 +21,7 @@
 
 #include "components.h"
 #include <poppler/qt5/poppler-qt5.h>
+#include <QSize>
 
 /*! \class Tabs
  *  \inmodule Common Print Dialog
@@ -98,8 +99,9 @@ Preview::Preview(QPrinter *_printer, QWidget *parent) :
 
     printer->setPaperSize(QPrinter::A4);
     printer->setOrientation(QPrinter::Portrait);
-    printer->setOutputFileName(QString("/home/anshul/Desktop/output.pdf"));
+    printer->setOutputFileName(QString("/tmp/print.pdf"));
     printer->setOutputFormat(QPrinter::NativeFormat);
+    //printer->setPrinterName(QString("X950"));
 
     QObject::connect(preview,
                      SIGNAL(paintRequested(QPrinter *)),
@@ -121,48 +123,8 @@ void Preview::resize(const QRect &rect)
  */
 void Preview::print(QPrinter *printer)
 {
-
     painter.begin(printer);
-
-    painter.setRenderHints(QPainter::Antialiasing |
-                           QPainter::TextAntialiasing |
-                           QPainter::SmoothPixmapTransform);
-
-    QString text{"Hello World!"};
-    QRect rect({100, 100}, QSize{500, 500});
-    painter.drawText(rect, Qt::AlignLeft | Qt::AlignTop, text);
-    painter.drawEllipse(rect);
-    //painter.end();
-
-//    pageCount = 2;
-//    pageNumber = 0;
-
-//    painter.end();
-
-//    QFile f;
-//    f.setFileName(":/test.pdf");
-//    f.open(QIODevice::ReadOnly);
-//    QByteArray pdf = f.readAll();
-
-//    Poppler::Document *document = Poppler::Document::loadFromData(pdf);
-//    if (!document)
-//        qCritical("File '%s' does not exist!", qUtf8Printable(":/test.pdf"));
-//    if (document->isLocked())
-//        qCritical("File %s is locked!", qUtf8Printable(":/test.pdf"));
-
-//    pageCount = document->numPages();
-
-//    Poppler::Page *page = document->page(pageNumber);
-//    if (page == nullptr)
-//        qCritical("File '%s' is empty?", qUtf8Printable(":/test.pdf"));
-
-//    QImage image = page->renderToImage(72.0, 72.0, 0, 0, page->pageSize().width(),
-//                                       page->pageSize().height());
-//    if (image.isNull())
-//        qCritical("Error!");
-
-//    painter.drawImage(0, 0, image, 0, 0, 0, 0, 0);
-//    painter.end();
+    painter.end();
 }
 
 void Preview::setOrientation(const QString &orientation)
@@ -176,9 +138,21 @@ void Preview::setOrientation(const QString &orientation)
     preview->updatePreview();
 }
 
-void Preview::setPageSize(QSizeF &size)
+void Preview::setPageSize(QString name, qreal width, qreal height, QString unit)
 {
-    printer->setPageSize(QPageSize(size, QPageSize::Unit::Point));
+    QPageSize::Unit pageSizeUnit = QPageSize::Unit::Inch;
+    if (unit.compare("in") == 0)
+        pageSizeUnit = QPageSize::Unit::Inch;
+    else if (unit.compare("mm") == 0)
+        pageSizeUnit = QPageSize::Unit::Millimeter;
+    else
+        qDebug() << "Unhandled Unit in Paper Size:" << unit;
+
+    printer->setPageSize(QPageSize(QSizeF(width, height),
+                                   pageSizeUnit,
+                                   name,
+                                   QPageSize::SizeMatchPolicy::FuzzyMatch));
+
     preview->updatePreview();
 }
 

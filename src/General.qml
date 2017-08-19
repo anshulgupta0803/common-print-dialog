@@ -61,7 +61,10 @@ RowLayout {
     }
 
     function updatePaperSizeModel(media, isDefault) {
-        paperSizeModel.append({pageSize: media})
+        var media_split = media.split('_')
+
+        if (media_split[0] != "custom")
+            paperSizeModel.append({pageName: media_split[1], pageSize: media})
         if (isDefault === 0)
             paperSizeComboBox.currentIndex = paperSizeModel.count - 1
     }
@@ -316,17 +319,15 @@ RowLayout {
 
             ListModel {
                 id: paperSizeModel
-//                ListElement {
-//                    pageSize: "A4"
-//                }
             }
 
             ComboBox {
                 id: paperSizeComboBox
                 model: paperSizeModel
+                textRole: "pageName"
                 delegate: ItemDelegate {
                     width: paperSizeComboBox.width
-                    text: pageSize
+                    text: pageName
                     font.pixelSize: Style.textSize
                 }
 

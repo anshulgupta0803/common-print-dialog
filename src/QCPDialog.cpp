@@ -24,7 +24,8 @@
 #include <QQuickItem>
 #include "components.h"
 #include <cstring>
-
+#include <QTimer>
+#include <QProcess>
 extern "C" {
 #include <CPDFrontend.h>
 }
@@ -154,8 +155,8 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
 
     adjustSize();
 
-    //setMaximumSize(700, 480);
-    //setMinimumSize(700, 480);
+    setMaximumSize(700, 480);
+    setMinimumSize(700, 480);
 
     init_backend();
 }
@@ -356,262 +357,18 @@ void QCPDialog::orientationChanged(const QString &orientation)
 
 void QCPDialog::newPageSizeSelected(const QString &pageSize)
 {
-    QSizeF size;
-    if (pageSize.compare("TabloidExtra", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::TabloidExtra, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Tabloid", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Tabloid, QPageSize::Unit::Point);
-    } else if (pageSize.compare("SuperB", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::SuperB, QPageSize::Unit::Point);
-    } else if (pageSize.compare("SuperA", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::SuperA, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Statement", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Statement, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Quarto", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Quarto, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Prc32KBig", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Prc32KBig, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Prc32K", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Prc32K, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Prc16K", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Prc16K, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Postcard", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Postcard, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Note", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Note, QPageSize::Unit::Point);
-    } else if (pageSize.compare("LetterSmall", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::LetterSmall, QPageSize::Unit::Point);
-    } else if (pageSize.compare("LetterPlus", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::LetterPlus, QPageSize::Unit::Point);
-    } else if (pageSize.compare("LetterExtra", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::LetterExtra, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Letter", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Letter, QPageSize::Unit::Point);
-    } else if (pageSize.compare("LegalExtra", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::LegalExtra, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Legal", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Legal, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Ledger", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Ledger, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB9", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB9, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB8", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB8, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB7", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB7, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB6", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB6, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB5", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB5, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB4", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB4, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB3", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB3, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB2", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB2, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB10", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB10, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB1", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB1, QPageSize::Unit::Point);
-    } else if (pageSize.compare("JisB0", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::JisB0, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Imperial9x12", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Imperial9x12, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Imperial9x11", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Imperial9x11, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Imperial8x10", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Imperial8x10, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Imperial7x9", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Imperial7x9, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Imperial15x11", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Imperial15x11, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Imperial12x11", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Imperial12x11, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Imperial10x14", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Imperial10x14, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Imperial10x13", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Imperial10x13, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Imperial10x11", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Imperial10x11, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Folio", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Folio, QPageSize::Unit::Point);
-    } else if (pageSize.compare("FanFoldUS", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::FanFoldUS, QPageSize::Unit::Point);
-    } else if (pageSize.compare("FanFoldGermanLegal", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::FanFoldGermanLegal, QPageSize::Unit::Point);
-    } else if (pageSize.compare("FanFoldGerman", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::FanFoldGerman, QPageSize::Unit::Point);
-    } else if (pageSize.compare("ExecutiveStandard", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::ExecutiveStandard, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Executive", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Executive, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvYou4", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeYou4, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc9", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc9, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc8", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc8, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc7", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc7, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc6", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc6, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc5", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc5, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc4", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc4, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc3", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc3, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc2", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc2, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc10", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc10, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPrc1", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePrc1, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvPersonal", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopePersonal, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvMonarch", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeMonarch, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvKaku3", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeKaku3, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvKaku2", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeKaku2, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvItalian", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeItalian, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvInvite", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeInvite, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvDL", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeDL, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvChou4", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeChou4, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvChou3", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeChou3, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvC7", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeC7, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvC65", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeC65, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvC6", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeC6, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvC5", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeC5, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvC4", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeC4, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvC3", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeC3, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvC2", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeC2, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvC1", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeC1, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvC0", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeC0, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvB6", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeB6, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvB5", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeB5, QPageSize::Unit::Point);
-    } else if (pageSize.compare("EnvB4", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::EnvelopeB4, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Env9", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Envelope9, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Env14", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Envelope14, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Env12", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Envelope12, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Env11", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Envelope11, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Env10", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Envelope10, QPageSize::Unit::Point);
-    } else if (pageSize.compare("DoublePostcard", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::DoublePostcard, QPageSize::Unit::Point);
-    } else if (pageSize.compare("DLE", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::DLE, QPageSize::Unit::Point);
-    } else if (pageSize.compare("Comm10E", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::Comm10E, QPageSize::Unit::Point);
-    } else if (pageSize.compare("C5E", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::C5E, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B9", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B9, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B8", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B8, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B7", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B7, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B6", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B6, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B5Extra", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B5Extra, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B5", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B5, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B4", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B4, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B3", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B3, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B2", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B2, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B10", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B10, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B1", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B1, QPageSize::Unit::Point);
-    } else if (pageSize.compare("B0", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::B0, QPageSize::Unit::Point);
-    } else if (pageSize.compare("ArchE", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::ArchE, QPageSize::Unit::Point);
-    } else if (pageSize.compare("ArchD", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::ArchD, QPageSize::Unit::Point);
-    } else if (pageSize.compare("ArchC", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::ArchC, QPageSize::Unit::Point);
-    } else if (pageSize.compare("ArchB", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::ArchB, QPageSize::Unit::Point);
-    } else if (pageSize.compare("ArchA", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::ArchA, QPageSize::Unit::Point);
-    } else if (pageSize.compare("AnsiE", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::AnsiE, QPageSize::Unit::Point);
-    } else if (pageSize.compare("AnsiD", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::AnsiD, QPageSize::Unit::Point);
-    } else if (pageSize.compare("AnsiC", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::AnsiC, QPageSize::Unit::Point);
-    } else if (pageSize.compare("AnsiB", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::AnsiB, QPageSize::Unit::Point);
-    } else if (pageSize.compare("AnsiA", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::AnsiA, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A9", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A9, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A8", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A8, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A7", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A7, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A6", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A6, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A5Extra", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A5Extra, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A5", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A5, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A4Small", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A4Small, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A4Plus", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A4Plus, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A4Extra", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A4Extra, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A4", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A4, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A3Extra", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A3Extra, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A3", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A3, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A2", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A2, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A10", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A10, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A1", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A1, QPageSize::Unit::Point);
-    } else if (pageSize.compare("A0", Qt::CaseInsensitive) == 0) {
-        size = QPageSize::size(QPageSize::PageSizeId::A0, QPageSize::Unit::Point);
-    } else if (pageSize.contains("Custom", Qt::CaseInsensitive)) {
-        size = QSizeF(1, 1);
-        qDebug() << "Handle custom page size";
-    } else {
-        size = QSizeF(1, 1);
-        qDebug() << "Unhandled Page Size:" << pageSize;
-    }
+    QStringList pageSizeSplitList = pageSize.split("_");
+    QString size = pageSizeSplitList[2];
+    QStringList sizeSplitList = size.split("x");
 
-    preview->setPageSize(size);
+    qreal width = sizeSplitList[0].toDouble();
+
+    QString unit = sizeSplitList[1].right(2);
+    sizeSplitList[1].remove(unit);
+
+    qreal height = sizeSplitList[1].toDouble();
+
+    preview->setPageSize(pageSizeSplitList[1], width, height, unit);
 }
 
 void QCPDialog::numCopiesChanged(const int copies)
@@ -768,11 +525,31 @@ void QCPDialog::cancelButtonClicked()
 
 void QCPDialog::printButtonClicked()
 {
-    preview->printfile();
-    print_file(p, (char *)"/home/anshul/Desktop/output.pdf");
+    //print_file(p, (char *)"/tmp/print.pdf");
     disconnect_from_dbus(f);
+//    QProcess *process = new QProcess(this);
+//    QString program = "/home/anshul/Desktop/a.out";
+//    QStringList args;
+//    args << "Arg1" << "Arg2";
+//    process->start(program, args);
 
     accept();   // QDialog::accept()
+}
+
+void QCPDialog::checkPdfCreated()
+{
+    qDebug() << "Child Call";
+//    QFile file("/tmp/print.pdf");
+//    if (file.exists()) {
+//        timer->stop();
+//        qDebug() << "Calling print_file";
+//        print_file(p, file.fileName().toLatin1().data());
+//        //exit(0);
+//    }
+//    else {
+//        timerCount++;
+//        qDebug() << timerCount;
+//    }
 }
 
 /*!

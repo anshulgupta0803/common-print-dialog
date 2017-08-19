@@ -63,7 +63,7 @@ public:
     ~Preview() = default;
     void resize(const QRect &rect);
     void setOrientation(const QString &orientation);
-    void setPageSize(QSizeF &size);
+    void setPageSize(QString name, qreal width, qreal height, QString unit);
     void setNumCopies(int copies);
     void setCollateCopies(bool enabled);
     void printfile();
