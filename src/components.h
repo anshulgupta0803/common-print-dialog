@@ -59,7 +59,7 @@ class Preview : public QWidget
 {
     Q_OBJECT
 public:
-    Preview(QPrinter *_printer, QWidget *parent = Q_NULLPTR);
+    Preview(QPrinter *_printer, QString uniqueID, QWidget *parent = Q_NULLPTR);
     ~Preview() = default;
     void resize(const QRect &rect);
     void setOrientation(const QString &orientation);

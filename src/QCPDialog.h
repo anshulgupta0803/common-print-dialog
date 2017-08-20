@@ -99,6 +99,7 @@ private:
     QGridLayout *masterLayout;
     QTimer *timer;
     int timerCount = 0;
+    QString uniqueID;
 };
 
 class CallbackFunctions : public QObject

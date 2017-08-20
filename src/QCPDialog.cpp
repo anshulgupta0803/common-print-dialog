@@ -26,6 +26,7 @@
 #include <cstring>
 #include <QTimer>
 #include <QProcess>
+#include <QUuid>
 extern "C" {
 #include <CPDFrontend.h>
 }
@@ -55,10 +56,11 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
     QAbstractPrintDialog (printer, parent),
     tabs(new Tabs(this)),
     root(new Root(this)),
-    preview(new Preview(printer, this)),
     controls(new Controls(this)),
     masterLayout(new QGridLayout(this))
 {
+    uniqueID = QUuid::createUuid().toString().remove('{').remove('}');
+    preview = new Preview(printer, uniqueID, this);
     QObject::connect(tabs->rootObject,
                      SIGNAL(tabBarIndexChanged(qint32)),
                      this,
@@ -181,7 +183,8 @@ void QCPDialog::init_backend()
 {
     event_callback add_cb = (event_callback)CallbackFunctions::add_printer_callback;
     event_callback rem_cb = (event_callback)CallbackFunctions::remove_printer_callback;
-    f = get_new_FrontendObj(NULL, add_cb, rem_cb);
+
+    f = get_new_FrontendObj(uniqueID.toLatin1().data(), add_cb, rem_cb);
     connect_to_dbus(f);
 }
 

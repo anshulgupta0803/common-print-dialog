@@ -89,7 +89,7 @@ void Root::resize(const QRect &rect)
  *  Constructs Preview objects with \a parent as the parent widget and \a _printer as the printer.
  *  The \a _printer is used further to change the job options that get reflected in the preview.
  */
-Preview::Preview(QPrinter *_printer, QWidget *parent) :
+Preview::Preview(QPrinter *_printer, QString uniqueID, QWidget *parent) :
     QWidget(parent),
     printer(_printer),
     preview(new QPrintPreviewWidget(printer, this))
@@ -99,9 +99,12 @@ Preview::Preview(QPrinter *_printer, QWidget *parent) :
 
     printer->setPaperSize(QPrinter::A4);
     printer->setOrientation(QPrinter::Portrait);
-    printer->setOutputFileName(QString("/tmp/print.pdf"));
+
+    uniqueID.prepend("/tmp/");
+    uniqueID.append(".pdf");
+
+    printer->setOutputFileName(uniqueID);
     printer->setOutputFormat(QPrinter::NativeFormat);
-    //printer->setPrinterName(QString("X950"));
 
     QObject::connect(preview,
                      SIGNAL(paintRequested(QPrinter *)),
