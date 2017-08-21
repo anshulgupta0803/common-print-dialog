@@ -36,6 +36,7 @@ RowLayout {
     signal newPageSizeSelected(string pageSize)
     signal numCopiesChanged(int copies)
     signal collateToggled(string enabled)
+    signal newPageRangeSet(string pageRange)
 
     function addToDestinationModel(printer_name, printer_id, backend_name) {
         destinationModel.append({destination: printer_name, printerID: printer_id, backend: backend_name})
@@ -222,7 +223,7 @@ RowLayout {
                             }
                         }
                         pages = pages.sort(function(a, b){return a - b});
-                        console.log(pages)
+                        newPageRangeSet(pages)
                     }
                 }
             }
@@ -298,14 +299,14 @@ RowLayout {
                     text: qsTr("Portrait")
                     checked: true
                     font.pixelSize: Style.textSize
-                    onClicked: orientationChanged("Portrait")
+                    onClicked: orientationChanged("portrait")
                 }
 
                 RadioButton {
                     id: landscapeRadioButton
                     text: qsTr("Landscape")
                     font.pixelSize: Style.textSize
-                    onClicked: orientationChanged("Landscape")
+                    onClicked: orientationChanged("landscape")
                 }
             }
 

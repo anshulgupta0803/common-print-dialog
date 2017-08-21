@@ -88,6 +88,7 @@ public Q_SLOTS:
     void newPageSizeSelected(const QString &pageSize);
     void numCopiesChanged(const int copies);
     void collateToggled(const QString &enabled);
+    void newPageRangeSet(const QString &pageRange);
 
 private:
     FrontendObj *f;

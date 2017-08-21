@@ -124,6 +124,11 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
                      this,
                      SLOT(collateToggled(QString)));
 
+    QObject::connect(generalObject,
+                     SIGNAL(newPageRangeSet(QString)),
+                     this,
+                     SLOT(newPageRangeSet(QString)));
+
     QObject::connect(cbf::Instance(),
                      SIGNAL(addPrinterSignal(char *, char *, char *)),
                      this,
@@ -356,6 +361,7 @@ void QCPDialog::remotePrintersToggled(const QString &enabled)
 void QCPDialog::orientationChanged(const QString &orientation)
 {
     preview->setOrientation(orientation);
+    add_setting_to_printer(p, "orientation-requested", orientation.toLatin1().data());
 }
 
 void QCPDialog::newPageSizeSelected(const QString &pageSize)
@@ -372,16 +378,24 @@ void QCPDialog::newPageSizeSelected(const QString &pageSize)
     qreal height = sizeSplitList[1].toDouble();
 
     preview->setPageSize(pageSizeSplitList[1], width, height, unit);
+    add_setting_to_printer(p, "media", pageSize.toLatin1().data());
 }
 
 void QCPDialog::numCopiesChanged(const int copies)
 {
     preview->setNumCopies(copies);
+    add_setting_to_printer(p, "copies", QString::number(copies).toLatin1().data());
 }
 
 void QCPDialog::collateToggled(const QString &enabled)
 {
     enabled.compare("true") == 0 ? preview->setCollateCopies(true) : preview->setCollateCopies(false);
+}
+
+void QCPDialog::newPageRangeSet(const QString &pageRange)
+{
+    QString page(pageRange);
+    add_setting_to_printer(p, "page-ranges", page.remove('[').remove(']').toLatin1().data());
 }
 
 /*!

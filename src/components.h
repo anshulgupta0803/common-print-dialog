@@ -66,6 +66,7 @@ public:
     void setPageSize(QString name, qreal width, qreal height, QString unit);
     void setNumCopies(int copies);
     void setCollateCopies(bool enabled);
+    void setPrintRange(QString pageRange);
     void printfile();
 
 public Q_SLOTS:

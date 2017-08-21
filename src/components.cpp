@@ -132,11 +132,11 @@ void Preview::print(QPrinter *printer)
 
 void Preview::setOrientation(const QString &orientation)
 {
-    if (orientation.compare("Portrait") == 0)
+    if (orientation.compare("portrait") == 0)
         printer->setOrientation(QPrinter::Portrait);
-    else if (orientation.compare("Landscape") == 0)
+    else if (orientation.compare("landscape") == 0)
         printer->setOrientation(QPrinter::Landscape);
-    else qDebug() << "Unhandled Orientation";
+    else qDebug() << "Unhandled Orientation:" << orientation;
 
     preview->updatePreview();
 }
@@ -169,6 +169,11 @@ void Preview::setCollateCopies(bool enabled)
 {
     printer->setCollateCopies(enabled);
     preview->updatePreview();
+}
+
+void Preview::setPrintRange(QString pageRange)
+{
+
 }
 
 void Preview::printfile()
