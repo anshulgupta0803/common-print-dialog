@@ -25,8 +25,28 @@ import QtQuick.Layouts 1.0
 import "."
 
 Item {
-    property alias portraitRadioButton: portraitRadioButton
-    property alias landscapeRadioButton: landscapeRadioButton
+    function enableTwoSided(option) {
+        if (option === "one-sided") {
+            twoSidedSwitch.enabled = false
+        }
+        else if (option === "two-sided-long-edge") {
+            twoSidedSwitch.enabled = true
+            twoSidedConfigComboBoxModel.append({twoSidedConfigDisplay: "Long Edge (Standard)",
+                                                   twoSidedConfigValue: option})
+            twoSidedConfigComboBox.currentIndex = 0
+        }
+        else if (option === "two-sided-short-edge") {
+            twoSidedSwitch.enabled = true
+            twoSidedConfigComboBoxModel.append({twoSidedConfigDisplay: "Short Edge (Flip)",
+                                                   twoSidedConfigValue: option})
+            twoSidedConfigComboBox.currentIndex = 0
+        }
+    }
+
+    function clearTwoSidedSwitch() {
+        twoSidedSwitch.enabled = false
+        twoSidedConfigComboBoxModel.clear()
+    }
 
     function updatePagesPerSideModel(pages, isDefault) {
         pagesPerSideModel.append({pages: pages})
@@ -76,6 +96,7 @@ Item {
                 id: twoSidedRowLayout
                 Switch {
                     id: twoSidedSwitch
+                    enabled: false
                     onPressed: {
                         if (twoSidedSwitch.checked) {
                             twoSidedSwitchValue.text = "OFF"
@@ -102,23 +123,28 @@ Item {
                 visible: false
                 font.pixelSize: Style.textSize
             }
+            ListModel {
+                id: twoSidedConfigComboBoxModel
+//                ListElement {
+//                    twoSidedConfigDisplay: "Long Edge (Standard)"
+//                    twoSidedConfigValue: "two-sided-long-edge"
+//                }
+//                ListElement {
+//                    twoSidedConfigDisplay: "Short Edge (Flip)"
+//                    twoSidedConfigValue: "two-sided-short-edge"
+//                }
+            }
 
             ComboBox {
                 id: twoSidedConfigComboBox
-                model: ListModel {
-                    ListElement {
-                        twoSidedConfig: "Long Edge (Standard)"
-                    }
-                    ListElement {
-                        twoSidedConfig: "Short Edge (Flip)"
-                    }
-                }
+                model: twoSidedConfigComboBoxModel
                 visible: false
                 font.pixelSize: Style.textSize
+                textRole: "twoSidedConfigDisplay"
 
                 delegate: ItemDelegate {
                     width: twoSidedConfigComboBox.width
-                    text: qsTr(twoSidedConfig)
+                    text: qsTr(twoSidedConfigDisplay)
                     font.pixelSize: Style.textSize
                 }
             }

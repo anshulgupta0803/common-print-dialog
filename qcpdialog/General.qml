@@ -61,11 +61,9 @@ RowLayout {
         destinationModel.clear()
     }
 
-    function updatePaperSizeModel(media, isDefault) {
-        var media_split = media.split('_')
+    function updatePaperSizeModel(name, pwg_name, isDefault) {
 
-        if (media_split[0] != "custom")
-            paperSizeModel.append({pageName: media_split[1], pageSize: media})
+        paperSizeModel.append({pageName: name, pageSize: pwg_name})
         if (isDefault === 0)
             paperSizeComboBox.currentIndex = paperSizeModel.count - 1
     }

@@ -316,7 +316,8 @@ void QCPDialog::newPrinterSelected(const QString &printer)
         } else if (strncmp(key, "media", 5) == 0) {
             clearPaperSizeModel();
             for (int i = 0; i < value->num_supported; i++)
-                updatePaperSizeModel(std::string(value->supported_values[i]),
+                updatePaperSizeModel(pwg_to_readable(value->supported_values[i]),
+                                     value->supported_values[i],
                                      strcmp(value->supported_values[i], value->default_value));
         } else if (strncmp(key, "multiple-document-handling", 26) == 0) {
 
@@ -339,7 +340,9 @@ void QCPDialog::newPrinterSelected(const QString &printer)
         } else if (strncmp(key, "printer-resolution", 18) == 0) {
 
         } else if (strncmp(key, "sides", 5) == 0) {
-
+            clearTwoSidedSwitch();
+            for (int i = 0; i < value->num_supported; i++)
+                enableTwoSided(value->supported_values[i]);
         } else {
             qDebug() << "Unhandled Option:" << key;
         }
@@ -453,16 +456,14 @@ void QCPDialog::clearStartJobsModel()
  *  Adds a new paper defined by \a media to the existing model paperSizeModel. The \a isDefault
  *  parameter checks if the given media is to be set as the default for the printer.
  */
-void QCPDialog::updatePaperSizeModel(std::string media, int isDefault)
+void QCPDialog::updatePaperSizeModel(const char *name, char *pwg_name, int isDefault)
 {
-    std::size_t found = media.find(" (Borderless)");
-    if (found != std::string::npos)
-        media = media.substr(0, found);
     QObject *obj = root->rootObject->findChild<QObject *>("generalObject");
     if (obj)
         QMetaObject::invokeMethod(obj,
                                   "updatePaperSizeModel",
-                                  Q_ARG(QVariant, media.c_str()),
+                                  Q_ARG(QVariant, name),
+                                  Q_ARG(QVariant, pwg_name),
                                   Q_ARG(QVariant, isDefault));
     else
         qDebug() << "generalObject Not Found";
@@ -504,6 +505,26 @@ void QCPDialog::clearPagesPerSideModel()
         qDebug() << "pageSetupObject Not Found";
 }
 
+void QCPDialog::enableTwoSided(char *option)
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("pageSetupObject");
+    if (obj)
+        QMetaObject::invokeMethod(obj,
+                                  "enableTwoSided",
+                                  Q_ARG(QVariant, option));
+    else
+        qDebug() << "pageSetupObject Not Found";
+}
+
+void QCPDialog::clearTwoSidedSwitch()
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("pageSetupObject");
+    if (obj)
+        QMetaObject::invokeMethod(obj, "clearTwoSidedSwitch");
+    else
+        qDebug() << "pageSetupObject Not Found";
+}
+
 /*!
  * \fn void QCPDialog::tabBarIndexChanged(qint32 index)
  *
@@ -541,7 +562,8 @@ void QCPDialog::cancelButtonClicked()
 }
 
 void QCPDialog::printButtonClicked()
-{;
+{
+    ;
     QString pickleFileName(uniqueID);
     pickleFileName.prepend("/tmp/");
     pickleFileName.append(".pickle");

@@ -62,11 +62,14 @@ public:
     void updateStartJobsModel(char *startJobOption);
     void clearStartJobsModel();
 
-    void updatePaperSizeModel(std::string media, int isDefault);
+    void updatePaperSizeModel(const char *name, char *pwg_name, int isDefault);
     void clearPaperSizeModel();
 
     void updatePagesPerSideModel(char *pages, int isDefault);
     void clearPagesPerSideModel();
+
+    void enableTwoSided(char *option);
+    void clearTwoSidedSwitch();
 
     QString information();
 
