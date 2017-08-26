@@ -389,7 +389,7 @@ void QCPDialog::numCopiesChanged(const int copies)
 
 void QCPDialog::collateToggled(const QString &enabled)
 {
-    enabled.compare("true") == 0 ? preview->setCollateCopies(true) : preview->setCollateCopies(false);
+    preview->setCollateCopies(enabled.compare("true") == 0);
 }
 
 void QCPDialog::newPageRangeSet(const QString &pageRange)
@@ -541,32 +541,39 @@ void QCPDialog::cancelButtonClicked()
 }
 
 void QCPDialog::printButtonClicked()
-{
-    //print_file(p, (char *)"/tmp/print.pdf");
-    disconnect_from_dbus(f);
-//    QProcess *process = new QProcess(this);
-//    QString program = "/home/anshul/Desktop/a.out";
-//    QStringList args;
-//    args << "Arg1" << "Arg2";
-//    process->start(program, args);
+{;
+    QString pickleFileName(uniqueID);
+    pickleFileName.prepend("/tmp/");
+    pickleFileName.append(".pickle");
 
+    /* Writing PrinterObj to a file which the
+     * helper process will use to recreate it
+     */
+    pickle_printer_to_file(p, pickleFileName.toLatin1().data(), f);
+
+    /* Start a process which checks whether the
+     * data to print is available or not
+     */
+    QProcess *process = new QProcess(this);
+    QString program = "cpd-helper";
+    QStringList args;
+    args << uniqueID;
+    process->start(program, args);
+
+    connect(process, SIGNAL(started()), this, SLOT(childProccessStarted()));
+    connect(process, SIGNAL(error(QProcess::ProcessError)), this, SLOT(childProccessFailed()));
+
+    disconnect_from_dbus(f);
+}
+
+void QCPDialog::childProccessStarted()
+{
     accept();   // QDialog::accept()
 }
 
-void QCPDialog::checkPdfCreated()
+void QCPDialog::childProccessFailed()
 {
-    qDebug() << "Child Call";
-//    QFile file("/tmp/print.pdf");
-//    if (file.exists()) {
-//        timer->stop();
-//        qDebug() << "Calling print_file";
-//        print_file(p, file.fileName().toLatin1().data());
-//        //exit(0);
-//    }
-//    else {
-//        timerCount++;
-//        qDebug() << timerCount;
-//    }
+    reject();   // QDialog::reject()
 }
 
 /*!

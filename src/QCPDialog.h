@@ -49,6 +49,7 @@ class CPDSHARED_EXPORT QCPDialog : public QAbstractPrintDialog
     Q_OBJECT
 public:
     QCPDialog(QPrinter *printer, QWidget *parent = Q_NULLPTR);
+    ~QCPDialog() = default;
 
     void resizeEvent(QResizeEvent *event) override;
 
@@ -74,14 +75,13 @@ public:
         return QDialog::exec();
     }
 
-public Q_SLOTS:
+private Q_SLOTS:
     void addPrinter(char *printer_name, char *printer_id, char *backend_name);
     void removePrinter(char *printer_name);
     void tabBarIndexChanged(qint32 index);
     void swipeViewIndexChanged(qint32 index);
     void cancelButtonClicked();
     void printButtonClicked();
-    void checkPdfCreated();
     void newPrinterSelected(const QString &printer);
     void remotePrintersToggled(const QString &enabled);
     void orientationChanged(const QString &orientation);
@@ -89,6 +89,8 @@ public Q_SLOTS:
     void numCopiesChanged(const int copies);
     void collateToggled(const QString &enabled);
     void newPageRangeSet(const QString &pageRange);
+    void childProccessStarted();
+    void childProccessFailed();
 
 private:
     FrontendObj *f;
@@ -98,8 +100,6 @@ private:
     Preview *preview;
     Controls *controls;
     QGridLayout *masterLayout;
-    QTimer *timer;
-    int timerCount = 0;
     QString uniqueID;
 };
 
