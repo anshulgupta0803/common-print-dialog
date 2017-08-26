@@ -12,7 +12,7 @@ unix {
     headerfiles.files = $$PWD/*.h
     INSTALLS += target headerfiles
     CONFIG += link_pkgconfig
-    PKGCONFIG += CPDFrontend gio-unix-2.0 glib-2.0 gobject-2.0 poppler-qt5
+    PKGCONFIG += CPDFrontend gio-unix-2.0 glib-2.0 gobject-2.0
 }
 
 SOURCES += \

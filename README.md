@@ -7,12 +7,11 @@
 - qml-module-qtquick-controls2
 - qml-module-qtquick-templates2
 - qml-module-qtquick-dialogs
-- libpoppler-qt5-dev
 - [Helper libraries and CUPS Backend](https://github.com/NilanjanaLodh/PrintDialog_Backend) and [GCP Backend](https://github.com/dracarys09/gcp-backend)
 
 On Ubuntu, run this command to install all dependencies
 ```
-sudo apt -y install qt5-qmake qtdeclarative5-dev qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-templates2 qml-module-qtquick-dialogs libpoppler-qt5-dev
+sudo apt -y install qt5-qmake qtdeclarative5-dev qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-templates2 qml-module-qtquick-dialogs
 ```
 
 For the helper libraries and CUPS/GCP backends, see their respective README files.
