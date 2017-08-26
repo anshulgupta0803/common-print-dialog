@@ -98,6 +98,7 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
                      SLOT(showPrevPage()));
 
     QObject *generalObject = root->rootObject->findChild<QObject *>("generalObject");
+    QObject *pageSetupObject = root->rootObject->findChild<QObject *>("pageSetupObject");
 
     QObject::connect(generalObject,
                      SIGNAL(newPrinterSelected(QString)),
@@ -128,6 +129,11 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
                      SIGNAL(newPageRangeSet(QString)),
                      this,
                      SLOT(newPageRangeSet(QString)));
+
+    QObject::connect(pageSetupObject,
+                     SIGNAL(setDuplexOption(QString)),
+                     this,
+                     SLOT(setDuplexOption(QString)));
 
     QObject::connect(cbf::Instance(),
                      SIGNAL(addPrinterSignal(char *, char *, char *)),
@@ -399,6 +405,11 @@ void QCPDialog::newPageRangeSet(const QString &pageRange)
 {
     QString page(pageRange);
     add_setting_to_printer(p, "page-ranges", page.remove('[').remove(']').toLatin1().data());
+}
+
+void QCPDialog::setDuplexOption(const QString &duplexOption)
+{
+    add_setting_to_printer(p, "sides", duplexOption.toLatin1().data());
 }
 
 /*!

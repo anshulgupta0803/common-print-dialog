@@ -25,6 +25,8 @@ import QtQuick.Layouts 1.0
 import "."
 
 Item {
+    signal setDuplexOption(string option)
+
     function enableTwoSided(option) {
         if (option === "one-sided") {
             twoSidedSwitch.enabled = false
@@ -146,6 +148,11 @@ Item {
                     width: twoSidedConfigComboBox.width
                     text: qsTr(twoSidedConfigDisplay)
                     font.pixelSize: Style.textSize
+                }
+
+                onCurrentIndexChanged: {
+                    var option = twoSidedConfigComboBoxModel.get(twoSidedConfigComboBox.currentIndex)
+                    setDuplexOption(option.twoSidedConfigValue)
                 }
             }
 

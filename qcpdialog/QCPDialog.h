@@ -92,6 +92,7 @@ private Q_SLOTS:
     void numCopiesChanged(const int copies);
     void collateToggled(const QString &enabled);
     void newPageRangeSet(const QString &pageRange);
+    void setDuplexOption(const QString &duplexOption);
     void childProccessStarted();
     void childProccessFailed();
 
