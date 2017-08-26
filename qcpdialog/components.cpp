@@ -126,6 +126,10 @@ void Preview::resize(const QRect &rect)
 void Preview::print(QPrinter *printer)
 {
     painter.begin(printer);
+
+    painter.setFont(QFont("Helvetica", 24, QFont::Bold, true));
+    painter.drawText(printer->pageRect(), Qt::AlignCenter, tr("Sample Preivew"));
+
     painter.end();
 }
 
