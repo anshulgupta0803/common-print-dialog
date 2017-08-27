@@ -176,7 +176,7 @@ void Preview::setCollateCopies(bool enabled)
 
 void Preview::setPrintRange(QString pageRange)
 {
-
+    Q_UNUSED(pageRange);
 }
 
 void Preview::printfile()

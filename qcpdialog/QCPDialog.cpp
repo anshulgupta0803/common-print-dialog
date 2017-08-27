@@ -99,7 +99,7 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
 
     QObject *generalObject = root->rootObject->findChild<QObject *>("generalObject");
     QObject *pageSetupObject = root->rootObject->findChild<QObject *>("pageSetupObject");
-    QObject *optionsObject = root->rootObject->findChild<QObject *>("optionsObject");
+    //QObject *optionsObject = root->rootObject->findChild<QObject *>("optionsObject");
     QObject *jobsObject = root->rootObject->findChild<QObject *>("jobsObject");
     QObject *advancedObject = root->rootObject->findChild<QObject *>("advancedObject");
 
@@ -397,7 +397,9 @@ void QCPDialog::remotePrintersToggled(const QString &enabled)
 void QCPDialog::orientationChanged(const QString &orientation)
 {
     preview->setOrientation(orientation);
-    add_setting_to_printer(p, "orientation-requested", orientation.toLatin1().data());
+    add_setting_to_printer(p,
+                           QString("orientation-requested").toLatin1().data(),
+                           orientation.toLatin1().data());
 }
 
 void QCPDialog::newPageSizeSelected(const QString &pageSize)
@@ -414,13 +416,17 @@ void QCPDialog::newPageSizeSelected(const QString &pageSize)
     qreal height = sizeSplitList[1].toDouble();
 
     preview->setPageSize(pageSizeSplitList[1], width, height, unit);
-    add_setting_to_printer(p, "media", pageSize.toLatin1().data());
+    add_setting_to_printer(p,
+                           QString("media").toLatin1().data(),
+                           pageSize.toLatin1().data());
 }
 
 void QCPDialog::numCopiesChanged(const int copies)
 {
     preview->setNumCopies(copies);
-    add_setting_to_printer(p, "copies", QString::number(copies).toLatin1().data());
+    add_setting_to_printer(p,
+                           QString("copies").toLatin1().data(),
+                           QString::number(copies).toLatin1().data());
 }
 
 void QCPDialog::collateToggled(const QString &enabled)
@@ -431,12 +437,16 @@ void QCPDialog::collateToggled(const QString &enabled)
 void QCPDialog::newPageRangeSet(const QString &pageRange)
 {
     QString page(pageRange);
-    add_setting_to_printer(p, "page-ranges", page.remove('[').remove(']').toLatin1().data());
+    add_setting_to_printer(p,
+                           QString("page-ranges").toLatin1().data(),
+                           page.remove('[').remove(']').toLatin1().data());
 }
 
 void QCPDialog::setDuplexOption(const QString &duplexOption)
 {
-    add_setting_to_printer(p, "sides", duplexOption.toLatin1().data());
+    add_setting_to_printer(p,
+                           QString("sides").toLatin1().data(),
+                           duplexOption.toLatin1().data());
 }
 
 void QCPDialog::refreshJobs()
@@ -487,7 +497,9 @@ void QCPDialog::cancelJob(const QString &printer,
 
 void QCPDialog::newResolutionSelected(const QString &resolution)
 {
-    add_setting_to_printer(p, "printer-resolution", resolution.toLatin1().data());
+    add_setting_to_printer(p,
+                           QString("printer-resolution").toLatin1().data(),
+                           resolution.toLatin1().data());
 }
 
 /*!
