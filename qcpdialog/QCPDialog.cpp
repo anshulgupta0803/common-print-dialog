@@ -99,6 +99,7 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
 
     QObject *generalObject = root->rootObject->findChild<QObject *>("generalObject");
     QObject *pageSetupObject = root->rootObject->findChild<QObject *>("pageSetupObject");
+    QObject *jobsObject = root->rootObject->findChild<QObject *>("jobsObject");
 
     QObject::connect(generalObject,
                      SIGNAL(newPrinterSelected(QString)),
@@ -134,6 +135,16 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
                      SIGNAL(setDuplexOption(QString)),
                      this,
                      SLOT(setDuplexOption(QString)));
+
+    QObject::connect(jobsObject,
+                     SIGNAL(refreshJobs()),
+                     this,
+                     SLOT(refreshJobs()));
+
+    QObject::connect(jobsObject,
+                     SIGNAL(cancelJob(QString, QString, QString)),
+                     this,
+                     SLOT(cancelJob(QString, QString, QString)));
 
     QObject::connect(cbf::Instance(),
                      SIGNAL(addPrinterSignal(char *, char *, char *)),
@@ -197,6 +208,12 @@ void QCPDialog::init_backend()
 
     f = get_new_FrontendObj(uniqueID.toLatin1().data(), add_cb, rem_cb);
     connect_to_dbus(f);
+
+    /* Wait for 3000ms and call refreshJobs() which
+     * will add currently active jobs on all printers
+     * in Jobs tab
+     */
+    QTimer::singleShot(3000, this, SLOT(refreshJobs()));
 }
 
 /*!
@@ -410,6 +427,52 @@ void QCPDialog::newPageRangeSet(const QString &pageRange)
 void QCPDialog::setDuplexOption(const QString &duplexOption)
 {
     add_setting_to_printer(p, "sides", duplexOption.toLatin1().data());
+}
+
+void QCPDialog::refreshJobs()
+{
+    Job *job;
+    bool activeJobsOnly = true;
+    int jobsCount = get_all_jobs(f, &job, activeJobsOnly);
+
+    QObject *obj = root->rootObject->findChild<QObject *>("jobsObject");
+    if (!obj) {
+        qDebug() << "jobsObject Not Found";
+        return;
+    }
+
+    QMetaObject::invokeMethod(obj, "clearJobModel");
+
+    PrinterObj *pObj;
+    for (int i = 0; i < jobsCount; i++) {
+        pObj = find_PrinterObj(f, job[i].printer_id, job[i].backend_name);
+        QMetaObject::invokeMethod(obj,
+                                  "addJob",
+                                  Q_ARG(QVariant, job[i].job_id),
+                                  Q_ARG(QVariant, job[i].printer_id),
+                                  Q_ARG(QVariant, pObj->location),
+                                  Q_ARG(QVariant, job[i].state),
+                                  Q_ARG(QVariant, job[i].backend_name));
+    }
+}
+
+void QCPDialog::cancelJob(const QString &printer,
+                          const QString &backend_name,
+                          const QString &jobID)
+{
+    PrinterObj *pObj = find_PrinterObj(f,
+                                       printer.toLatin1().data(),
+                                       backend_name.toLatin1().data());
+    cancel_job(pObj, jobID.toLatin1().data());
+
+    QObject *obj = root->rootObject->findChild<QObject *>("jobsObject");
+    if (!obj) {
+        qDebug() << "jobsObject Not Found";
+        return;
+    }
+
+    QMetaObject::invokeMethod(obj, "clearJobModel");
+    refreshJobs();
 }
 
 /*!

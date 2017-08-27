@@ -27,6 +27,9 @@ import QtQuick.Controls.Styles 1.4
 import "."
 
 Item {
+    signal resolutionValueChanged(string resolutionValue, string printerName)
+
+    property string printer_name: "Xerox_Placeholder"
 
     ScrollView {
         anchors.fill: parent
@@ -59,8 +62,10 @@ Item {
 
             ComboBox {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                model: ["Printer Setting", "150", "300", "600"]
+                model: supportedResolutions
                 font.pixelSize: Style.textSize
+                onCurrentIndexChanged: resolutionValueChanged(supportedResolutions[currentIndex],
+                                                              printer_name)
             }
 
             Label {
@@ -126,7 +131,6 @@ Item {
             Label {
                 text: qsTr("Color")
                 Layout.columnSpan: 2
-                Layout.preferredHeight: 30
                 font.bold: true
                 font.pixelSize: Style.textSize
             }
@@ -225,7 +229,6 @@ Item {
             Label {
                 text: qsTr("Manual Color")
                 Layout.columnSpan: 2
-                Layout.preferredHeight: 30
                 font.bold: true
                 font.pixelSize: Style.textSize
             }
@@ -281,7 +284,6 @@ Item {
             Label {
                 text: qsTr("Finishing")
                 Layout.columnSpan: 2
-                Layout.preferredHeight: 30
                 font.bold: true
                 font.pixelSize: Style.textSize
             }

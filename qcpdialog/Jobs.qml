@@ -28,6 +28,26 @@ import QtQuick.Dialogs 1.2
 import "."
 
 ColumnLayout{
+    property int selectedRow: -1
+    property int selectedJobID: -1
+    property string selectedPrinter: ""
+    property string selectedBackend: ""
+
+    signal refreshJobs()
+    signal cancelJob(string printer, string backend_name, string jobID)
+
+    function addJob(jobID, printer, location, status, backend_name) {
+        jobs_model.append({jobID: jobID,
+                              printer: printer,
+                              location: location,
+                              status: status,
+                              backend_name: backend_name})
+    }
+
+    function clearJobModel() {
+        jobs_model.clear()
+    }
+
     function updateStartJobsModel(startJobOption) {
         startJobModel.append({startJobOption: startJobOption})
         if (startJobComboBox.count > 0 && startJobComboBox.currentIndex == -1)
@@ -40,170 +60,91 @@ ColumnLayout{
 
     Layout.fillWidth: true
 
+    Label {
+        text: qsTr("Active Jobs")
+        font.bold: true
+        font.pixelSize: Style.textSize
+    }
+
     ListModel{
         id: jobs_model
-
-        ListElement{
-            printer: "Canon Pixma"
-            location: "Office Desk"
-            status: "Completed"
-        }
-
-        ListElement{
-            printer: "HP Laser Jet"
-            location: "Home"
-            status: "Running"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox1"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
-
-        ListElement{
-            printer: "Xerox"
-            location: "Office Reception"
-            status: "Pending"
-        }
     }
-
-    Menu { //Should this menu be for every job or is there some other way?
-        id: menu
-        width: 108
-
-        MenuItem{ text: qsTr("Pause"); font.pixelSize: Style.textSize; height: 24; }
-        MenuItem{ text: qsTr("Stop"); font.pixelSize: Style.textSize; height: 24; }
-        MenuItem{ text: qsTr("Cancel"); font.pixelSize: Style.textSize; height: 24 }
-        MenuItem{ text: qsTr("Repeat"); font.pixelSize: Style.textSize; height: 24; }
-    }
-
 
     TableView {
         id: jobs_view
-        currentRow: 1
+        currentRow: 0
         highlightOnFocus: true
         Layout.minimumHeight: parent.height / 2
-        sortIndicatorVisible: true
         Layout.fillWidth: true
-        anchors.top: parent.top
-        MouseArea {
-            anchors.fill: parent
-            acceptedButtons: Qt.RightButton
-            hoverEnabled: true
-            onClicked: {
-                menu.x = mouseX
-                menu.y = mouseY
-                menu.open()
+
+        onClicked: {
+            if (row == selectedRow) {
+                cancelJobButton.enabled = false
+                selectedRow = -1
+                selectedJobID = -1
+                selectedPrinter = ""
+                selectedBackend = ""
+                jobs_view.selection.clear()
+            }
+            else {
+                cancelJobButton.enabled = true
+                selectedRow = row
+                var current_row = jobs_model.get(row)
+                selectedJobID = current_row.jobID
+                selectedPrinter = current_row.printer
+                selectedBackend = current_row.backend_name
             }
         }
         TableViewColumn {
             role: "printer"
             title: qsTr("Printer")
-            width: 210
+            width: 105
         }
         TableViewColumn {
             role: "location"
             title: qsTr("Location")
-            width: 210
+            width: 105
         }
         TableViewColumn {
             role: "status"
             title: qsTr("Status")
-            width: 210
+            width: 105
         }
         model: jobs_model
     }
 
     RowLayout {
+        Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+        Button {
+            id: refreshJobsButton
+            Layout.maximumHeight: 40
+            Layout.maximumWidth: 40
+            text: qsTr("\u27F3")
+            font.pixelSize: Style.textSize
+            onClicked: {
+                jobs_view.selection.clear()
+                refreshJobs()
+            }
+        }
+
+        Button {
+            id: cancelJobButton
+            Layout.maximumHeight: 40
+            Layout.maximumWidth: 40
+            text: qsTr("\u2716")
+            highlighted: true
+            enabled: false
+            font.pixelSize: Style.textSize
+            onClicked: {
+                if (selectedRow != -1)
+                    cancelJob(selectedPrinter, selectedBackend, selectedJobID)
+                else cancelJobButton.enabled = false
+            }
+        }
+    }
+
+    RowLayout {
         id: startJobRowLayout
-        anchors.top: jobs_view.bottom
-        anchors.topMargin: 20
-        anchors.leftMargin: 20
 
         Label {
             text: qsTr("Start Job: ")
@@ -228,8 +169,7 @@ ColumnLayout{
     }
 
     RowLayout {
-        id: saveJobRowLayout
-        anchors.top: startJobRowLayout.bottom
+        id: saveJobRowLayouts
         Label {
             text: qsTr("Save Job: ")
             font.pixelSize: Style.textSize
@@ -248,7 +188,6 @@ ColumnLayout{
     }
 
     RowLayout {
-        anchors.top: saveJobRowLayout.bottom
         Label {
             text: qsTr("Location: ")
             font.pixelSize: Style.textSize

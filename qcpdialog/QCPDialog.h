@@ -93,6 +93,8 @@ private Q_SLOTS:
     void collateToggled(const QString &enabled);
     void newPageRangeSet(const QString &pageRange);
     void setDuplexOption(const QString &duplexOption);
+    void refreshJobs();
+    void cancelJob(const QString &printer, const QString &backend_name, const QString &jobID);
     void childProccessStarted();
     void childProccessFailed();
 
