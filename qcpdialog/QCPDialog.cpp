@@ -99,7 +99,9 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
 
     QObject *generalObject = root->rootObject->findChild<QObject *>("generalObject");
     QObject *pageSetupObject = root->rootObject->findChild<QObject *>("pageSetupObject");
+    QObject *optionsObject = root->rootObject->findChild<QObject *>("optionsObject");
     QObject *jobsObject = root->rootObject->findChild<QObject *>("jobsObject");
+    QObject *advancedObject = root->rootObject->findChild<QObject *>("advancedObject");
 
     QObject::connect(generalObject,
                      SIGNAL(newPrinterSelected(QString)),
@@ -145,6 +147,11 @@ QCPDialog::QCPDialog(QPrinter *printer, QWidget *parent) :
                      SIGNAL(cancelJob(QString, QString, QString)),
                      this,
                      SLOT(cancelJob(QString, QString, QString)));
+
+    QObject::connect(advancedObject,
+                     SIGNAL(newResolutionSelected(QString)),
+                     this,
+                     SLOT(newResolutionSelected(QString)));
 
     QObject::connect(cbf::Instance(),
                      SIGNAL(addPrinterSignal(char *, char *, char *)),
@@ -361,7 +368,10 @@ void QCPDialog::newPrinterSelected(const QString &printer)
         } else if (strncmp(key, "print-quality", 13) == 0) {
 
         } else if (strncmp(key, "printer-resolution", 18) == 0) {
-
+            clearResolutionModel();
+            for (int i = 0; i < value->num_supported; i++)
+                updateResolutionModel(value->supported_values[i],
+                                      strcmp(value->supported_values[i], value->default_value));
         } else if (strncmp(key, "sides", 5) == 0) {
             clearTwoSidedSwitch();
             for (int i = 0; i < value->num_supported; i++)
@@ -473,6 +483,11 @@ void QCPDialog::cancelJob(const QString &printer,
 
     QMetaObject::invokeMethod(obj, "clearJobModel");
     refreshJobs();
+}
+
+void QCPDialog::newResolutionSelected(const QString &resolution)
+{
+    add_setting_to_printer(p, "printer-resolution", resolution.toLatin1().data());
 }
 
 /*!
@@ -597,6 +612,27 @@ void QCPDialog::clearTwoSidedSwitch()
         QMetaObject::invokeMethod(obj, "clearTwoSidedSwitch");
     else
         qDebug() << "pageSetupObject Not Found";
+}
+
+void QCPDialog::updateResolutionModel(char *resolution, int isDefault)
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("advancedObject");
+    if (obj)
+        QMetaObject::invokeMethod(obj,
+                                  "addResolution",
+                                  Q_ARG(QVariant, resolution),
+                                  Q_ARG(QVariant, isDefault));
+    else
+        qDebug() << "advancedObject Not Found";
+}
+
+void QCPDialog::clearResolutionModel()
+{
+    QObject *obj = root->rootObject->findChild<QObject *>("advancedObject");
+    if (obj)
+        QMetaObject::invokeMethod(obj, "clearResolutionModel");
+    else
+        qDebug() << "advancedObject Not Found";
 }
 
 /*!

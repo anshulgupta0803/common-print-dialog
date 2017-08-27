@@ -127,14 +127,10 @@ Item {
             }
             ListModel {
                 id: twoSidedConfigComboBoxModel
-//                ListElement {
-//                    twoSidedConfigDisplay: "Long Edge (Standard)"
-//                    twoSidedConfigValue: "two-sided-long-edge"
-//                }
-//                ListElement {
-//                    twoSidedConfigDisplay: "Short Edge (Flip)"
-//                    twoSidedConfigValue: "two-sided-short-edge"
-//                }
+                //                ListElement {
+                //                    twoSidedConfigDisplay: "Long Edge (Standard)"
+                //                    twoSidedConfigValue: "two-sided-long-edge"
+                //                }
             }
 
             ComboBox {
@@ -151,8 +147,10 @@ Item {
                 }
 
                 onCurrentIndexChanged: {
-                    var option = twoSidedConfigComboBoxModel.get(twoSidedConfigComboBox.currentIndex)
-                    setDuplexOption(option.twoSidedConfigValue)
+                    if (twoSidedConfigComboBox.currentIndex >= 0) {
+                        var option = twoSidedConfigComboBoxModel.get(twoSidedConfigComboBox.currentIndex)
+                        setDuplexOption(option.twoSidedConfigValue)
+                    }
                 }
             }
 

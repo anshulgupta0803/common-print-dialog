@@ -71,6 +71,9 @@ public:
     void enableTwoSided(char *option);
     void clearTwoSidedSwitch();
 
+    void updateResolutionModel(char *resolution, int isDefault);
+    void clearResolutionModel();
+
     QString information();
 
     int exec() override
@@ -95,6 +98,7 @@ private Q_SLOTS:
     void setDuplexOption(const QString &duplexOption);
     void refreshJobs();
     void cancelJob(const QString &printer, const QString &backend_name, const QString &jobID);
+    void newResolutionSelected(const QString &resolution);
     void childProccessStarted();
     void childProccessFailed();
 

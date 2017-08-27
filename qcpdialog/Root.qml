@@ -52,6 +52,8 @@ SwipeView {
     }
 
     Options {
+        id: options
+        objectName: "optionsObject"
         scale: 0.98
     }
 
@@ -62,6 +64,8 @@ SwipeView {
     }
 
     Advanced {
+        id: advanced
+        objectName: "advancedObject"
         scale: 0.98
     }
 }

@@ -102,11 +102,11 @@ RowLayout {
 
             ListModel {
                 id: destinationModel
-//                ListElement {
-//                    destination: "printer_name"
-//                    printerID: "printer_id"
-//                    backend: "backend_name"
-//                }
+                //                ListElement {
+                //                    destination: "printer_name"
+                //                    printerID: "printer_id"
+                //                    backend: "backend_name"
+                //                }
             }
 
             ComboBox {
@@ -333,8 +333,10 @@ RowLayout {
                 font.pixelSize: Style.textSize
 
                 onCurrentIndexChanged: {
-                    var element = paperSizeModel.get(paperSizeComboBox.currentIndex)
-                    newPageSizeSelected(element.pageSize)
+                    if (paperSizeComboBox.currentIndex >= 0) {
+                        var element = paperSizeModel.get(paperSizeComboBox.currentIndex)
+                        newPageSizeSelected(element.pageSize)
+                    }
                 }
             }
         }

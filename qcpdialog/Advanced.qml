@@ -27,9 +27,17 @@ import QtQuick.Controls.Styles 1.4
 import "."
 
 Item {
-    signal resolutionValueChanged(string resolutionValue, string printerName)
+    signal newResolutionSelected(string resolution)
 
-    property string printer_name: "Xerox_Placeholder"
+    function addResolution(resolution, isDefault) {
+        resolutionModel.append({resolution: resolution})
+        if (isDefault === 0)
+            resolutionComboBox.currentIndex = resolutionModel.count - 1
+    }
+
+    function clearResolutionModel() {
+        resolutionModel.clear()
+    }
 
     ScrollView {
         anchors.fill: parent
@@ -60,12 +68,24 @@ Item {
                 font.pixelSize: Style.textSize
             }
 
+            ListModel {
+                id: resolutionModel
+            }
+
             ComboBox {
+                id: resolutionComboBox
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-                model: supportedResolutions
+                model: resolutionModel
                 font.pixelSize: Style.textSize
-                onCurrentIndexChanged: resolutionValueChanged(supportedResolutions[currentIndex],
-                                                              printer_name)
+                delegate: ItemDelegate {
+                    width: resolutionComboBox.width
+                    text: resolution
+                    font.pixelSize: Style.textSize
+                }
+                onCurrentIndexChanged: {
+                    if (resolutionComboBox.currentIndex >= 0)
+                        newResolutionSelected(resolutionModel.get(resolutionComboBox.currentIndex).resolution)
+                }
             }
 
             Label {
@@ -78,6 +98,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "1", "2", "3"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -90,6 +111,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "-3", "-2", "-1", "0", "1", "2", "3"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -102,6 +124,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "0", "1", "2", "3"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -114,6 +137,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "-3", "-2", "-1", "0", "1", "2", "3"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -126,6 +150,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "On"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -145,6 +170,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "Auto", "Manual"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -157,6 +183,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "On"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -169,6 +196,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "On"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -188,6 +216,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "-3", "-2", "-1", "0", "1", "2", "3"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -200,6 +229,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "-3", "-2", "-1", "0", "1", "2", "3"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -212,6 +242,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "-3", "-2", "-1", "0", "1", "2", "3"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -224,6 +255,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "-3", "-2", "-1", "0", "1", "2", "3"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -243,6 +275,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "Vivid", "sRGB Display", "sRGB Vivid", "Display-true Black"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -255,6 +288,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "Vivid", "sRGB Display", "sRGB Vivid", "Display-true Black"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -267,6 +301,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "Vivid", "sRGB Display", "sRGB Vivid", "Display-true Black"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -279,6 +314,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "US CMYK", "Euro CMYK"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -298,6 +334,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "On"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -310,6 +347,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "None", "Between Jobs", "Between Copies", "Between Pages"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -322,6 +360,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "None", "Between Jobs", "Between Copies"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -334,6 +373,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "On"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -346,6 +386,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "On"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
 
             Label {
@@ -358,6 +399,7 @@ Item {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                 model: ["Printer Setting", "Off", "On"]
                 font.pixelSize: Style.textSize
+                enabled: false
             }
         }
     }
