@@ -4,10 +4,8 @@
         <file>qtquickcontrols2.conf</file>
         <file>General.qml</file>
         <file>PageSetup.qml</file>
-        <file>Preview.qml</file>
         <file>Jobs.qml</file>
         <file>Advanced.qml</file>
-        <file>test.pdf</file>
         <file>Style.qml</file>
         <file>qmldir</file>
         <file>Options.qml</file>
