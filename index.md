@@ -93,3 +93,18 @@ sudo make install
 The library is present in `/usr/lib/libQCPDialog.1.0.0` and can be used in the application with `-lCPDialog` and the corresponding header file is `/usr/include/common-print-dialog/QCPDialog.h` and can be added to the _INCLUDE_PATH_ with `-I/usr/include/common-print-dialog`.
 
 A sample Hello World application which uses this library can be found [here](https://github.com/anshulgupta0803/printTest).
+
+# Troubleshooting
+While running `qmake`, if you get errors like
+```
+qmake: could not exec '/usr/lib/x86_64-linux-gnu/qt4/bin/qmake': No such file or directory
+```
+or
+```
+qmake: could not find a Qt installation of ''
+```
+
+Run this command
+```
+export QT_SELECT=qt5
+```
