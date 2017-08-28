@@ -42,10 +42,12 @@ Other dependencies are:
 - qml-module-qtquick-controls2
 - qml-module-qtquick-templates2
 - qml-module-qtquick-dialogs
+- qml-module-qt-labs-settings
+- qml-module-qt-labs-folderlistmodel
 
 On Ubuntu/Debian based systems, run this command:
 ```
-sudo apt -y install qt5-qmake qtdeclarative5-dev qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-templates2 qml-module-qtquick-dialogs
+sudo apt -y install qt5-qmake qtdeclarative5-dev qml-module-qtquick-controls qml-module-qtquick-controls2 qml-module-qtquick-templates2 qml-module-qtquick-dialogs qml-module-qt-labs-settings qml-module-qt-labs-folderlistmodel
 ```
 # QCPDialog Library
 ## UI Design
