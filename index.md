@@ -6,14 +6,14 @@ The aim of this project is to create a unified solution for printing in desktop 
 # Mentors
 __Dongxu Li__
 - Contact: dongxuli2011 [at] gmail [dot] com
-- Github: https://github.com/dxli
+- Github: [https://github.com/dxli](https://github.com/dxli)
 
 __Aveek Basu__: Linux Foundation Org Admin (Lexmark)
 - Contact: basu [dot] aveek [at] gmail [dot] com
 
 __Till Kamppeter__: Linux Foundation Org Admin (Canonical)
 - Contact: till [dot] kamppeter [at] gmail [dot] com
-- Github: https://github.com/tillkamppeter
+- Github: [https://github.com/tillkamppeter](https://github.com/dxli)
 
 # Project Structure
 The project has 2 main modules. The QCPDialog and Helper.
