@@ -1,4 +1,5 @@
 title: Common Print Dialog
+description: An ergonomic unified print dialog for Qt applications supporting CUPS, IPP and Google Cloud Print
 show_downloads: true
 google_analytics: UA-105447112-1
 theme: jekyll-theme-cayman
