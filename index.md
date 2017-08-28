@@ -1,5 +1,5 @@
 # Common Print Dialog
-[Common Print Dialog](https://summerofcode.withgoogle.com/projects/#4923803856535552) is part of Google Summer of Code 2017 under [The Linux Foundation](https://www.linuxfoundation.org/). The project plan can be found [here](https://docs.google.com/document/d/1OhPCdYRYftfQkuKljjjCNdxcnsm-6TlluyGeQL35tdM/edit).
+[Common Print Dialog](https://summerofcode.withgoogle.com/projects/#4923803856535552) is part of __Google Summer of Code 2017__ under [The Linux Foundation](https://www.linuxfoundation.org/). The project plan can be found [here](https://docs.google.com/document/d/1OhPCdYRYftfQkuKljjjCNdxcnsm-6TlluyGeQL35tdM/edit).
 
 The aim of this project is to create a unified solution for printing in desktop environments. A well designed print dialog will help the users to find the right printers as well as the right printing configurations for documents. And this will happen in a way which is consistent with every platform. The front-end of the print dialog is ergonomic and written in Qt. The back-end has the functionality for printing with CUPS, IPP or Google Cloud Print.
 
@@ -90,4 +90,4 @@ sudo make install
 # Using the library
 The library is present in `/usr/lib/libQCPDialog.1.0.0` and can be used in the application with `-lCPDialog` and the corresponding header file is `/usr/include/common-print-dialog/QCPDialog.h` and can be added to the _INCLUDE_PATH_ with `-I/usr/include/common-print-dialog`.
 
-A sample Hello World application which uses this library can be found [here](https://github.com/anshulgupta0803/printTest)
+A sample Hello World application which uses this library can be found [here](https://github.com/anshulgupta0803/printTest).
