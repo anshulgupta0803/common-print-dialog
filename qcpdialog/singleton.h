@@ -1,7 +1,6 @@
 #ifndef SINGLETON_H
 #define SINGLETON_H
 
-#include <assert.h>
 #include <QPrinter>
 #include <QWidget>
 
@@ -13,7 +12,7 @@ public:
     static T *Instance()
     {
         if (!m_Instance) m_Instance = new T;
-        assert(m_Instance != nullptr);
+        Q_ASSERT(m_Instance == nullptr);
         return m_Instance;
     }
 
@@ -21,7 +20,7 @@ protected:
     Singleton();
     ~Singleton();
 private:
-    Singleton(Singleton const &);
+    Singleton(Singleton const &) = delete;
     Singleton &operator=(Singleton const &);
     static T *m_Instance;
 };
